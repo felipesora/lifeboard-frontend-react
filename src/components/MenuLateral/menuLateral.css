@@ -1,5 +1,5 @@
 .menu{
-    width: 350px;
+    width: 300px;
     height: 100vh;
     background-color: var(--cor-principal);
     color: white;
@@ -50,6 +50,17 @@
     cursor: pointer;
 }
 
+.menu_nav > ul > li > button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menu_nav > ul > li > button > img {
+    width: 30px;
+    height: auto;
+}
+
 .menu_footer {
     display: flex;
     gap: 2px;
@@ -59,4 +70,14 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+.menu_footer > button > img {
+    width: 30px;
+    height: auto;
+}
+
+.menu_footer > img {
+    width: 30px;
+    height: auto;
 }

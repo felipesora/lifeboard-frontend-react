@@ -22,16 +22,50 @@ function MenuLateral() {
             <nav className='menu_nav'>
                 <p className="menu_section">Financeiro</p>
                 <ul>
-                    <li><img src={IconeControleFinanceiro} alt="Icone de bolsa de dinheiro" />Controle Financeiro</li>
-                    <li><img src={IconeTransacoes} alt="Icone de nota de dinheiro" />Transações</li>
-                    <li><img src={IconeMetas} alt="Icone de cofrinho" />Metas</li>
+                    <li>
+                        <button>
+                            <img src={IconeControleFinanceiro} alt="Icone de bolsa de dinheiro" />
+                        </button>
+                            Controle Financeiro
+                    </li>
+
+                    <li>
+                        <button>
+                            <img src={IconeTransacoes} alt="Icone de nota de dinheiro" />
+                        </button>
+                        Transações
+                    </li>
+
+                    <li>
+                        <button>
+                            <img src={IconeMetas} alt="Icone de cofrinho" />
+                        </button>
+                        Metas
+                    </li>
                 </ul>
 
                 <p className="menu_section menu_section_2">Tarefas</p>
                 <ul>
-                    <li><img src={IconeKanban} alt="Icone de papel com anotações" />Quadro (Kanban)</li>
-                    <li><img src={IconeTarefas} alt="Icone de uma lista" />Minhas Tarefas</li>
-                    <li><img src={IconePomodoro} alt="Icone de relogio" />Pomodoro</li>
+                    <li>
+                        <button>
+                            <img src={IconeKanban} alt="Icone de papel com anotações" />
+                        </button>
+                        Quadro (Kanban)
+                    </li>
+
+                    <li>
+                        <button>
+                            <img src={IconeTarefas} alt="Icone de uma lista" />
+                        </button>
+                        Minhas Tarefas
+                    </li>
+
+                    <li>
+                        <button>
+                            <img src={IconePomodoro} alt="Icone de relogio" />
+                        </button>
+                        Pomodoro
+                    </li>
                 </ul>
             </nav>
 
