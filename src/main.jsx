@@ -5,6 +5,7 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './routes/Login/Login.jsx'
 import Cadastro from './routes/Cadastro/Cadastro.jsx'
+import ControleFinanceiro from './routes/ControleFinanceiro/ControleFinanceiro.jsx'
 
 
 const routes = createBrowserRouter([
@@ -15,7 +16,11 @@ const routes = createBrowserRouter([
   {
     path: '/cadastro',
     element: <Cadastro />,
-  }
+  },
+  {
+    path: '/controle-financeiro',
+    element: <ControleFinanceiro />,
+  },
 ]);
 
 createRoot(document.getElementById('root')).render(
