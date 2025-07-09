@@ -1,0 +1,29 @@
+.card_pequeno{
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    width: 280px;
+    padding: 15px 0px 65px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.card_pequeno > div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.card_pequeno > div > p {
+    font-size: 18px;
+}
+
+.card_pequeno > div > img {
+    width: 35px;
+    height: auto;
+}
+
+.card_pequeno > h3 {
+    font-size: 28px;
+}
