@@ -1,13 +1,17 @@
 .dashboard_container {
   display: flex;
+  min-height: 100vh; /* mínimo: tela toda */
+  align-items: stretch; /* estica os filhos na altura do container */
 }
 
 .dashboard_main {
   flex: 1;
   padding: 40px;
   background-color: #ECEFF1;
-  height: 100vh;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .dashboard_main > p {
@@ -86,4 +90,25 @@
   font-family: var(--fonte-principal);
   font-size: 16px;
   cursor: pointer;
+}
+
+.card_metas {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  width: auto;
+  align-self: flex-start;
+  padding: 15px 0px 65px 15px;
+  box-sizing: border-box;
+  margin-top: 40px;
+}
+
+.card_metas_titulo{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.card_metas_titulo > p {
+  font-size: 18px;
 }
