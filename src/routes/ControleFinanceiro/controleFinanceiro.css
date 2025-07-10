@@ -27,6 +27,33 @@
   gap: 50px;
 }
 
+.dashboard_cards_pequenos_graficos{
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.dashboard_grafico {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  width: 970px;
+  padding: 15px 0px 65px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.card_grafico_titulo {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.card_grafico_titulo > p {
+  font-size: 18px;
+}
+
 .card_transacoes{
   background-color: white;
   border-radius: 5px;
