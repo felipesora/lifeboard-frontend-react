@@ -13,6 +13,11 @@ import './menuLateral.css';
 function MenuLateral() {
     const navigate = useNavigate();
 
+    const handleLogout = async () => {
+        localStorage.removeItem('token');
+        navigate('/');
+    }
+
     return (
         <aside className='menu'>
             <div className='menu_logo'>
@@ -72,7 +77,7 @@ function MenuLateral() {
             <div className='menu_footer'>
                 <button><img src={IconeUsuario} alt="Icone de usuário" /></button>
                 <img src={IconeBarra} alt="Icone de barra vertical" />
-                <button><img src={IconeSair} alt="Icone de sair" /></button>
+                <button onClick={handleLogout}><img src={IconeSair} alt="Icone de sair" /></button>
             </div>
 
         </aside>

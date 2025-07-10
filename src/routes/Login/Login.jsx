@@ -11,7 +11,7 @@ function Login() {
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
         try {
@@ -35,7 +35,7 @@ function Login() {
                     <p>Entre com sua conta</p>
                 </div>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleLogin}>
                     <div>
                         <label htmlFor="">Email</label>
                         <input 
