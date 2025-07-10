@@ -83,11 +83,6 @@
     margin-top: 20px;
 }
 
-.mensagem_login_sucesso {
-    color: #2E7D32;
-    font-weight: 500;
-}
-
 .mensagem_login_erro{
     color: #A44A48;
     font-weight: 500;

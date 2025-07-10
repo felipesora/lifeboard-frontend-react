@@ -2,13 +2,29 @@ import "./Login.css";
 import Logo from "../../assets/images/logo-lifeboard-azul.png";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
+import { login } from '../../services/authService';
 
 function Login() {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [error, setError] = useState("");
     const navigate = useNavigate();
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const token = await login(email, senha);
+            localStorage.setItem('token', token);
+
+            setError('');
+            navigate('/controle-financeiro');
+        } catch (erro) {
+            console.log(erro);
+            setError('Email ou senha inválidos.');
+        }
+    }
 
     return (
         <div className="container_login">
@@ -19,7 +35,7 @@ function Login() {
                     <p>Entre com sua conta</p>
                 </div>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor="">Email</label>
                         <input 
@@ -49,8 +65,7 @@ function Login() {
                 </form>
 
                 <div className="container_mensagem_login">
-                    {/* <p className="mensagem_login_sucesso">Login realizado com Sucesso!</p> */}
-                    {/* <p className="mensagem_login_erro">Email ou senha incorretos!</p> */}
+                    {error && <p className="mensagem_login_erro">{error}</p>}
                 </div>
 
                 <div className="container_link_cadastro">
