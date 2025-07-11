@@ -1,22 +1,27 @@
 import "./Login.css";
 import Logo from "../../assets/images/logo-lifeboard-azul.png";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from 'react';
-import { login } from '../../services/authService';
+import React, { useEffect, useState } from 'react';
+import { isTokenValid, login } from '../../services/authService';
 
 function Login() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isTokenValid()) {
+            navigate('/controle-financeiro');
+        }
+    }, [navigate]);
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [error, setError] = useState("");
-    const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
 
         try {
-            const token = await login(email, senha);
-            localStorage.setItem('token', token);
+            await login(email, senha);
 
             setError('');
             navigate('/controle-financeiro');

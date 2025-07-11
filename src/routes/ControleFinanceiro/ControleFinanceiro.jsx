@@ -9,8 +9,36 @@ import IconeMetas from "../../assets/images/icone-metas-preto.png";
 import "./controleFinanceiro.css";
 import CardTrasacao from "../../components/CardTransacao/CardTransacao";
 import GastosMensaisGrafico from "../../components/GastosMensaisGrafico/GastosMensaisGrafico";
+import { useEffect, useState } from "react";
+import { obterDadosUsuario } from "../../services/usuarioService";
+import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 
 function ControleFinanceiro() {
+    useAuthRedirect();
+
+    const [saldo, setSaldo] = useState(0);
+    const [salario, setSalario] = useState(0);
+
+    useEffect(() => {
+        const fetchDadosUsuario = async () => {
+            try {
+                const userId = localStorage.getItem("userId");
+                const usuario = await obterDadosUsuario(userId);
+
+                setSaldo(usuario.financeiro.saldo_atual ?? 0);
+                setSalario(usuario.financeiro.salario_mensal ?? 0);
+
+                console.log("Usuário:", usuario);
+
+            } catch (erro) {
+
+                console.error("Erro ao obter dados do usuário:", erro);
+            }
+        };
+
+        fetchDadosUsuario();
+    }, []);
+
     const data = [
         { name: 'Jan', valor: 3000 },
         { name: 'Fev', valor: 5000 },
@@ -26,7 +54,6 @@ function ControleFinanceiro() {
         { name: 'Dez', valor: 5500 },
     ];
 
-
     return (
         <div className="dashboard_container">
             <MenuLateral />
@@ -41,14 +68,14 @@ function ControleFinanceiro() {
                                     icone={IconeSaldo}
                                     descricao="Icone sacola de dinheiro"
                                     titulo="Saldo Atual"
-                                    valor="7.000,00"
+                                    valor={saldo}
                                     cor="#000000"
                                 />
                                 <CardPequeno
                                     icone={IconeSalario}
                                     descricao="Icone notas de dinheiro"
                                     titulo="Salário"
-                                    valor="10.000,00"
+                                    valor={salario}
                                     cor="#2E7D32"
                                 />
                                 <CardPequeno

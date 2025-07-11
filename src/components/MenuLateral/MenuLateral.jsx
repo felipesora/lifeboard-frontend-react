@@ -15,6 +15,7 @@ function MenuLateral() {
 
     const handleLogout = async () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('userId');
         navigate('/');
     }
 
