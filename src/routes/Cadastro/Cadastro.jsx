@@ -1,11 +1,10 @@
-import "./cadastro.css"
+import "./Cadastro.css"
 import Logo from "../../assets/images/logo-lifeboard-azul.png";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { cadastro } from '../../services/authService';
-import { use } from "react";
 
-function Cadastro() {
+const Cadastro = () => {
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");

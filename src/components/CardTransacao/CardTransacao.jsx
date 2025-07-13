@@ -1,4 +1,4 @@
-import "./cardTrasacao.css";
+import "./CardTrasacao.css";
 
 const CardTrasacao = (props) => {
 

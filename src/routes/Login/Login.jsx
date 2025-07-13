@@ -1,10 +1,10 @@
 import "./Login.css";
 import Logo from "../../assets/images/logo-lifeboard-azul.png";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { isTokenValid, login } from '../../services/authService';
 
-function Login() {
+const Login = () => {
     const navigate = useNavigate();
 
     useEffect(() => {

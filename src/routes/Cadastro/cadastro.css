@@ -1,15 +1,17 @@
 .container_cadastro {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 20px; /* dá respiro acima e abaixo */
-  min-height: 100vh; /* ocupa pelo menos a altura total */
-  gap: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    /* dá respiro acima e abaixo */
+    min-height: 100vh;
+    /* ocupa pelo menos a altura total */
+    gap: 30px;
 }
 
-.container_cadastro_form{
+.container_cadastro_form {
     background-color: #ffffff;
-    padding: 30px 0 100px 0 ;
+    padding: 30px 0 100px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
@@ -17,52 +19,58 @@
     width: 700px;
 }
 
-.container_cadastro_form_textos{
+.container_cadastro_form_textos {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
 }
 
-.container_cadastro_form_textos > h1 {
+.container_cadastro_form_textos>h1 {
     font-size: 32px;
     font-weight: 400;
 }
 
-.container_cadastro_form_textos > p {
+.container_cadastro_form_textos>p {
     font-size: 18px;
     font-weight: 400;
     color: #78909C;
 }
 
-.container_cadastro_form > form {
+.container_cadastro_form>form {
     display: flex;
     flex-direction: column;
     gap: 35px;
     margin-top: 60px;
 }
 
-.container_cadastro_form > form > div {
+.container_cadastro_form>form>div {
     display: flex;
     flex-direction: column;
     width: 400px;
     gap: 10px;
 }
 
-.container_cadastro_form > form > div > label {
+.container_cadastro_form>form>div>label {
     font-size: 20px;
 }
 
-.container_cadastro_form > form > div > input {
+.container_cadastro_form>form>div>input {
     padding: 5px 0 5px 5px;
-    background-color: #ECEFF1;
-    border: #B0BEC5 1px solid;
+    background-color: #F5F7FA;
+    border: 1px solid #B0BEC5;
     font-size: 16px;
     font-family: var(--fonte-principal);
-    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15); */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.container_cadastro_form > form > div > button {
+.container_cadastro_form>form>div>input:focus {
+    outline: none;
+    border-color: #546E7A;
+    box-shadow: 0 0 0 2px rgba(84, 110, 122, 0.2);
+}
+
+.container_cadastro_form>form>div>button {
     background-color: #546E7A;
     padding: 10px 0;
     font-size: 18px;
@@ -74,8 +82,8 @@
     transition: background-color 0.3s ease;
 }
 
-.container_cadastro_form > form > div > button:hover {
-  background-color: var(--cor-principal);
+.container_cadastro_form>form>div>button:hover {
+    background-color: var(--cor-principal);
 }
 
 .container_mensagem_cadastro {
@@ -88,21 +96,21 @@
     font-weight: 500;
 }
 
-.mensagem_cadastro_erro{
+.mensagem_cadastro_erro {
     color: #A44A48;
     font-weight: 500;
 }
 
-.container_link_login{
+.container_link_login {
     margin-top: 30px;
 }
 
-.link_login{
+.link_login {
     font-size: 15px;
 
 }
 
-.link_login > button {
+.link_login>button {
     border: none;
     background-color: transparent;
     font-family: var(--fonte-principal);

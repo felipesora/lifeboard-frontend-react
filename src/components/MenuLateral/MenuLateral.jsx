@@ -8,9 +8,9 @@ import IconeUsuario from "../../assets/images/icone-user.png";
 import IconeBarra from "../../assets/images/icone-barra.png";
 import IconeSair from "../../assets/images/icone-logout.png";
 import { useNavigate } from 'react-router-dom';
-import './menuLateral.css';
+import './MenuLateral.css';
 
-function MenuLateral() {
+const MenuLateral = () => {
     const navigate = useNavigate();
 
     const handleLogout = async () => {
