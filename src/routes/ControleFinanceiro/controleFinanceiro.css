@@ -112,3 +112,9 @@
 .card_metas_titulo > p {
   font-size: 18px;
 }
+
+.sem-transacoes {
+  color: #666;
+  font-style: italic;
+  margin: 10px 0;
+}

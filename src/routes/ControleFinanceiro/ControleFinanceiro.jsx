@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { obterDadosUsuario, editarFinanceiroUsuario } from "../../services/usuarioService";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import ModalDefinirSalario from "../../components/ModalDefinirSalario/ModalDefinirSalario";
+import { obterTransacoes } from "../../hooks/obterTransacoes";
 
 const ControleFinanceiro = () => {
     useAuthRedirect();
@@ -22,6 +23,7 @@ const ControleFinanceiro = () => {
     const [gastosMes, setGastosMes] = useState(0);
     const [gastosAno, setGastosAno] = useState(Array(12).fill(0));
     const [modalSalarioAberto, setModalSalarioAberto] = useState(false);
+    const [transacoes, setTransacoes] = useState([]);
 
     useEffect(() => {
         const fetchDadosUsuario = async () => {
@@ -65,6 +67,19 @@ const ControleFinanceiro = () => {
 
                 setGastosMes(totalSaidasMes);
                 setGastosAno(gastosPorMes);
+
+
+                // Transações
+                const transacoes = await obterTransacoes();
+                console.log("Transações:", transacoes);
+
+                const ultimasTransacoes = transacoes
+                    .sort((a, b) => new Date(b.data) - new Date(a.data))
+                    .slice(0, 4);
+
+                console.log("Últimas 4 transações:", ultimasTransacoes);
+
+                setTransacoes(ultimasTransacoes);
 
             } catch (erro) {
 
@@ -157,38 +172,34 @@ const ControleFinanceiro = () => {
                                 <img src={IconeTransacoes} alt="Icone de lista" />
                                 <p>Últimas Transações</p>
                             </div>
-                            <CardTrasacao
-                                corFundo="#FFEBEE"
-                                corTexto="#A44A48"
-                                titulo="Saída"
-                                valor="300,00"
-                                descricao="Mercado"
-                                data="06/07/2025"
-                            />
-                            <CardTrasacao
-                                corFundo="#E8F5E9"
-                                corTexto="#2E7D32"
-                                titulo="Entrada"
-                                valor="2.500,00"
-                                descricao="Salário"
-                                data="06/07/2025"
-                            />
-                            <CardTrasacao
-                                corFundo="#FFEBEE"
-                                corTexto="#A44A48"
-                                titulo="Saída"
-                                valor="10,00"
-                                descricao="Transporte"
-                                data="06/07/2025"
-                            />
-                            <CardTrasacao
-                                corFundo="#E8F5E9"
-                                corTexto="#2E7D32"
-                                titulo="Entrada"
-                                valor="2.500,00"
-                                descricao="Salário"
-                                data="06/06/2025"
-                            />
+                            {transacoes.length > 0 ? (
+                                transacoes.map((transacao) => {
+                                    const isSaida = transacao.tipo === "SAIDA";
+                                    const corFundo = isSaida ? "#FFEBEE" : "#E8F5E9";
+                                    const corTexto = isSaida ? "#A44A48" : "#2E7D32";
+                                    const valorFormatado = transacao.valor.toLocaleString('pt-BR', {
+                                        style: 'currency',
+                                        currency: 'BRL'
+                                    });
+
+                                    const data = new Date(transacao.data).toLocaleDateString('pt-BR');
+
+                                    return (
+                                        <CardTrasacao
+                                            key={transacao.id_transacao}
+                                            corFundo={corFundo}
+                                            corTexto={corTexto}
+                                            titulo={transacao.tipo === "SAIDA" ? "Saída" : "Entrada"}
+                                            valor={valorFormatado}
+                                            descricao={transacao.descricao}
+                                            data={data}
+                                        />
+                                    );
+                                })
+                            ) : (
+                                <p className="sem-transacoes">Nenhuma transação encontrada.</p>
+                            )}
+
                             <div>
                                 <button>Ver mais...</button>
                             </div>
