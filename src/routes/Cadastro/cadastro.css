@@ -71,7 +71,7 @@
 }
 
 .container_cadastro_form>form>div>button {
-    background-color: #546E7A;
+    background-color: var(--cor-principal);
     padding: 10px 0;
     font-size: 18px;
     color: white;
@@ -83,7 +83,7 @@
 }
 
 .container_cadastro_form>form>div>button:hover {
-    background-color: var(--cor-principal);
+    background-color: #455A64;
 }
 
 .container_mensagem_cadastro {

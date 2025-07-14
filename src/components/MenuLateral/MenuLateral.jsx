@@ -29,24 +29,25 @@ const MenuLateral = () => {
                 <p className="menu_section">Financeiro</p>
                 <ul>
                     <li>
-                        <button>
+                        <button onClick={() => navigate("/controle-financeiro")}>
                             <img src={IconeControleFinanceiro} alt="Icone de bolsa de dinheiro" />
-                        </button>
                             Controle Financeiro
+                        </button>
+                            
                     </li>
 
                     <li>
-                        <button>
+                        <button onClick={() => navigate("/transacoes")}>
                             <img src={IconeTransacoes} alt="Icone de nota de dinheiro" />
+                            Transações
                         </button>
-                        Transações
                     </li>
 
                     <li>
                         <button>
                             <img src={IconeMetas} alt="Icone de cofrinho" />
+                            Metas
                         </button>
-                        Metas
                     </li>
                 </ul>
 
@@ -55,22 +56,25 @@ const MenuLateral = () => {
                     <li>
                         <button>
                             <img src={IconeKanban} alt="Icone de papel com anotações" />
+                            Quadro (Kanban)
                         </button>
-                        Quadro (Kanban)
+                        
                     </li>
 
                     <li>
                         <button>
                             <img src={IconeTarefas} alt="Icone de uma lista" />
+                            Minhas Tarefas
                         </button>
-                        Minhas Tarefas
+                        
                     </li>
 
                     <li>
                         <button>
                             <img src={IconePomodoro} alt="Icone de relogio" />
+                            Pomodoro
                         </button>
-                        Pomodoro
+                        
                     </li>
                 </ul>
             </nav>

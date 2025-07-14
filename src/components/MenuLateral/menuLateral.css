@@ -41,18 +41,17 @@
     margin-top: 10px;
 }
 
-.menu_nav > ul > li {
+.menu_nav > ul > li > button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 14px;
     cursor: pointer;
-}
-
-.menu_nav > ul > li > button{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
+    color: #FFFFFF;
+    font-family: var(--fonte-principal);
 }
 
 .menu_nav > ul > li > button > img {

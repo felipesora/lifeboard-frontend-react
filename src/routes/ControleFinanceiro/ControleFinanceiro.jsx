@@ -14,9 +14,11 @@ import { obterDadosUsuario, editarFinanceiroUsuario } from "../../services/usuar
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import ModalDefinirSalario from "../../components/ModalDefinirSalario/ModalDefinirSalario";
 import { obterTransacoes } from "../../hooks/obterTransacoes";
+import { useNavigate } from "react-router-dom";
 
 const ControleFinanceiro = () => {
     useAuthRedirect();
+    const navigate = useNavigate();
 
     const [saldo, setSaldo] = useState(0);
     const [salario, setSalario] = useState(0);
@@ -201,7 +203,7 @@ const ControleFinanceiro = () => {
                             )}
 
                             <div>
-                                <button>Ver mais...</button>
+                                <button onClick={() => navigate("/transacoes")}>Ver mais...</button>
                             </div>
                         </div>
                     </div>
