@@ -5,6 +5,8 @@ import './Transacoes.css';
 import { useEffect, useState, useRef } from 'react';
 import { obterTransacoes } from '../../hooks/obterTransacoes';
 import IconeMenuVertical from "../../assets/images/icone-menu-vertical.png"
+import ModalDeletarTransacao from '../../components/ModalDeletarTransacao/ModalDeletarTransacao';
+import { deletarTransacao } from '../../services/transacaoService';
 
 const Transacoes = () => {
     useAuthRedirect();
@@ -18,6 +20,8 @@ const Transacoes = () => {
     const [dataFimFiltro, setDataFimFiltro] = useState('');
     const [categoriaFiltro, setCategoriaFiltro] = useState('');
     const [transacaoSelecionada, setTransacaoSelecionada] = useState(null);
+    const [modalDelete, setModalDelete] = useState(false);
+    const [idTransacaoParaDeletar, setIdTransacaoParaDeletar] = useState(null);
 
     useEffect(() => {
         const fetchDadosUsuario = async () => {
@@ -116,14 +120,13 @@ const Transacoes = () => {
     };
 
     const handleDeletar = async (id) => {
-        const confirmar = window.confirm("Tem certeza que quer deletar?");
-        if (confirmar) {
-            // Chame sua API de deleção aqui, por exemplo:
-            // await deletarTransacao(id);
-            // Recarregue a lista de transações depois
-            console.log(`Transação ${id} deletada!`);
-        }
-        setTransacaoSelecionada(null); // Fecha o menu
+        setIdTransacaoParaDeletar(id);   // define qual transação deletar
+        setModalDelete(true);            // abre o modal
+        setTransacaoSelecionada(null);
+    };
+
+    const abrirModal = () => {
+        setModalSalarioAberto(true);
     };
 
     return (
@@ -274,6 +277,32 @@ const Transacoes = () => {
                     </table>
 
                 </div>
+
+                <ModalDeletarTransacao
+                    aberto={modalDelete}
+                    onClose={() => setModalDelete(false)}
+                    onDelete={async () => {
+                        try {
+                            await deletarTransacao(idTransacaoParaDeletar);
+
+                            // RECARREGAR do backend
+                            const transacoesAtualizadas = await obterTransacoes();
+                            const transacoesOrdenadas = transacoesAtualizadas.sort((a, b) => {
+                                const dataA = new Date(a.data);
+                                const dataB = new Date(b.data);
+                                return dataB - dataA;
+                            });
+
+                            setTodasTransacoes(transacoesOrdenadas);
+                            setTransacoes(transacoesOrdenadas);
+
+                            setModalDelete(false);
+                            setIdTransacaoParaDeletar(null);
+                        } catch (erro) {
+                            console.error("Erro ao deletar:", erro);
+                        }
+                    }}
+                />
             </main>
         </div>
     )

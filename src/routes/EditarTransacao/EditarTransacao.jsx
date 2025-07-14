@@ -1,64 +1,75 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
-import './CadastroTransacao.css'
-import { cadastrarTransacao } from '../../services/transacaoService';
+import './EditarTransacao.css'
 import { useAuthRedirect } from '../../hooks/useAuthRedirect';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { editarDadosTransacao, obterDadosTransacao } from '../../services/transacaoService';
 
-const CadastroTransacao = () => {
+const EditarTransacao = () => {
     useAuthRedirect();
     const navigate = useNavigate();
+    const { id } = useParams();
 
     const [descricaoTransacao, setDescricaoTransacao] = useState('');
     const [categoriaTransacao, setCategoriaTransacao] = useState('');
     const [tipoTransacao, setTipoTransacao] = useState('');
     const [valorTransacao, setValorTransacao] = useState('');
+    const [idFinanceiro, setIdFinanceiro] = useState('');
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
-    const handleCadastroTransacao = async () => {
-
-          if (
-                !descricaoTransacao.trim() ||
-                !categoriaTransacao ||
-                !tipoTransacao ||
-                !valorTransacao
-            ) {
-                setError("Preencha todos os campos.");
-                setSuccess("");
-                return;
+    useEffect(() => {
+        const fetchTransacao = async () => {
+            try {
+            const dados = await obterDadosTransacao(id);
+            setDescricaoTransacao(dados.descricao);
+            setCategoriaTransacao(dados.categoria);
+            setTipoTransacao(dados.tipo);
+            setValorTransacao(dados.valor);
+            setIdFinanceiro(dados.id_financeiro);
+            } catch (erro) {
+            console.error(erro);
+            setError("Erro ao carregar dados da transação.");
             }
+        };
 
-        const transacao = {
+        fetchTransacao();
+    }, [id]);
+
+    const handleEditarTransacao = async () => {
+        if (!descricaoTransacao.trim() || !categoriaTransacao || !tipoTransacao || !valorTransacao) {
+            setError("Preencha todos os campos.");
+            setSuccess("");
+            return;
+        }
+
+        try {
+            await editarDadosTransacao(id, {
             descricao: descricaoTransacao,
             valor: valorTransacao,
             tipo: tipoTransacao,
             categoria: categoriaTransacao,
-        }
-        
-        try {
-            await cadastrarTransacao(transacao);
+            id_financeiro: idFinanceiro
+            });
 
             setError("");
-            setSuccess("Transação cadastrada com sucesso!");
+            setSuccess("Transação editada com sucesso!");
 
             setTimeout(() => {
-                navigate("/transacoes");
+            navigate("/transacoes");
             }, 1500);
-
         } catch (erro) {
-            console.log(erro);
-
-            setError("Erro ao cadastrar a transação. Tente novamente.");
+            console.error(erro);
+            setError("Erro ao editar a transação. Tente novamente.");
             setSuccess("");
         }
-    }
+    };
 
     return (
         <div className="dashboard_container">
             <MenuLateral />
             <main className="dashboard_main_cadastro_transacoes">
-                <p>Controle Financeiro {'>'} Transações <span> {'>'} Cadastro de Transações</span></p>
+                <p>Controle Financeiro {'>'} Transações <span> {'>'} Editar Transação</span></p>
 
                 <div className='cadastro_transacoe_container'>
 
@@ -136,7 +147,7 @@ const CadastroTransacao = () => {
 
                         <div className='botoes_form'>
                             <button type='button' onClick={() => navigate("/transacoes")}>Cancelar</button>
-                            <button type='button' onClick={handleCadastroTransacao}>Cadastrar Transação</button>
+                            <button type='button' onClick={handleEditarTransacao}>Editar Transação</button>
                         </div>
                     </form>
                 </div>
@@ -145,4 +156,4 @@ const CadastroTransacao = () => {
     )
 }
 
-export default CadastroTransacao;
+export default EditarTransacao;

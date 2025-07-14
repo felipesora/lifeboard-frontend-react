@@ -8,6 +8,7 @@ import Cadastro from './routes/Cadastro/Cadastro.jsx'
 import ControleFinanceiro from './routes/ControleFinanceiro/ControleFinanceiro.jsx'
 import Transacoes from './routes/Transacoes/Transacoes.jsx'
 import CadastroTransacao from './routes/CadastroTransacao/CadastroTransacao.jsx'
+import EditarTransacao from './routes/EditarTransacao/EditarTransacao.jsx'
 
 
 const routes = createBrowserRouter([
@@ -30,6 +31,10 @@ const routes = createBrowserRouter([
   {
     path: '/cadastrar-transacao',
     element: <CadastroTransacao />
+  },
+  {
+    path: '/editar-transacao/:id',
+    element: <EditarTransacao />
   }
 ]);
 

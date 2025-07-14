@@ -1,0 +1,99 @@
+.dashboard_main_cadastro_transacoes{
+  flex: 1;
+  padding: 40px;
+  background-color: #ECEFF1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dashboard_main_cadastro_transacoes > p {
+  font-weight: bold;
+  color: #666;
+}
+
+.dashboard_main_cadastro_transacoes > p > span {
+  color: #000000;
+}
+
+.cadastro_transacoe_container {
+  background-color: white;
+  width: 100%;
+  max-width: 1485px;
+  padding: 65px 35px 150px 35px;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.inputs_form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 42px;
+}
+
+.inputs_form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.input_descricao,
+.input_categoria,
+.input_valor {
+    width: 515px;
+}
+
+.input_tipo{
+    width: 280px;
+}
+
+.inputs_form > div > label {
+    font-size: 16px;
+}
+
+.inputs_form > div > input,
+.inputs_form > div > select {
+    background-color:#FAFAFA;
+    border: 1px solid #E0E0E0;
+    font-family: var(--fonte-principal);
+    font-size: 14px;
+    padding: 5px 2px;
+}
+
+.inputs_form > div > input:focus,
+.inputs_form > div > select:focus {
+  outline: none;
+  border-color: #546E7A;
+}
+
+.botoes_form{
+    display: flex;
+    gap: 25px;
+    margin-top: 50px;
+}
+
+.botoes_form > button {
+  background-color: #37474F;
+  padding: 10px 0;
+  width: 270px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  font-family: var(--fonte-principal);
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease
+}
+
+.botoes_form > button:hover {
+  background-color: #455A64;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.container_mensagem_cadastro_transacoes {
+  margin-top: 20px;
+}
