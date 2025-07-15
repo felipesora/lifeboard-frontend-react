@@ -10,6 +10,8 @@ import Transacoes from './routes/Transacoes/Transacoes.jsx'
 import CadastroTransacao from './routes/CadastroTransacao/CadastroTransacao.jsx'
 import EditarTransacao from './routes/EditarTransacao/EditarTransacao.jsx'
 import Metas from './routes/Metas/Metas.jsx'
+import CadastroMeta from './routes/CadastroMeta/CadastroMeta.jsx'
+import EditarMeta from './routes/EditarMeta/EditarMeta.jsx'
 
 
 const routes = createBrowserRouter([
@@ -40,6 +42,14 @@ const routes = createBrowserRouter([
   {
     path: '/metas',
     element: <Metas />
+  },
+  {
+    path: '/cadastrar-meta',
+    element: <CadastroMeta />
+  },
+  {
+    path: '/editar-meta/:id',
+    element: <EditarMeta />
   }
 ]);
 

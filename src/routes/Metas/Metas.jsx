@@ -4,8 +4,9 @@ import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 import './Metas.css';
 import IconeMetaAndamento from "../../assets/images/icone-meta-andamento.png"
 import IconeMetaConcluida from "../../assets/images/icone-meta-concluida.png"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CardMeta from '../../components/CardMeta/CardMeta';
+import { obterMetas } from '../../hooks/obterMetas';
 
 const Metas = () => {
     useAuthRedirect();
@@ -13,6 +14,30 @@ const Metas = () => {
 
     const [statusMeta, setStatusMeta] = useState('');
     const [dataLimiteMeta, setDataLimiteMeta] = useState('');
+    const [metas, setMetas] = useState([]);
+
+    useEffect(() => {
+            const fetchDadosUsuario = async () => {
+                try {
+    
+                    // Metas
+                    const metas = await obterMetas();
+                    setMetas(metas);
+    
+                } catch (erro) {
+    
+                    console.error("Erro ao obter dados do usuário:", erro);
+                }
+            };
+    
+            fetchDadosUsuario();
+        }, []);
+
+    function formatarDataISOParaBR(dataISO) {
+        if (!dataISO) return "";
+        const [ano, mes, dia] = dataISO.split("-");
+        return `${dia}/${mes}/${ano}`;
+    }
 
     return (
         <div className="dashboard_container">
@@ -64,13 +89,29 @@ const Metas = () => {
                     </form>
 
                     <div className='cards_metas_container'>
-                        <CardMeta 
-                        iconeMeta={IconeMetaAndamento}
-                        nomeMeta={"Viagem Praia"}
-                        valorMeta={"R$ 5.000,00"}
-                        valorAtingido={"R$ 1.500,00"}
-                        dataLimite={"12/12/2025"}
-                        />
+
+                        {metas.length > 0 ? (
+                            metas.map((meta) => {
+
+                                return (
+                                    <CardMeta 
+                                    key={meta.id_meta}
+                                    idMeta={meta.id_meta}
+                                    iconeMeta={meta.status === "EM_ANDAMENTO" ? IconeMetaAndamento : IconeMetaConcluida}
+                                    nomeMeta={meta.nome}
+                                    valorMeta={meta.valor_meta.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL'})}
+                                    valorAtual={meta.valor_atual.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL'})}
+                                    valorMetaNum={meta.valor_meta}
+                                    valorAtualNum={meta.valor_atual}
+                                    dataLimite={formatarDataISOParaBR(meta.data_limite)}
+                                    />
+                                )
+                            })
+                        ) : (
+                            <p>Nenhuma meta encontrada.</p>
+                        )}
+
+                        
                     </div>
 
                 </div>
