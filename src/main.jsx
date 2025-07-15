@@ -9,6 +9,7 @@ import ControleFinanceiro from './routes/ControleFinanceiro/ControleFinanceiro.j
 import Transacoes from './routes/Transacoes/Transacoes.jsx'
 import CadastroTransacao from './routes/CadastroTransacao/CadastroTransacao.jsx'
 import EditarTransacao from './routes/EditarTransacao/EditarTransacao.jsx'
+import Metas from './routes/Metas/Metas.jsx'
 
 
 const routes = createBrowserRouter([
@@ -35,6 +36,10 @@ const routes = createBrowserRouter([
   {
     path: '/editar-transacao/:id',
     element: <EditarTransacao />
+  },
+  {
+    path: '/metas',
+    element: <Metas />
   }
 ]);
 

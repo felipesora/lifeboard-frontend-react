@@ -1,0 +1,95 @@
+.dashboard_main_metas{
+  flex: 1;
+  padding: 40px;
+  background-color: #ECEFF1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dashboard_main_metas > p {
+  font-weight: bold;
+  color: #666;
+}
+
+.dashboard_main_metas > p > span {
+  color: #000000;
+}
+
+.metas_container {
+  background-color: white;
+  width: 100%;
+  max-width: 1485px;
+  padding: 65px 35px 150px 35px;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.metas_form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filtros_metas_form{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.metas_filtro{
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  gap: 5px;
+}
+
+.metas_filtro > label {
+  font-size: 16px;
+}
+
+.metas_filtro > select,
+.metas_filtro > input {
+  background-color:#FAFAFA;
+  border: 1px solid #E0E0E0;
+  font-family: var(--fonte-principal);
+  font-size: 14px;
+  padding: 5px 2px;
+}
+
+.metas_filtro > select:focus,
+.metas_filtro > input:focus {
+  outline: none;
+  border-color: #546E7A;
+}
+
+.metas_botoes_filtro {
+  display: flex;
+  gap: 12px;
+}
+
+.metas_botoes_filtro > button {
+  background-color: #37474F;
+  padding: 10px 0;
+  width: 270px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  font-family: var(--fonte-principal);
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease
+}
+
+.metas_botoes_filtro > button:hover {
+  background-color: #455A64;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.cards_metas_container {
+    margin-top: 60px;
+}

@@ -1,0 +1,48 @@
+.card_meta {
+    background-color: #FAFAFA;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    width: 410px;
+    padding: 20px 10px 60px 10px;
+}
+
+.card_meta_cabecalho {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card_meta_cabecalho > div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.card_meta_cabecalho > div > img {
+    width: 30px;
+    height: auto;
+}
+
+.card_meta_cabecalho > div > h3 {
+    font-size: 20px;
+    color: #37474F;
+}
+
+.card_meta_cabecalho > button {
+    border: none;
+    background-color: transparent;
+}
+
+.card_meta > p {
+    font-size: 15px;
+    color: #616161;
+    margin-top: 10px;
+}
+
+.card_meta_data_limite {
+    margin-top: 15px;
+}
+
+.card_meta_data_limite > p {
+    font-size: 15px;
+    color: #9E9E9E;
+}

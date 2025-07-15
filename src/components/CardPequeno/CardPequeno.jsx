@@ -1,7 +1,6 @@
 import "./CardPequeno.css"
 import IconeMenuVertical from "../../assets/images/icone-menu-vertical.png"
 import { useState } from "react";
-import ModalDefinirSalario from "../ModalDefinirSalario/ModalDefinirSalario";
 
 
 

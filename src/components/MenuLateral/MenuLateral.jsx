@@ -44,7 +44,7 @@ const MenuLateral = () => {
                     </li>
 
                     <li>
-                        <button>
+                        <button onClick={() => navigate("/metas")}>
                             <img src={IconeMetas} alt="Icone de cofrinho" />
                             Metas
                         </button>
