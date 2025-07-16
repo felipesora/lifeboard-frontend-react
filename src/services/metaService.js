@@ -35,7 +35,6 @@ export async function cadastrarMeta(meta) {
             valor_meta: meta.valor_meta,
             valor_atual: meta.valor_atual,
             data_limite: meta.data_limite,
-            status: meta.status,
             id_financeiro: idFinanceiro
         }),
     });
@@ -62,7 +61,6 @@ export async function editarDadosMeta(idMeta, novaMeta) {
             valor_meta: novaMeta.valor_meta,
             valor_atual: novaMeta.valor_atual,
             data_limite: novaMeta.data_limite,
-            status: novaMeta.status,
             id_financeiro: novaMeta.id_financeiro
         })
     });

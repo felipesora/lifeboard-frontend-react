@@ -52,8 +52,22 @@ const CardMeta = (props) => {
 
                     {menuAberto && (
                         <div ref={menuRef} className="menu_meta_dropdown">
-                        <button onClick={handleEditar}>Editar</button>
-                        <button>Deletar</button>
+                            <button onClick={() => {
+                                props.onAdicionarSaldo(props.idMeta);
+                                setMenuAberto(false);
+                            }}>
+                                Adicionar Saldo
+                            </button>
+
+                            <button onClick={handleEditar}>Editar</button>
+
+                            <button onClick={() => {
+                                props.onDeletar(props.idMeta);
+                                setMenuAberto(false);
+                            }}>
+                                Deletar
+                            </button>
+
                         </div>
                     )}
                 </div>

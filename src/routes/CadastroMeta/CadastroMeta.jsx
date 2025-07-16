@@ -12,7 +12,6 @@ const CadastroMeta = () => {
     const [nomeMeta, setNomeMeta] = useState('');
     const [dataLimiteMeta, setDataLimiteMeta] = useState('');
     const [valorMeta, setValorMeta] = useState('');
-    const [valorAtual, setValorAtual] = useState('');
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
@@ -21,8 +20,7 @@ const CadastroMeta = () => {
         if (
             !nomeMeta.trim() ||
             !dataLimiteMeta ||
-            !valorMeta ||
-            !valorAtual
+            !valorMeta
         ) {
             setError("Preencha todos os campos.");
             setSuccess("");
@@ -32,9 +30,8 @@ const CadastroMeta = () => {
         const meta = {
             nome: nomeMeta,
             data_limite: dataLimiteMeta,
-            valor_atual: valorAtual,
+            valor_atual: 0,
             valor_meta: valorMeta,
-            status: "EM_ANDAMENTO"
         }
         
         try {
@@ -103,21 +100,7 @@ const CadastroMeta = () => {
                                     onChange={(e) => setValorMeta(e.target.value)}
                                 />
                             </div>
-
-                            <div className='input_valor_atual_meta'>
-                                <label htmlFor="valorAtual">Valor Atual</label>
-                                <input
-                                    id="valorAtual"
-                                    type="number"
-                                    step="any"
-                                    name="valorAtual"
-                                    placeholder='Ex: 1.000,00'
-                                    required
-                                    value={valorAtual}
-                                    onChange={(e) => setValorAtual(e.target.value)}
-                                />
-                            </div>
-
+                            
                         </div>
 
                         <div className="container_mensagem_cadastro_metas">

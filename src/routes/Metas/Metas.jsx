@@ -7,6 +7,9 @@ import IconeMetaConcluida from "../../assets/images/icone-meta-concluida.png"
 import { useEffect, useState } from 'react';
 import CardMeta from '../../components/CardMeta/CardMeta';
 import { obterMetas } from '../../hooks/obterMetas';
+import { deletarMeta, editarDadosMeta, obterDadosMeta } from '../../services/metaService';
+import ModalMetaDeletar from '../../components/ModalMetaDeletar/ModalMetaDeletar';
+import ModalMetaAdicionar from '../../components/ModalMetaAdiconar/ModalMetaAdiconar';
 
 const Metas = () => {
     useAuthRedirect();
@@ -14,7 +17,14 @@ const Metas = () => {
 
     const [statusMeta, setStatusMeta] = useState('');
     const [dataLimiteMeta, setDataLimiteMeta] = useState('');
+    const [todasMetas, setTodasMetas] = useState([]);
     const [metas, setMetas] = useState([]);
+    const [modalDelete, setModalDelete] = useState(false);
+    const [idMetaParaDeletar, setIdMetaParaDeletar] = useState(null);
+
+    const [modalAdicionar, setModalAdicionar] = useState(false);
+    const [idMetaParaAdicionar, setIdMetaParaAdicionar] = useState(null);
+    const [valorAdicionar, setValorAdicionar] = useState('');
 
     useEffect(() => {
             const fetchDadosUsuario = async () => {
@@ -22,6 +32,7 @@ const Metas = () => {
     
                     // Metas
                     const metas = await obterMetas();
+                    setTodasMetas(metas);
                     setMetas(metas);
     
                 } catch (erro) {
@@ -38,6 +49,37 @@ const Metas = () => {
         const [ano, mes, dia] = dataISO.split("-");
         return `${dia}/${mes}/${ano}`;
     }
+
+    const handleDeletar = (id) => {
+        setIdMetaParaDeletar(id);
+        setModalDelete(true);
+    };
+
+    const handleAdicionarSaldo = (id) => {
+        setIdMetaParaAdicionar(id);
+        setModalAdicionar(true);
+    };
+
+    const aplicarFiltros = () => {
+        const dataLimiteFiltro = dataLimiteMeta ? new Date(dataLimiteMeta + "T23:59:59") : null;
+
+        const metasFiltradas = todasMetas.filter((meta) => {
+            const dataMeta = new Date(meta.data_limite);
+
+            const statusOk = statusMeta ? meta.status === statusMeta : true;
+            const dataLimiteOk = dataLimiteFiltro ? dataMeta <= dataLimiteFiltro : true;
+
+            return statusOk && dataLimiteOk;
+        });
+
+        setMetas(metasFiltradas);
+    };
+
+    const limparFiltros = () => {
+        setStatusMeta('');
+        setDataLimiteMeta('');
+        setMetas(todasMetas);
+    };
 
     return (
         <div className="dashboard_container">
@@ -80,8 +122,8 @@ const Metas = () => {
                         </div>
 
                         <div className='metas_botoes_filtro'>
-                            <button type='button'>Filtrar</button>
-                            <button type='button'>Limpar Filtros</button>
+                            <button type='button' onClick={aplicarFiltros}>Filtrar</button>
+                            <button type='button' onClick={limparFiltros}>Limpar Filtros</button>
                             <button type='button' onClick={() => navigate("/cadastrar-meta")}>
                                 Nova Meta
                             </button>
@@ -91,7 +133,20 @@ const Metas = () => {
                     <div className='cards_metas_container'>
 
                         {metas.length > 0 ? (
-                            metas.map((meta) => {
+                            metas
+                            .slice() // para não mutar o array original
+                            .sort((a, b) => {
+                            // Primeiro ordena por status:
+                            // Coloque "EM_ANDAMENTO" antes de "CONCLUIDA"
+                            if (a.status === b.status) {
+                                // Se status iguais, ordena pelo valor_meta (ex: crescente)
+                                return a.valor_meta - b.valor_meta;
+                            }
+                            if (a.status === "EM_ANDAMENTO") return -1;
+                            if (b.status === "EM_ANDAMENTO") return 1;
+                            return 0;
+                            })
+                            .map((meta) => {
 
                                 return (
                                     <CardMeta 
@@ -104,7 +159,10 @@ const Metas = () => {
                                     valorMetaNum={meta.valor_meta}
                                     valorAtualNum={meta.valor_atual}
                                     dataLimite={formatarDataISOParaBR(meta.data_limite)}
+                                    onDeletar={handleDeletar}
+                                    onAdicionarSaldo={handleAdicionarSaldo}
                                     />
+                                    
                                 )
                             })
                         ) : (
@@ -115,6 +173,59 @@ const Metas = () => {
                     </div>
 
                 </div>
+
+                <ModalMetaDeletar
+                    aberto={modalDelete}
+                    onClose={() => setModalDelete(false)}
+                    onDelete={async () => {
+                        try {
+                            await deletarMeta(idMetaParaDeletar);
+
+                            const metasAtualizadas = await obterMetas();
+                            setMetas(metasAtualizadas);
+
+                            setModalDelete(false);
+                            setIdMetaParaDeletar(null);
+                        } catch (erro) {    
+                            console.error("Erro ao deletar meta:", erro);
+                        }
+                    }}
+                />
+
+                <ModalMetaAdicionar 
+                aberto={modalAdicionar}
+                onClose={() => {
+                    setModalAdicionar(false);
+                    setValorAdicionar('');
+                }}
+                valorAdicionar={valorAdicionar}
+                setValorAdicionar={setValorAdicionar}
+                onAdicionar={async () => {
+                    try {
+                    // Busca os dados atuais da meta
+                    const meta = await obterDadosMeta(idMetaParaAdicionar);
+                    const novoValorAtual = Number(meta.valor_atual) + Number(valorAdicionar);
+
+                    // Atualiza apenas o valor_atual
+                    await editarDadosMeta(idMetaParaAdicionar, {
+                        ...meta,
+                        valor_atual: novoValorAtual
+                    });
+
+                    // Atualiza lista
+                    const metasAtualizadas = await obterMetas();
+                    setMetas(metasAtualizadas);
+
+                    // Limpa tudo
+                    setModalAdicionar(false);
+                    setIdMetaParaAdicionar(null);
+                    setValorAdicionar('');
+
+                    } catch (erro) {
+                    console.error("Erro ao adicionar saldo na meta:", erro);
+                    }
+                }}
+                />
             </main>
         </div>
     )

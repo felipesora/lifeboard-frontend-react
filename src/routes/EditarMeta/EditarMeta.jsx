@@ -39,7 +39,7 @@ const EditarMeta = () => {
     }, [id]);
     
         const handleEditarMeta = async () => {
-            if (!nomeMeta.trim() || !dataLimiteMeta || !valorMeta || !valorAtual) {
+            if (!nomeMeta.trim() || !dataLimiteMeta || !valorMeta || valorAtual === '') {
                 setError("Preencha todos os campos.");
                 setSuccess("");
                 return;

@@ -1,0 +1,34 @@
+.modal_conteudo_meta_conteudo > input {
+    padding: 5px 0 5px 5px;
+    background-color: #FAFAFA;
+    border: 1px solid #B0BEC5;
+    font-size: 16px;
+    font-family: var(--fonte-principal);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+}
+
+.modal_conteudo_meta_conteudo > input:focus {
+    outline: none;
+    border-color: #546E7A;
+    box-shadow: 0 0 0 2px rgba(84, 110, 122, 0.2);
+}
+
+.modal_meta_botao_adicionar{
+    background-color: #388E3C;
+    padding: 7px 60px;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-family: var(--fonte-principal);
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin: 15px 0 60px 0;
+}
+
+.modal_meta_botao_adicionar:hover{
+  background-color: #2E7D32;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
