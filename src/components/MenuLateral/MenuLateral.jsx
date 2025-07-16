@@ -80,7 +80,7 @@ const MenuLateral = () => {
             </nav>
 
             <div className='menu_footer'>
-                <button><img src={IconeUsuario} alt="Icone de usuário" /></button>
+                <button onClick={() => navigate("/minha-conta")}><img src={IconeUsuario} alt="Icone de usuário" /></button>
                 <img src={IconeBarra} alt="Icone de barra vertical" />
                 <button onClick={handleLogout}><img src={IconeSair} alt="Icone de sair" /></button>
             </div>

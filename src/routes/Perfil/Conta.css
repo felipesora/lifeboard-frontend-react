@@ -1,0 +1,36 @@
+.dashboard_main_conta{
+  flex: 1;
+  padding: 40px;
+  background-color: #ECEFF1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dashboard_main_conta > p {
+  font-weight: bold;
+  color: #000000;
+}
+
+.conta_container {
+  background-color: white;
+  width: 100%;
+  max-width: 1485px;
+  padding: 65px 35px 150px 35px;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.dados_conta {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.dados_conta > div > p > span {
+  font-weight: bold;
+  color: #000000;
+}
