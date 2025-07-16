@@ -15,6 +15,10 @@ import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import ModalDefinirSalario from "../../components/ModalDefinirSalario/ModalDefinirSalario";
 import { obterTransacoes } from "../../hooks/obterTransacoes";
 import { useNavigate } from "react-router-dom";
+import { obterMetas } from "../../hooks/obterMetas";
+import CardMetaControleFinanceiro from "../../components/CardMetaControleFinanceiro/CardMetaControleFinanceiro";
+import IconeMetaAndamento from "../../assets/images/icone-meta-andamento.png"
+import IconeMetaConcluida from "../../assets/images/icone-meta-concluida.png"
 
 const ControleFinanceiro = () => {
     useAuthRedirect();
@@ -26,6 +30,7 @@ const ControleFinanceiro = () => {
     const [gastosAno, setGastosAno] = useState(Array(12).fill(0));
     const [modalSalarioAberto, setModalSalarioAberto] = useState(false);
     const [transacoes, setTransacoes] = useState([]);
+    const [metas, setMetas] = useState([]);
 
     useEffect(() => {
         const fetchDadosUsuario = async () => {
@@ -83,6 +88,30 @@ const ControleFinanceiro = () => {
 
                 setTransacoes(ultimasTransacoes);
 
+                // Metas
+                const metas = await obterMetas();
+                console.log("Metas: ", metas);
+
+                const melhoresMetas = metas
+                    .sort((a, b) => {
+                        // Primeiro ordena por status:
+                            // Coloque "CONCLUIDA" antes de "EM_ANDAMENTO"
+                            if (a.status === b.status) {
+                                // Se status iguais, ordena pelo valor_meta (ex: crescente)
+                                return a.valor_meta - b.valor_meta;
+                            }
+                            if (a.status === "CONCLUIDA") return -1;
+                            if (b.status === "CONCLUIDA") return 1;
+                            return 0;
+                    })
+                    .slice(0, 3);
+                    
+                console.log("Melhores 3 metas:", melhoresMetas);
+
+                setMetas(melhoresMetas);
+                        
+                
+
             } catch (erro) {
 
                 console.error("Erro ao obter dados do usuário:", erro);
@@ -126,6 +155,12 @@ const ControleFinanceiro = () => {
     const abrirModal = () => {
         setModalSalarioAberto(true);
     };
+
+    function formatarDataISOParaBR(dataISO) {
+        if (!dataISO) return "";
+        const [ano, mes, dia] = dataISO.split("-");
+        return `${dia}/${mes}/${ano}`;
+    }
 
     return (
         <div className="dashboard_container">
@@ -202,7 +237,7 @@ const ControleFinanceiro = () => {
                                 <p className="sem-transacoes">Nenhuma transação encontrada.</p>
                             )}
 
-                            <div>
+                            <div className="card_transacoes_link">
                                 <button onClick={() => navigate("/transacoes")}>Ver mais...</button>
                             </div>
                         </div>
@@ -213,7 +248,31 @@ const ControleFinanceiro = () => {
                             <p>Minhas metas</p>
                         </div>
                         <div className="card_metas_lista">
+                            {metas.length > 0 ? (
+                                metas.map((meta) => {
 
+                                    return (
+                                        <CardMetaControleFinanceiro 
+                                        key={meta.id_meta}
+                                        idMeta={meta.id_meta}
+                                        iconeMeta={meta.status === "EM_ANDAMENTO" ? IconeMetaAndamento : IconeMetaConcluida}
+                                        nomeMeta={meta.nome}
+                                        valorMeta={meta.valor_meta.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL'})}
+                                        valorAtual={meta.valor_atual.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL'})}
+                                        valorMetaNum={meta.valor_meta}
+                                        valorAtualNum={meta.valor_atual}
+                                        dataLimite={formatarDataISOParaBR(meta.data_limite)}
+                                        />
+                                    );
+
+                                })
+                                
+                            ) : (
+                                <p className="sem-transacoes">Nenhuma meta encontrada.</p>
+                            )}
+                        </div>
+                        <div className="card_metas_link">
+                            <button onClick={() => navigate("/metas")}>Ver mais...</button>
                         </div>
                     </div>
                 </div>
