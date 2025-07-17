@@ -16,7 +16,8 @@
 
 .modal_meta_botao_adicionar{
     background-color: #388E3C;
-    padding: 7px 60px;
+    width: 230px;
+    padding: 7px 0;
     font-size: 16px;
     color: white;
     font-weight: bold;

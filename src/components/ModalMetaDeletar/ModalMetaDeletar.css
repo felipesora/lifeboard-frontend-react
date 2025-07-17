@@ -48,22 +48,23 @@ hr {
 }
 
 .modal_conteudo_meta_conteudo{
-    padding: 40px 0px 60px 20px;
+  padding: 20px 0px 60px 20px;
 }
 
 .modal_conteudo_meta_conteudo > p{
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .modal_meta_botoes {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .modal_meta_botao_cancelar{
   background-color: var(--cor-principal);
-  padding: 7px 60px;
+  width: 180px;
+  padding: 7px 0;
   font-size: 16px;
   color: white;
   font-weight: bold;
@@ -81,17 +82,18 @@ hr {
 }
 
 .modal_meta_botao_deletar{
-    background-color: #C62828;
-    padding: 7px 60px;
-    font-size: 16px;
-    color: white;
-    font-weight: bold;
-    border: none;
-    font-family: var(--fonte-principal);
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    margin: 15px 0 0 0;
+  background-color: #C62828;
+  width: 180px;
+  padding: 7px 0;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  font-family: var(--fonte-principal);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin: 15px 0 0 0;
 }
 
 .modal_meta_botao_deletar:hover{

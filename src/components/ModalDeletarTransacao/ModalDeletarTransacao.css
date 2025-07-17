@@ -48,22 +48,23 @@ hr {
 }
 
 .modal_conteudo_deletar_transacao_conteudo{
-    padding: 40px 0px 60px 20px;
+  padding: 20px 0px 60px 20px;
 }
 
 .modal_conteudo_deletar_transacao_conteudo > p{
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .modal_deletar_transacao_botoes {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .modal_deletar_transacao_botao_cancelar{
   background-color: var(--cor-principal);
-  padding: 7px 60px;
+  padding: 7px 0;
+  width: 180px;
   font-size: 16px;
   color: white;
   font-weight: bold;
@@ -82,7 +83,8 @@ hr {
 
 .modal_deletar_transacao_botao_deletar{
   background-color: #C62828;
-  padding: 7px 60px;
+  width: 180px;
+  padding: 7px 0;
   font-size: 16px;
   color: white;
   font-weight: bold;
