@@ -83,9 +83,9 @@ const MenuLateral = () => {
             </nav>
 
             <div className='menu_footer'>
-                <button onClick={() => navigate("/minha-conta")}><img src={IconeUsuario} alt="Icone de usuário" /></button>
+                <button onClick={() => navigate("/minha-conta")}><img src={IconeUsuario} alt="Icone de usuário" title="Minha Conta"/></button>
                 <img src={IconeBarra} alt="Icone de barra vertical" />
-                <button onClick={() => setModalLogoutAberto(true)}><img src={IconeSair} alt="Icone de sair" /></button>
+                <button onClick={() => setModalLogoutAberto(true)}><img src={IconeSair} alt="Icone de sair" title="Sair da Conta"/></button>
             </div>
 
             <ModalLogout 

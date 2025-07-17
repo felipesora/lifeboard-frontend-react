@@ -54,6 +54,77 @@
     font-family: var(--fonte-principal);
 }
 
+/* .menu_nav > ul > li > button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 0 5px;
+  transition: background-color 0.3s ease, padding-left 0.3s ease;
+} */
+
+/*------------------------------------------------*/
+
+/* .menu_nav > ul > li > button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #FFFFFF;
+  padding: 0 7px 0 5px;
+  transition: all 0.3s ease;
+} */
+
+/*------------------------------------------------*/
+
+/* .menu_nav > ul > li > button:hover img {
+  transform: scale(1.1) rotate(-2deg);
+  transition: transform 0.3s ease;
+} */
+
+/*------------------------------------------------*/
+
+/* .menu_nav > ul > li > button {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.menu_nav > ul > li > button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color: #FFFFFF;
+  transition: width 0.3s ease;
+}
+
+.menu_nav > ul > li > button:hover::before {
+  width: 4px;
+}
+
+.menu_nav > ul > li > button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding-left: 16px;
+} */
+
+/*------------------------------------------------*/
+
+/* .menu_nav > ul > li > button {
+  position: relative;
+}
+
+.menu_nav > ul > li > button::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #FFFFFF;
+  transition: width 0.3s ease;
+}
+
+.menu_nav > ul > li > button:hover::after {
+  width: 100%;
+} */
+
 .menu_nav > ul > li > button > img {
     width: 30px;
     height: auto;
@@ -78,4 +149,10 @@
 .menu_footer > img {
     width: 30px;
     height: auto;
+}
+
+.menu_footer > button:hover img {
+  filter: brightness(0.9);
+  transform: scale(1.1);
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
