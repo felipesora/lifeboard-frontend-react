@@ -9,9 +9,12 @@ import IconeBarra from "../../assets/images/icone-barra.png";
 import IconeSair from "../../assets/images/icone-logout.png";
 import { useNavigate } from 'react-router-dom';
 import './MenuLateral.css';
+import ModalLogout from "../ModalLogout/ModalLogout";
+import { useState } from "react";
 
 const MenuLateral = () => {
     const navigate = useNavigate();
+    const [modalLogoutAberto, setModalLogoutAberto] = useState(false);
 
     const handleLogout = async () => {
         localStorage.removeItem('token');
@@ -82,9 +85,13 @@ const MenuLateral = () => {
             <div className='menu_footer'>
                 <button onClick={() => navigate("/minha-conta")}><img src={IconeUsuario} alt="Icone de usuário" /></button>
                 <img src={IconeBarra} alt="Icone de barra vertical" />
-                <button onClick={handleLogout}><img src={IconeSair} alt="Icone de sair" /></button>
+                <button onClick={() => setModalLogoutAberto(true)}><img src={IconeSair} alt="Icone de sair" /></button>
             </div>
 
+            <ModalLogout 
+            aberto={modalLogoutAberto}
+            onClose={() => setModalLogoutAberto(false)}
+            />
         </aside>
     )
 }
