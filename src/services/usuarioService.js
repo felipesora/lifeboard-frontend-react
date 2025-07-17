@@ -66,3 +66,21 @@ export async function editarDadosUsuario(idUsuario, novoUsuario) {
 
     return await response.json();
 }
+
+export async function deletarUsuario(id) {
+        const token = localStorage.getItem('token');
+
+    const response = await fetch(`http://localhost:8080/api/usuarios/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Erro ao deletar conta.');
+    }
+
+    return;
+}

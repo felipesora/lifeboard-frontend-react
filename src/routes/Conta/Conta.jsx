@@ -4,7 +4,8 @@ import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 import './Conta.css';
 import { useEffect, useState } from 'react';
 import { obterMetas } from '../../hooks/obterMetas';
-import { editarDadosUsuario, obterDadosUsuario } from '../../services/usuarioService';
+import { deletarUsuario, editarDadosUsuario, obterDadosUsuario } from '../../services/usuarioService';
+import ModalDeletarConta from '../../components/ModalDeletarConta/ModalDeletarConta';
 
 const Conta = () => {
     useAuthRedirect();
@@ -18,6 +19,8 @@ const Conta = () => {
     const [senhaConfirmarEditar, setSenhaConfirmarEditar] = useState('');
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const [modalContaAberto, setModalContaAberto] = useState(false);
+    const [confirmarExclusao, setConfirmarExclusao] = useState('');
 
     useEffect(() => {
             const fetchDadosUsuario = async () => {
@@ -83,6 +86,24 @@ const Conta = () => {
 
             setError("Erro ao editar os dados. Tente novamente.");
             setSuccess("");
+        }
+    };
+
+    const handleDeletarConta = async () => {
+        if (confirmarExclusao != "excluir conta") {
+            alert("Você precisa digitar exatamente: excluir conta");
+            return;
+        }
+
+        try {
+            const id =  localStorage.getItem("userId");
+            await deletarUsuario(id);
+
+            localStorage.clear();
+            navigate("/");
+        } catch (error) {
+            console.error("Erro ao deletar conta:", error);
+            alert("Erro ao deletar conta. Tente novamente.");
         }
     };
 
@@ -166,9 +187,17 @@ const Conta = () => {
                     </div>
 
                     <div className='botao_excluir_conta'>
-                        <button>Excluir Conta</button>
+                        <button onClick={() => setModalContaAberto(true)}>Excluir Conta</button>
                     </div>
                 </div>
+
+                <ModalDeletarConta 
+                    aberto={modalContaAberto}
+                    onClose={() => setModalContaAberto(false)}
+                    onDelete={handleDeletarConta}
+                    confirmarExclusao={confirmarExclusao}
+                    setConfirmarExclusao={setConfirmarExclusao}
+                />
 
             </main>
         </div>

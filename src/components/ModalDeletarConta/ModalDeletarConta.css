@@ -51,14 +51,40 @@ hr {
     padding: 40px 0px 60px 20px;
 }
 
-.modal_conteudo_deletar_conta_conteudo > p{
-    font-weight: bold;
+.modal_deletar_conta_texto {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal_deletar_conta_texto{
+  font-weight: bold;
+}
+
+.modal_deletar_conta_input {
+  margin-top: 15px;
+}
+
+.modal_deletar_conta_input > input {
+  padding: 5px 0 5px 5px;
+  border-radius: 2px;
+  width: 480px;
+  background-color: #FAFAFA;
+  border: 1px solid #B0BEC5;
+  font-size: 14px;
+  font-family: var(--fonte-principal);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal_deletar_conta_input > input:focus {
+  outline: none;
+  border-color: #546E7A;
+  box-shadow: 0 0 0 2px rgba(84, 110, 122, 0.2);
 }
 
 .modal_deletar_conta_botoes {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
+  display: flex;
+  gap: 10px;
 }
 
 .modal_deletar_conta_botao_cancelar{
@@ -72,7 +98,7 @@ hr {
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  margin: 15px 0 60px 0;
+  margin: 15px 0 0 0;
 }
 
 .modal_deletar_conta_botao_cancelar:hover{
@@ -91,10 +117,17 @@ hr {
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  margin: 15px 0 60px 0;
+  margin: 15px 0 0 0;
 }
 
 .modal_deletar_conta_botao_deletar:hover{
   background-color: #AD1B1B;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.modal_deletar_conta_botao_deletar:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.7;
 }

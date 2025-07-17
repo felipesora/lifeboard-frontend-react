@@ -12,7 +12,7 @@ import EditarTransacao from './routes/EditarTransacao/EditarTransacao.jsx'
 import Metas from './routes/Metas/Metas.jsx'
 import CadastroMeta from './routes/CadastroMeta/CadastroMeta.jsx'
 import EditarMeta from './routes/EditarMeta/EditarMeta.jsx'
-import Conta from './routes/Perfil/Conta.jsx'
+import Conta from './routes/Conta/Conta.jsx'
 
 
 const routes = createBrowserRouter([
