@@ -17,7 +17,7 @@
   background-color: white;
   width: 100%;
   max-width: 1485px;
-  padding: 65px 35px 150px 35px;
+  padding: 65px 35px 40px 35px;
   margin-top: 20px;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -33,4 +33,95 @@
 .dados_conta > div > p > span {
   font-weight: bold;
   color: #000000;
+}
+
+.container_editar_conta {
+  margin-top: 40px;
+  width: 770px;
+  border: 2px solid #E0E0E0;
+  padding: 20px 0 40px 20px;
+}
+
+.container_editar_conta > h2 {
+  font-size: 20px;
+}
+
+.form_editar_conta {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inputs_editar_conta {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.inputs_editar_conta > label{
+  font-size: 16px;
+}
+
+.inputs_editar_conta > input {
+  padding: 5px 0 5px 5px;
+  background-color: #F5F7FA;
+  border: 1px solid #B0BEC5;
+  font-size: 16px;
+  font-family: var(--fonte-principal);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 480px;
+}
+
+.inputs_editar_conta > input:focus {
+  outline: none;
+  border-color: #546E7A;
+  box-shadow: 0 0 0 2px rgba(84, 110, 122, 0.2);
+}
+
+.botao_editar_conta {
+  margin-top: 13px;
+}
+
+.botao_editar_conta > button {
+  background-color: var(--cor-principal);
+  padding: 10px 0;
+  font-size: 16px;
+  width: 210px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  font-family: var(--fonte-principal);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease
+}
+
+.botao_editar_conta > button:hover {
+  background-color: #455A64;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.botao_excluir_conta {
+  margin-top: 55px;
+}
+
+.botao_excluir_conta > button{
+  background-color: #C62828;
+  padding: 10px 0;
+  width: 210px;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  font-family: var(--fonte-principal);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin: 15px 0 0 0;
+}
+
+.botao_excluir_conta > button:hover{
+  background-color: #AD1B1B;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }

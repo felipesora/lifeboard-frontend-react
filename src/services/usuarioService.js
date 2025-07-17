@@ -43,3 +43,26 @@ export async function editarFinanceiroUsuario(idFinanceiro, financeiro) {
 
     return await response.json();
 }
+
+export async function editarDadosUsuario(idUsuario, novoUsuario) {
+    const token = localStorage.getItem('token');
+
+    const response = await fetch(`http://localhost:8080/api/usuarios/${idUsuario}`, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            nome: novoUsuario.nome,
+            email: novoUsuario.email,
+            senha: novoUsuario.senha,
+        })
+    });
+
+    if (!response.ok) {
+        throw new Error('Erro ao editar os dados do usuário.');
+    }
+
+    return await response.json();
+}

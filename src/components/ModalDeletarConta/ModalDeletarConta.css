@@ -1,4 +1,4 @@
-.modal_overlay_deletar_transacao {
+.modal_overlay_deletar_conta {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,7 +11,7 @@
   z-index: 100;
 }
 
-.modal_conteudo_deletar_transacao {
+.modal_conteudo_deletar_conta {
   background: #fff;
   width: 730px;
   border-radius: 2px;
@@ -19,24 +19,24 @@
   overflow: hidden;
 }
 
-.modal_conteudo_deletar_transacao_cabecalho {
+.modal_conteudo_deletar_conta_cabecalho {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 10px 7px 10px;
 }
 
-.modal_conteudo_deletar_transacao_cabecalho > h2 {
+.modal_conteudo_deletar_conta_cabecalho > h2 {
   font-size: 20px;
 }
 
-.modal_conteudo_deletar_transacao_cabecalho > button {
+.modal_conteudo_deletar_conta_cabecalho > button {
   background-color: transparent;
   border: none;
   cursor: pointer;
 }
 
-.modal_conteudo_deletar_transacao_cabecalho > button > img {
+.modal_conteudo_deletar_conta_cabecalho > button > img {
   width: 25px;
   height: auto;
 }
@@ -47,21 +47,21 @@ hr {
   background-color: #E0E0E0;
 }
 
-.modal_conteudo_deletar_transacao_conteudo{
+.modal_conteudo_deletar_conta_conteudo{
     padding: 40px 0px 60px 20px;
 }
 
-.modal_conteudo_deletar_transacao_conteudo > p{
+.modal_conteudo_deletar_conta_conteudo > p{
     font-weight: bold;
 }
 
-.modal_deletar_transacao_botoes {
+.modal_deletar_conta_botoes {
     display: flex;
     gap: 10px;
     margin-top: 15px;
 }
 
-.modal_deletar_transacao_botao_cancelar{
+.modal_deletar_conta_botao_cancelar{
   background-color: var(--cor-principal);
   padding: 7px 60px;
   font-size: 16px;
@@ -75,12 +75,12 @@ hr {
   margin: 15px 0 60px 0;
 }
 
-.modal_deletar_transacao_botao_cancelar:hover{
+.modal_deletar_conta_botao_cancelar:hover{
   background-color: #455A64;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
-.modal_deletar_transacao_botao_deletar{
+.modal_deletar_conta_botao_deletar{
   background-color: #C62828;
   padding: 7px 60px;
   font-size: 16px;
@@ -94,7 +94,7 @@ hr {
   margin: 15px 0 60px 0;
 }
 
-.modal_deletar_transacao_botao_deletar:hover{
+.modal_deletar_conta_botao_deletar:hover{
   background-color: #AD1B1B;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
