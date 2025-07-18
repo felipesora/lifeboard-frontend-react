@@ -38,7 +38,7 @@ const CardMeta = (props) => {
 
     return (
         <div className="card_meta">
-            
+
             <div className="card_meta_cabecalho">
                 <div>
                     <img src={props.iconeMeta} alt="Icone da Meta" />
@@ -89,7 +89,7 @@ const CardMeta = (props) => {
             <div className='card_meta_data_limite'>
                 <p>Até: {props.dataLimite}</p>
             </div>
-            
+
         </div>
     )
 }

@@ -27,22 +27,22 @@ const Metas = () => {
     const [valorAdicionar, setValorAdicionar] = useState('');
 
     useEffect(() => {
-            const fetchDadosUsuario = async () => {
-                try {
-    
-                    // Metas
-                    const metas = await obterMetas();
-                    setTodasMetas(metas);
-                    setMetas(metas);
-    
-                } catch (erro) {
-    
-                    console.error("Erro ao obter dados do usuário:", erro);
-                }
-            };
-    
-            fetchDadosUsuario();
-        }, []);
+        const fetchDadosUsuario = async () => {
+            try {
+
+                // Metas
+                const metas = await obterMetas();
+                setTodasMetas(metas);
+                setMetas(metas);
+
+            } catch (erro) {
+
+                console.error("Erro ao obter dados do usuário:", erro);
+            }
+        };
+
+        fetchDadosUsuario();
+    }, []);
 
     function formatarDataISOParaBR(dataISO) {
         if (!dataISO) return "";
@@ -134,42 +134,42 @@ const Metas = () => {
 
                         {metas.length > 0 ? (
                             metas
-                            .slice() // para não mutar o array original
-                            .sort((a, b) => {
-                            // Primeiro ordena por status:
-                            // Coloque "EM_ANDAMENTO" antes de "CONCLUIDA"
-                            if (a.status === b.status) {
-                                // Se status iguais, ordena pelo valor_meta (ex: crescente)
-                                return a.valor_meta - b.valor_meta;
-                            }
-                            if (a.status === "EM_ANDAMENTO") return -1;
-                            if (b.status === "EM_ANDAMENTO") return 1;
-                            return 0;
-                            })
-                            .map((meta) => {
+                                .slice() // para não mutar o array original
+                                .sort((a, b) => {
+                                    // Primeiro ordena por status:
+                                    // Coloque "EM_ANDAMENTO" antes de "CONCLUIDA"
+                                    if (a.status === b.status) {
+                                        // Se status iguais, ordena pelo valor_meta (ex: crescente)
+                                        return a.valor_meta - b.valor_meta;
+                                    }
+                                    if (a.status === "EM_ANDAMENTO") return -1;
+                                    if (b.status === "EM_ANDAMENTO") return 1;
+                                    return 0;
+                                })
+                                .map((meta) => {
 
-                                return (
-                                    <CardMeta 
-                                    key={meta.id_meta}
-                                    idMeta={meta.id_meta}
-                                    iconeMeta={meta.status === "EM_ANDAMENTO" ? IconeMetaAndamento : IconeMetaConcluida}
-                                    nomeMeta={meta.nome}
-                                    valorMeta={meta.valor_meta.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL'})}
-                                    valorAtual={meta.valor_atual.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL'})}
-                                    valorMetaNum={meta.valor_meta}
-                                    valorAtualNum={meta.valor_atual}
-                                    dataLimite={formatarDataISOParaBR(meta.data_limite)}
-                                    onDeletar={handleDeletar}
-                                    onAdicionarSaldo={handleAdicionarSaldo}
-                                    />
-                                    
-                                )
-                            })
+                                    return (
+                                        <CardMeta
+                                            key={meta.id_meta}
+                                            idMeta={meta.id_meta}
+                                            iconeMeta={meta.status === "EM_ANDAMENTO" ? IconeMetaAndamento : IconeMetaConcluida}
+                                            nomeMeta={meta.nome}
+                                            valorMeta={meta.valor_meta.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                                            valorAtual={meta.valor_atual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                                            valorMetaNum={meta.valor_meta}
+                                            valorAtualNum={meta.valor_atual}
+                                            dataLimite={formatarDataISOParaBR(meta.data_limite)}
+                                            onDeletar={handleDeletar}
+                                            onAdicionarSaldo={handleAdicionarSaldo}
+                                        />
+
+                                    )
+                                })
                         ) : (
                             <p>Nenhuma meta encontrada.</p>
                         )}
 
-                        
+
                     </div>
 
                 </div>
@@ -186,45 +186,45 @@ const Metas = () => {
 
                             setModalDelete(false);
                             setIdMetaParaDeletar(null);
-                        } catch (erro) {    
+                        } catch (erro) {
                             console.error("Erro ao deletar meta:", erro);
                         }
                     }}
                 />
 
-                <ModalMetaAdicionar 
-                aberto={modalAdicionar}
-                onClose={() => {
-                    setModalAdicionar(false);
-                    setValorAdicionar('');
-                }}
-                valorAdicionar={valorAdicionar}
-                setValorAdicionar={setValorAdicionar}
-                onAdicionar={async () => {
-                    try {
-                    // Busca os dados atuais da meta
-                    const meta = await obterDadosMeta(idMetaParaAdicionar);
-                    const novoValorAtual = Number(meta.valor_atual) + Number(valorAdicionar);
+                <ModalMetaAdicionar
+                    aberto={modalAdicionar}
+                    onClose={() => {
+                        setModalAdicionar(false);
+                        setValorAdicionar('');
+                    }}
+                    valorAdicionar={valorAdicionar}
+                    setValorAdicionar={setValorAdicionar}
+                    onAdicionar={async () => {
+                        try {
+                            // Busca os dados atuais da meta
+                            const meta = await obterDadosMeta(idMetaParaAdicionar);
+                            const novoValorAtual = Number(meta.valor_atual) + Number(valorAdicionar);
 
-                    // Atualiza apenas o valor_atual
-                    await editarDadosMeta(idMetaParaAdicionar, {
-                        ...meta,
-                        valor_atual: novoValorAtual
-                    });
+                            // Atualiza apenas o valor_atual
+                            await editarDadosMeta(idMetaParaAdicionar, {
+                                ...meta,
+                                valor_atual: novoValorAtual
+                            });
 
-                    // Atualiza lista
-                    const metasAtualizadas = await obterMetas();
-                    setMetas(metasAtualizadas);
+                            // Atualiza lista
+                            const metasAtualizadas = await obterMetas();
+                            setMetas(metasAtualizadas);
 
-                    // Limpa tudo
-                    setModalAdicionar(false);
-                    setIdMetaParaAdicionar(null);
-                    setValorAdicionar('');
+                            // Limpa tudo
+                            setModalAdicionar(false);
+                            setIdMetaParaAdicionar(null);
+                            setValorAdicionar('');
 
-                    } catch (erro) {
-                    console.error("Erro ao adicionar saldo na meta:", erro);
-                    }
-                }}
+                        } catch (erro) {
+                            console.error("Erro ao adicionar saldo na meta:", erro);
+                        }
+                    }}
                 />
             </main>
         </div>

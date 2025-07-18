@@ -36,7 +36,7 @@ const MenuLateral = () => {
                             <img src={IconeControleFinanceiro} alt="Icone de bolsa de dinheiro" />
                             Controle Financeiro
                         </button>
-                            
+
                     </li>
 
                     <li>
@@ -61,7 +61,7 @@ const MenuLateral = () => {
                             <img src={IconeKanban} alt="Icone de papel com anotações" />
                             Quadro (Kanban)
                         </button>
-                        
+
                     </li>
 
                     <li>
@@ -69,7 +69,7 @@ const MenuLateral = () => {
                             <img src={IconeTarefas} alt="Icone de uma lista" />
                             Minhas Tarefas
                         </button>
-                        
+
                     </li>
 
                     <li>
@@ -77,20 +77,20 @@ const MenuLateral = () => {
                             <img src={IconePomodoro} alt="Icone de relogio" />
                             Pomodoro
                         </button>
-                        
+
                     </li>
                 </ul>
             </nav>
 
             <div className='menu_footer'>
-                <button onClick={() => navigate("/minha-conta")}><img src={IconeUsuario} alt="Icone de usuário" title="Minha Conta"/></button>
+                <button onClick={() => navigate("/minha-conta")}><img src={IconeUsuario} alt="Icone de usuário" title="Minha Conta" /></button>
                 <img src={IconeBarra} alt="Icone de barra vertical" />
-                <button onClick={() => setModalLogoutAberto(true)}><img src={IconeSair} alt="Icone de sair" title="Sair da Conta"/></button>
+                <button onClick={() => setModalLogoutAberto(true)}><img src={IconeSair} alt="Icone de sair" title="Sair da Conta" /></button>
             </div>
 
-            <ModalLogout 
-            aberto={modalLogoutAberto}
-            onClose={() => setModalLogoutAberto(false)}
+            <ModalLogout
+                aberto={modalLogoutAberto}
+                onClose={() => setModalLogoutAberto(false)}
             />
         </aside>
     )

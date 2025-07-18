@@ -11,9 +11,9 @@ const Conta = () => {
     useAuthRedirect();
     const navigate = useNavigate();
 
-    const [nome, setNome] = useState(''); 
+    const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
-    const [nomeEditar, setNomeEditar] = useState(''); 
+    const [nomeEditar, setNomeEditar] = useState('');
     const [emailEditar, setEmailEditar] = useState('');
     const [senhaEditar, setSenhaEditar] = useState('');
     const [senhaConfirmarEditar, setSenhaConfirmarEditar] = useState('');
@@ -23,25 +23,25 @@ const Conta = () => {
     const [confirmarExclusao, setConfirmarExclusao] = useState('');
 
     useEffect(() => {
-            const fetchDadosUsuario = async () => {
-                try {
-    
-                    const id = localStorage.getItem("userId");
-                    
-                    const usuario = await obterDadosUsuario(id);
-                    setNome(usuario.nome);
-                    setEmail(usuario.email);
-                    setNomeEditar(usuario.nome);
-                    setEmailEditar(usuario.email);
-    
-                } catch (erro) {
-    
-                    console.error("Erro ao obter dados do usuário:", erro);
-                }
-            };
-    
-            fetchDadosUsuario();
-        }, []);
+        const fetchDadosUsuario = async () => {
+            try {
+
+                const id = localStorage.getItem("userId");
+
+                const usuario = await obterDadosUsuario(id);
+                setNome(usuario.nome);
+                setEmail(usuario.email);
+                setNomeEditar(usuario.nome);
+                setEmailEditar(usuario.email);
+
+            } catch (erro) {
+
+                console.error("Erro ao obter dados do usuário:", erro);
+            }
+        };
+
+        fetchDadosUsuario();
+    }, []);
 
     const handleEditarConta = async (e) => {
         e.preventDefault();
@@ -80,7 +80,7 @@ const Conta = () => {
             setTimeout(() => {
                 window.location.reload();
             }, 1500);
-            
+
         } catch (erro) {
             console.log(erro);
 
@@ -96,7 +96,7 @@ const Conta = () => {
         }
 
         try {
-            const id =  localStorage.getItem("userId");
+            const id = localStorage.getItem("userId");
             await deletarUsuario(id);
 
             localStorage.clear();
@@ -137,42 +137,42 @@ const Conta = () => {
                         <form className='form_editar_conta' onSubmit={handleEditarConta}>
                             <div className='inputs_editar_conta'>
                                 <label htmlFor="nome">Nome:</label>
-                                <input 
-                                type="text" 
-                                id="nome" 
-                                value={nomeEditar} 
-                                onChange={(e) => setNomeEditar(e.target.value)}/>
-                                
+                                <input
+                                    type="text"
+                                    id="nome"
+                                    value={nomeEditar}
+                                    onChange={(e) => setNomeEditar(e.target.value)} />
+
                             </div>
 
                             <div className='inputs_editar_conta'>
                                 <label htmlFor="email">Email:</label>
-                                <input 
-                                type="email" 
-                                id="email" 
-                                value={emailEditar} 
-                                onChange={(e) => setEmailEditar(e.target.value)}/>
-                                
+                                <input
+                                    type="email"
+                                    id="email"
+                                    value={emailEditar}
+                                    onChange={(e) => setEmailEditar(e.target.value)} />
+
                             </div>
 
                             <div className='inputs_editar_conta'>
                                 <label htmlFor="senha">Nova senha:</label>
-                                <input 
-                                type="password" 
-                                id="senha" 
-                                value={senhaEditar} 
-                                onChange={(e) => setSenhaEditar(e.target.value)}/>
-                                
+                                <input
+                                    type="password"
+                                    id="senha"
+                                    value={senhaEditar}
+                                    onChange={(e) => setSenhaEditar(e.target.value)} />
+
                             </div>
 
                             <div className='inputs_editar_conta'>
                                 <label htmlFor="senhaCorfirmar">Confirmar senha:</label>
-                                <input 
-                                type="password" 
-                                id="senhaCorfirmar" 
-                                value={senhaConfirmarEditar} 
-                                onChange={(e) => setSenhaConfirmarEditar(e.target.value)}/>
-                                
+                                <input
+                                    type="password"
+                                    id="senhaCorfirmar"
+                                    value={senhaConfirmarEditar}
+                                    onChange={(e) => setSenhaConfirmarEditar(e.target.value)} />
+
                             </div>
 
                             <div className="container_mensagem_cadastro_metas">
@@ -191,7 +191,7 @@ const Conta = () => {
                     </div>
                 </div>
 
-                <ModalDeletarConta 
+                <ModalDeletarConta
                     aberto={modalContaAberto}
                     onClose={() => setModalContaAberto(false)}
                     onDelete={handleDeletarConta}

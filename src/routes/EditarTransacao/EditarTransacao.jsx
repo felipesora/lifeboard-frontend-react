@@ -21,15 +21,15 @@ const EditarTransacao = () => {
     useEffect(() => {
         const fetchTransacao = async () => {
             try {
-            const dados = await obterDadosTransacao(id);
-            setDescricaoTransacao(dados.descricao);
-            setCategoriaTransacao(dados.categoria);
-            setTipoTransacao(dados.tipo);
-            setValorTransacao(dados.valor);
-            setIdFinanceiro(dados.id_financeiro);
+                const dados = await obterDadosTransacao(id);
+                setDescricaoTransacao(dados.descricao);
+                setCategoriaTransacao(dados.categoria);
+                setTipoTransacao(dados.tipo);
+                setValorTransacao(dados.valor);
+                setIdFinanceiro(dados.id_financeiro);
             } catch (erro) {
-            console.error(erro);
-            setError("Erro ao carregar dados da transação.");
+                console.error(erro);
+                setError("Erro ao carregar dados da transação.");
             }
         };
 
@@ -43,20 +43,27 @@ const EditarTransacao = () => {
             return;
         }
 
+        const valorConvertido = parseFloat(valorTransacao);
+
+        if (isNaN(valorConvertido) || valorConvertido <= 0) {
+            setError('O valor da transação deve ser um número positivo.');
+            return;
+        }
+
         try {
             await editarDadosTransacao(id, {
-            descricao: descricaoTransacao,
-            valor: valorTransacao,
-            tipo: tipoTransacao,
-            categoria: categoriaTransacao,
-            id_financeiro: idFinanceiro
+                descricao: descricaoTransacao,
+                valor: valorTransacao,
+                tipo: tipoTransacao,
+                categoria: categoriaTransacao,
+                id_financeiro: idFinanceiro
             });
 
             setError("");
             setSuccess("Transação editada com sucesso!");
 
             setTimeout(() => {
-            navigate("/transacoes");
+                navigate("/transacoes");
             }, 1500);
         } catch (erro) {
             console.error(erro);

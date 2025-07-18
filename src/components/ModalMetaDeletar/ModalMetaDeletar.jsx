@@ -2,7 +2,7 @@ import './ModalMetaDeletar.css';
 import IconeFechar from '../../assets/images/icone-fechar.png';
 
 
-const ModalMetaDeletar = ({ aberto, onClose, onDelete}) => {
+const ModalMetaDeletar = ({ aberto, onClose, onDelete }) => {
 
     if (!aberto) return null;
 
@@ -20,12 +20,12 @@ const ModalMetaDeletar = ({ aberto, onClose, onDelete}) => {
 
                 <div className='modal_conteudo_meta_conteudo'>
 
-                        <p>Tem certeza que deseja deletar esta meta financeira? Esta ação não poderá ser desfeita.</p>
-                        <div className="modal_meta_botoes">
-                            <button className='modal_meta_botao_cancelar' type="button" onClick={onClose}>Cancelar</button>
-                            <button className='modal_meta_botao_deletar' type="button" onClick={onDelete}>Deletar</button>
-                        </div>
-                    
+                    <p>Tem certeza que deseja deletar esta meta financeira? Esta ação não poderá ser desfeita.</p>
+                    <div className="modal_meta_botoes">
+                        <button className='modal_meta_botao_cancelar' type="button" onClick={onClose}>Cancelar</button>
+                        <button className='modal_meta_botao_deletar' type="button" onClick={onDelete}>Deletar</button>
+                    </div>
+
                 </div>
 
             </div>

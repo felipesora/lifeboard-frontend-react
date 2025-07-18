@@ -16,7 +16,7 @@ const CadastroMeta = () => {
     const [success, setSuccess] = useState("");
 
     const handleCadastroMeta = async () => {
-    
+
         if (
             !nomeMeta.trim() ||
             !dataLimiteMeta ||
@@ -27,13 +27,32 @@ const CadastroMeta = () => {
             return;
         }
 
+        const valorConvertido = parseFloat(valorMeta);
+
+        if (isNaN(valorConvertido) || valorConvertido <= 0) {
+            setError('O valor da meta deve ser um número positivo.');
+            return;
+        }
+
+        const dataSelecionada = new Date(dataLimiteMeta);
+        const hoje = new Date();
+
+        // Zera a hora de hoje para comparar apenas a data
+        hoje.setHours(0, 0, 0, 0);
+
+        if (dataSelecionada <= hoje) {
+            setError('A data limite da meta deve ser no futuro.');
+            setSuccess('');
+            return;
+        }
+
         const meta = {
             nome: nomeMeta,
             data_limite: dataLimiteMeta,
             valor_atual: 0,
             valor_meta: valorMeta,
         }
-        
+
         try {
             await cadastrarMeta(meta);
 
@@ -53,8 +72,8 @@ const CadastroMeta = () => {
     };
 
     return (
-            <div className="dashboard_container">
-                <MenuLateral />
+        <div className="dashboard_container">
+            <MenuLateral />
             <main className="dashboard_main_cadastro_metas">
                 <p>Controle Financeiro {'>'} Metas <span> {'>'} Cadastro de Metas</span></p>
 
@@ -100,7 +119,7 @@ const CadastroMeta = () => {
                                     onChange={(e) => setValorMeta(e.target.value)}
                                 />
                             </div>
-                            
+
                         </div>
 
                         <div className="container_mensagem_cadastro_metas">

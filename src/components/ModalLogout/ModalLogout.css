@@ -27,8 +27,8 @@
 }
 
 .modal_conteudo_sair_conta_cabecalho > h2 {
-    color: #000000;
-    font-size: 20px;
+  color: #000000;
+  font-size: 20px;
 }
 
 .modal_conteudo_sair_conta_cabecalho > button {
@@ -49,12 +49,12 @@ hr {
 }
 
 .modal_conteudo_sair_conta_conteudo{
-    padding: 40px 0px 60px 20px;
+  padding: 20px 0px 60px 20px;
 }
 
 .modal_sair_conta_texto > p {
-    color: #000000;
-    font-weight: bold;
+  color: #000000;
+  font-weight: bold;
 }
 
 .modal_sair_conta_botoes {

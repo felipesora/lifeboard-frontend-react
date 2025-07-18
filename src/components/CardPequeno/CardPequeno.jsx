@@ -44,7 +44,7 @@ const CardPequeno = (props) => {
             </div>
 
             <h3 style={{ color: props.cor }}>{props.valor}</h3>
-            
+
         </div>
     )
 }

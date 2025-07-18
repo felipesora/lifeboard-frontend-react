@@ -18,16 +18,24 @@ const CadastroTransacao = () => {
 
     const handleCadastroTransacao = async () => {
 
-          if (
-                !descricaoTransacao.trim() ||
-                !categoriaTransacao ||
-                !tipoTransacao ||
-                !valorTransacao
-            ) {
-                setError("Preencha todos os campos.");
-                setSuccess("");
-                return;
-            }
+        if (
+            !descricaoTransacao.trim() ||
+            !categoriaTransacao ||
+            !tipoTransacao ||
+            !valorTransacao
+        ) {
+            setError("Preencha todos os campos.");
+            setSuccess("");
+            return;
+        }
+
+        const valorConvertido = parseFloat(valorTransacao);
+
+        if (isNaN(valorConvertido) || valorConvertido <= 0) {
+            setError('O valor da transação deve ser um número positivo.');
+            return;
+        }
+
 
         const transacao = {
             descricao: descricaoTransacao,
@@ -35,7 +43,7 @@ const CadastroTransacao = () => {
             tipo: tipoTransacao,
             categoria: categoriaTransacao,
         }
-        
+
         try {
             await cadastrarTransacao(transacao);
 

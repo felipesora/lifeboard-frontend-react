@@ -22,55 +22,80 @@ const EditarMeta = () => {
     useEffect(() => {
         const fetchMeta = async () => {
             try {
-            const dados = await obterDadosMeta(id);
-            setNomeMeta(dados.nome);
-            setDataLimiteMeta(dados.data_limite);
-            setValorMeta(dados.valor_meta);
-            setValorAtual(dados.valor_atual);
-            setStatusMeta(dados.status)
-            setIdFinanceiro(dados.id_financeiro);
+                const dados = await obterDadosMeta(id);
+                setNomeMeta(dados.nome);
+                setDataLimiteMeta(dados.data_limite);
+                setValorMeta(dados.valor_meta);
+                setValorAtual(dados.valor_atual);
+                setStatusMeta(dados.status)
+                setIdFinanceiro(dados.id_financeiro);
             } catch (erro) {
-            console.error(erro);
-            setError("Erro ao carregar dados da meta.");
+                console.error(erro);
+                setError("Erro ao carregar dados da meta.");
             }
         };
 
         fetchMeta();
     }, [id]);
-    
-        const handleEditarMeta = async () => {
-            if (!nomeMeta.trim() || !dataLimiteMeta || !valorMeta || valorAtual === '') {
-                setError("Preencha todos os campos.");
-                setSuccess("");
-                return;
-            }
-    
-            try {
-                await editarDadosMeta(id, {
-                    nome: nomeMeta,
-                    valor_meta: valorMeta,
-                    valor_atual: valorAtual,
-                    data_limite: dataLimiteMeta,
-                    status: statusMeta,
-                    id_financeiro: idFinanceiro
-                });
-    
-                setError("");
-                setSuccess("Meta Financeira editada com sucesso!");
-    
-                setTimeout(() => {
+
+    const handleEditarMeta = async () => {
+        if (!nomeMeta.trim() || !dataLimiteMeta || !valorMeta || valorAtual === '') {
+            setError("Preencha todos os campos.");
+            setSuccess("");
+            return;
+        }
+
+        const valorMetaConvertido = parseFloat(valorMeta);
+        const valorAtualConvertido = parseFloat(valorAtual);
+
+        if (isNaN(valorMetaConvertido) || valorMetaConvertido <= 0) {
+            setError('O valor da meta deve ser um número positivo.');
+            return;
+        }
+
+        if (isNaN(valorAtualConvertido) || valorAtualConvertido <= 0) {
+            setError('O valor atual deve ser um número positivo.');
+            return;
+        }
+
+        const dataSelecionada = new Date(dataLimiteMeta);
+        const hoje = new Date();
+
+        // Zera a hora de hoje para comparar apenas a data
+        hoje.setHours(0, 0, 0, 0);
+
+        if (dataSelecionada <= hoje) {
+            setError('A data limite da meta deve ser no futuro.');
+            setSuccess('');
+            return;
+        }
+
+        try {
+            await editarDadosMeta(id, {
+                nome: nomeMeta,
+                valor_meta: valorMeta,
+                valor_atual: valorAtual,
+                data_limite: dataLimiteMeta,
+                status: statusMeta,
+                id_financeiro: idFinanceiro
+            });
+
+            setError("");
+            setSuccess("Meta Financeira editada com sucesso!");
+
+            setTimeout(() => {
                 navigate("/metas");
-                }, 1500);
-            } catch (erro) {
-                console.error(erro);
-                setError("Erro ao editar a meta. Tente novamente.");
-                setSuccess("");
-            }
-        };
+            }, 1500);
+        } catch (erro) {
+            console.error(erro);
+            setError("Erro ao editar a meta. Tente novamente.");
+            setSuccess("");
+        }
+    };
 
     return (
-            <div className="dashboard_container">
-                <MenuLateral />
+        <div className="dashboard_container">
+            <MenuLateral />
             <main className="dashboard_main_cadastro_metas">
                 <p>Controle Financeiro {'>'} Metas <span> {'>'} Editar Meta</span></p>
 

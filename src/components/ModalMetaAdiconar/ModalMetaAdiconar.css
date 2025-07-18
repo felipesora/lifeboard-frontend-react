@@ -1,3 +1,10 @@
+.erro_meta {
+  color: #ff4d4f;
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
 .modal_conteudo_meta_conteudo > input {
     padding: 5px 0 5px 5px;
     background-color: #FAFAFA;

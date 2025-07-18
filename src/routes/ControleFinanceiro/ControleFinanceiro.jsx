@@ -95,22 +95,22 @@ const ControleFinanceiro = () => {
                 const melhoresMetas = metas
                     .sort((a, b) => {
                         // Primeiro ordena por status:
-                            // Coloque "CONCLUIDA" antes de "EM_ANDAMENTO"
-                            if (a.status === b.status) {
-                                // Se status iguais, ordena pelo valor_meta (ex: crescente)
-                                return a.valor_meta - b.valor_meta;
-                            }
-                            if (a.status === "CONCLUIDA") return -1;
-                            if (b.status === "CONCLUIDA") return 1;
-                            return 0;
+                        // Coloque "CONCLUIDA" antes de "EM_ANDAMENTO"
+                        if (a.status === b.status) {
+                            // Se status iguais, ordena pelo valor_meta (ex: crescente)
+                            return a.valor_meta - b.valor_meta;
+                        }
+                        if (a.status === "CONCLUIDA") return -1;
+                        if (b.status === "CONCLUIDA") return 1;
+                        return 0;
                     })
                     .slice(0, 3);
-                    
+
                 console.log("Melhores 3 metas:", melhoresMetas);
 
                 setMetas(melhoresMetas);
-                        
-                
+
+
 
             } catch (erro) {
 
@@ -252,21 +252,21 @@ const ControleFinanceiro = () => {
                                 metas.map((meta) => {
 
                                     return (
-                                        <CardMetaControleFinanceiro 
-                                        key={meta.id_meta}
-                                        idMeta={meta.id_meta}
-                                        iconeMeta={meta.status === "EM_ANDAMENTO" ? IconeMetaAndamento : IconeMetaConcluida}
-                                        nomeMeta={meta.nome}
-                                        valorMeta={meta.valor_meta.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL'})}
-                                        valorAtual={meta.valor_atual.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL'})}
-                                        valorMetaNum={meta.valor_meta}
-                                        valorAtualNum={meta.valor_atual}
-                                        dataLimite={formatarDataISOParaBR(meta.data_limite)}
+                                        <CardMetaControleFinanceiro
+                                            key={meta.id_meta}
+                                            idMeta={meta.id_meta}
+                                            iconeMeta={meta.status === "EM_ANDAMENTO" ? IconeMetaAndamento : IconeMetaConcluida}
+                                            nomeMeta={meta.nome}
+                                            valorMeta={meta.valor_meta.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                                            valorAtual={meta.valor_atual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+                                            valorMetaNum={meta.valor_meta}
+                                            valorAtualNum={meta.valor_atual}
+                                            dataLimite={formatarDataISOParaBR(meta.data_limite)}
                                         />
                                     );
 
                                 })
-                                
+
                             ) : (
                                 <p className="sem-transacoes">Nenhuma meta encontrada.</p>
                             )}
