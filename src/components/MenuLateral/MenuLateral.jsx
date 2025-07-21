@@ -57,7 +57,7 @@ const MenuLateral = () => {
                 <p className="menu_section menu_section_2">Tarefas</p>
                 <ul>
                     <li>
-                        <button>
+                        <button onClick={() => navigate("/tarefas-quadro-kanban")}>
                             <img src={IconeKanban} alt="Icone de papel com anotações" />
                             Quadro (Kanban)
                         </button>

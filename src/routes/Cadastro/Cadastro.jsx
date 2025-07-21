@@ -17,7 +17,7 @@ const Cadastro = () => {
     const handleCadastro = async (e) => {
         e.preventDefault();
 
-        if (senha.length <= 6) {
+        if (senha.length < 6) {
             setError("A senha deve ter no mínimo 6 caracteres.");
             setSuccess("");
             return;

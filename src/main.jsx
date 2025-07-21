@@ -13,6 +13,7 @@ import Metas from './routes/Metas/Metas.jsx'
 import CadastroMeta from './routes/CadastroMeta/CadastroMeta.jsx'
 import EditarMeta from './routes/EditarMeta/EditarMeta.jsx'
 import Conta from './routes/Conta/Conta.jsx'
+import Kanban from './routes/Kanban/Kanban.jsx'
 
 
 const routes = createBrowserRouter([
@@ -55,6 +56,10 @@ const routes = createBrowserRouter([
   {
     path: '/minha-conta',
     element: <Conta />
+  },
+  {
+    path: '/tarefas-quadro-kanban',
+    element: <Kanban />
   }
 ]);
 

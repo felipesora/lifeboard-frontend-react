@@ -52,7 +52,7 @@ const Conta = () => {
             return;
         }
 
-        if (senhaEditar.length <= 6) {
+        if (senhaEditar.length < 6) {
             setError("A senha deve ter no mínimo 6 caracteres.");
             setSuccess("");
             return;
