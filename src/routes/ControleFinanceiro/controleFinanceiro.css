@@ -145,3 +145,30 @@
 .card_metas_link > button:hover {
   text-decoration: underline;
 }
+
+/* RESPONSIVO */
+@media (max-width: 1810px) {
+
+  .dashboard_main {
+    padding: 40px 30px;
+  }
+
+}
+
+@media (max-width: 1760px) {
+
+  .dashboard_cards_container {
+  gap: 30px;            /* espaço entre cards pequenos e transações */
+}
+
+.dashboard_cards_pequenos{
+  gap: 50px;
+}
+
+}
+
+@media (max-width: 1740px) {
+
+
+
+}
