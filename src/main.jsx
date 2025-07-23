@@ -14,6 +14,8 @@ import CadastroMeta from './routes/CadastroMeta/CadastroMeta.jsx'
 import EditarMeta from './routes/EditarMeta/EditarMeta.jsx'
 import Conta from './routes/Conta/Conta.jsx'
 import Kanban from './routes/Kanban/Kanban.jsx'
+import CadastroTarefa from './routes/CadastroTarefa/CadastroTarefa.jsx'
+import EditarTarefa from './routes/EditarTarefa/EditarTarefa.jsx'
 
 
 const routes = createBrowserRouter([
@@ -60,7 +62,15 @@ const routes = createBrowserRouter([
   {
     path: '/tarefas-quadro-kanban',
     element: <Kanban />
-  }
+  },
+  {
+    path: '/cadastrar-tarefa',
+    element: <CadastroTarefa />
+  },
+  {
+    path: '/editar-tarefa/:id',
+    element: <EditarTarefa />
+  },
 ]);
 
 createRoot(document.getElementById('root')).render(
