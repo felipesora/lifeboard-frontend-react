@@ -11,6 +11,8 @@ import CardTarefaColuna from '../../components/CardTarefaColuna/CardTarefaColuna
 import { useEffect, useState } from 'react';
 import { obterTarefas } from '../../hooks/obterTarefas';
 import { editarDadosTarefa } from "../../services/tarefasService";
+import ModalTarefaDeletar from '../../components/ModalTarefaDeletar/ModalTarefaDeletar';
+import { deletarTarefa } from "../../services/tarefasService";
 
 
 const Kanban = () => {
@@ -18,6 +20,8 @@ const Kanban = () => {
     const navigate = useNavigate();
 
     const [tarefas, setTarefas] = useState([]);
+    const [modalDelete, setModalDelete] = useState(false);
+    const [idTarefaDeletar, setIdTarefaDeletar] = useState(null);
 
     useEffect(() => {
         const fetchDadosUsuario = async () => {
@@ -85,6 +89,11 @@ const Kanban = () => {
         }
     }
 
+    const handleDeletar = (id) => {
+        setIdTarefaDeletar(id);
+        setModalDelete(true);
+    };
+
     return (
         <div className="dashboard_container">
             <MenuLateral />
@@ -144,6 +153,7 @@ const Kanban = () => {
                                         titulo={tarefa.titulo}
                                         descricao={tarefa.descricao}
                                         data={formatarDataISOParaBR(tarefa.data_limite)}
+                                        onDeletar={handleDeletar}
                                     />
                                 ))}
 
@@ -175,6 +185,7 @@ const Kanban = () => {
                                         titulo={tarefa.titulo}
                                         descricao={tarefa.descricao}
                                         data={formatarDataISOParaBR(tarefa.data_limite)}
+                                        onDeletar={handleDeletar}
                                     />
                                 ))}
                         </div>
@@ -205,6 +216,7 @@ const Kanban = () => {
                                         titulo={tarefa.titulo}
                                         descricao={tarefa.descricao}
                                         data={formatarDataISOParaBR(tarefa.data_limite)}
+                                        onDeletar={handleDeletar}
                                     />
                                 ))}
                         </div>
@@ -212,6 +224,24 @@ const Kanban = () => {
 
                 </div>
             </main>
+
+            <ModalTarefaDeletar 
+                aberto={modalDelete}
+                onClose={() => setModalDelete(false)}
+                onDelete={async () => {
+                    try {
+                        await deletarTarefa(idTarefaDeletar);
+
+                        const tarefasAtualizadas = await obterTarefas();
+                        setTarefas(tarefasAtualizadas);
+
+                        setModalDelete(false);
+                        setIdTarefaDeletar(null);
+                    } catch (erro) {
+                        console.error("Erro ao deletar tarefa:", erro);
+                    }
+                }}
+            />
         </div>
     )
 }

@@ -72,7 +72,7 @@ export async function editarDadosTarefa(idTarefa, novaTarefa) {
     return await response.json();
 }
 
-export async function deletarTransacao(idTarefa) {
+export async function deletarTarefa(idTarefa) {
         const token = localStorage.getItem('token');
 
     const response = await fetch(`http://localhost:8080/api/tarefas/${idTarefa}`, {

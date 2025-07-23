@@ -69,7 +69,13 @@ const CardTarefaColuna = (props) => {
                             <div ref={menuRef} className="menu_tarefa_dropdown">
                                 <button onClick={abrirMover}>Mover</button>
                                 <button onClick={handleEditar}>Editar</button>
-                                <button>Deletar</button>
+
+                                <button onClick={() => {
+                                props.onDeletar(props.tarefa.id_tarefa);
+                                setMenuAberto(false);
+                                }}>
+                                    Deletar
+                                </button>
                             </div>
                         )}
 
