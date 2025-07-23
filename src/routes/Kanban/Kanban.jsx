@@ -10,6 +10,7 @@ import IconeAdicionar from '../../assets/images/icone-tarefa-adicionar.png';
 import CardTarefaColuna from '../../components/CardTarefaColuna/CardTarefaColuna';
 import { useEffect, useState } from 'react';
 import { obterTarefas } from '../../hooks/obterTarefas';
+import { editarDadosTarefa } from "../../services/tarefasService";
 
 
 const Kanban = () => {
@@ -70,6 +71,20 @@ const Kanban = () => {
         return `${dia}/${mes}/${ano}`;
     }
 
+    const moverTarefa = async (tarefa, novoStatus) => {
+        try {
+            const tarefaAtualizada = { ...tarefa, status: novoStatus};
+            await editarDadosTarefa(tarefa.id_tarefa, tarefaAtualizada);
+
+            setTarefas(prev => prev.map(t =>
+                t.id_tarefa === tarefa.id_tarefa ? tarefaAtualizada : t
+            ))
+
+        } catch (erro) {
+            console.error("Erro ao mover tarefa:", erro);
+        }
+    }
+
     return (
         <div className="dashboard_container">
             <MenuLateral />
@@ -107,7 +122,7 @@ const Kanban = () => {
                     <div className='coluna_tarefa'>
                         <div style={{ backgroundColor: "#90A4AE" }} className='coluna_tarefa_cabecalho'>
                             <p>A Fazer ({calculaQuantidade("A_FAZER")})</p>
-                            <button>
+                            <button onClick={() => navigate("/cadastrar-tarefa")}>
                                 <img src={IconeAdicionar} alt="Icone de adicionar tarefa" />
                             </button>
 
@@ -121,6 +136,8 @@ const Kanban = () => {
                                 .map((tarefa) => (
                                     <CardTarefaColuna
                                         key={tarefa.id_tarefa}
+                                        tarefa={tarefa}
+                                        moverTarefa={moverTarefa}
                                         corFundo={detalhesPrioridade(tarefa.prioridade).fundo}
                                         corTexto={detalhesPrioridade(tarefa.prioridade).texto}
                                         prioridade={detalhesPrioridade(tarefa.prioridade).titulo}
@@ -137,7 +154,7 @@ const Kanban = () => {
                     <div className='coluna_tarefa'>
                         <div style={{ backgroundColor: "#42A5F5" }} className='coluna_tarefa_cabecalho'>
                             <p>Em Andamento ({calculaQuantidade("EM_ANDAMENTO")})</p>
-                            <button>
+                            <button onClick={() => navigate("/cadastrar-tarefa")}>
                                 <img src={IconeAdicionar} alt="Icone de adicionar tarefa" />
                             </button>
 
@@ -150,6 +167,8 @@ const Kanban = () => {
                                 .map((tarefa) => (
                                     <CardTarefaColuna
                                         key={tarefa.id_tarefa}
+                                        tarefa={tarefa}
+                                        moverTarefa={moverTarefa}
                                         corFundo={detalhesPrioridade(tarefa.prioridade).fundo}
                                         corTexto={detalhesPrioridade(tarefa.prioridade).texto}
                                         prioridade={detalhesPrioridade(tarefa.prioridade).titulo}
@@ -165,7 +184,7 @@ const Kanban = () => {
                     <div className='coluna_tarefa'>
                         <div style={{ backgroundColor: "#4CAF50" }} className='coluna_tarefa_cabecalho'>
                             <p>Concluída ({calculaQuantidade("CONCLUIDA")})</p>
-                            <button>
+                            <button onClick={() => navigate("/cadastrar-tarefa")}>
                                 <img src={IconeAdicionar} alt="Icone de adicionar tarefa" />
                             </button>
 
@@ -178,6 +197,8 @@ const Kanban = () => {
                                 .map((tarefa) => (
                                     <CardTarefaColuna
                                         key={tarefa.id_tarefa}
+                                        tarefa={tarefa}
+                                        moverTarefa={moverTarefa}
                                         corFundo={detalhesPrioridade(tarefa.prioridade).fundo}
                                         corTexto={detalhesPrioridade(tarefa.prioridade).texto}
                                         prioridade={detalhesPrioridade(tarefa.prioridade).titulo}
