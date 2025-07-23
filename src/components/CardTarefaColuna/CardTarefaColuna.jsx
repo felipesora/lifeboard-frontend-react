@@ -2,8 +2,10 @@ import "./CardTarefaColuna.css";
 import IconeData from "../../assets/images/icone-tarefa-data-limite.png";
 import IconeMenu from "../../assets/images/icone-menu-vertical.png";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CardTarefaColuna = (props) => {
+    const navigate = useNavigate();
     const [menuAberto, setMenuAberto] = useState(false);
     const [menuMoverAberto, setMenuMoverAberto] = useState(false);
     const menuRef = useRef(null);
@@ -45,6 +47,11 @@ const CardTarefaColuna = (props) => {
         setMenuMoverAberto(false);
     };
 
+    const handleEditar = () => {
+        navigate(`/editar-tarefa/${props.tarefa.id_tarefa}`);
+        setMenuAberto(false);
+    };
+
     return (
         <div className="card_tarefa_coluna">
             <div>
@@ -61,7 +68,7 @@ const CardTarefaColuna = (props) => {
                         {menuAberto && (
                             <div ref={menuRef} className="menu_tarefa_dropdown">
                                 <button onClick={abrirMover}>Mover</button>
-                                <button>Editar</button>
+                                <button onClick={handleEditar}>Editar</button>
                                 <button>Deletar</button>
                             </div>
                         )}

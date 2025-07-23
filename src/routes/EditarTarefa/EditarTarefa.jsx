@@ -1,22 +1,44 @@
-import "./CadastroTarefa.css"
-import { useNavigate } from "react-router-dom";
+import "./EditarTarefa.css"
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import MenuLateral from "../../components/MenuLateral/MenuLateral";
-import { useState } from "react";
-import { cadastrarTarefa } from "../../services/tarefasService";
+import { useEffect, useState } from "react";
+import { editarDadosTarefa, obterDadosTarefa } from "../../services/tarefasService";
 
-const CadastroTarefa = () => {
+const EditarTarefa = () => {
     useAuthRedirect();
     const navigate = useNavigate();
+    const { id } = useParams();
 
     const [tituloTarefa, setTituloTarefa] = useState('');
     const [descricao, setDescricao] = useState('');
     const [dataLimite, setDataLimite] = useState('');
     const [prioridade, setPrioridade] = useState('');
+    const [status, setStatus] = useState('');
+    const [idUsuario, setIdUsuario] = useState('');
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
-    const handleCadastroTarefa = async () => {
+    useEffect(() => {
+        const fetchMeta = async () => {
+            try {
+                const dados = await obterDadosTarefa(id);
+                setTituloTarefa(dados.titulo);
+                setDescricao(dados.descricao);
+                setDataLimite(dados.data_limite);
+                setStatus(dados.status);
+                setPrioridade(dados.prioridade)
+                setIdUsuario(dados.id_usuario);
+            } catch (erro) {
+                console.error(erro);
+                setError("Erro ao carregar dados da tarefa.");
+            }
+        };
+
+        fetchMeta();
+    }, [id]);
+
+    const handleEditarTarefa = async () => {
 
         if (
             !tituloTarefa.trim() ||
@@ -45,15 +67,15 @@ const CadastroTarefa = () => {
             titulo: tituloTarefa,
             descricao: descricao,
             prioridade: prioridade,
-            status: "A_FAZER",
+            status: status,
             data_limite: dataLimite,
         }
 
         try {
-            await cadastrarTarefa(tarefa);
+            await editarDadosTarefa(id, tarefa);
 
             setError("");
-            setSuccess("Tarefa cadastrada com sucesso!");
+            setSuccess("Tarefa editada com sucesso!");
 
             setTimeout(() => {
                 navigate("/tarefas-quadro-kanban");
@@ -62,7 +84,7 @@ const CadastroTarefa = () => {
         } catch (erro) {
             console.log(erro);
 
-            setError("Erro ao cadastrar a tarefa. Tente novamente.");
+            setError("Erro ao editar a tarefa. Tente novamente.");
             setSuccess("");
         }
     };
@@ -71,7 +93,7 @@ const CadastroTarefa = () => {
         <div className="dashboard_container">
             <MenuLateral />
             <main className="dashboard_main_cadastro_tarefas">
-                <p>Minhas tarefas<span> {'>'} Cadastro de Tarefas</span></p>
+                <p>Minhas tarefas<span> {'>'} Editar Tarefa</span></p>
 
                 <div className='cadastro_tarefas_container'>
 
@@ -140,7 +162,7 @@ const CadastroTarefa = () => {
 
                         <div className='botoes_form_tarefas'>
                             <button type='button' onClick={() => navigate("/tarefas-quadro-kanban")}>Cancelar</button>
-                            <button type='button' onClick={handleCadastroTarefa}>Cadastrar Tarefa</button>
+                            <button type='button' onClick={handleEditarTarefa}>Editar Tarefa</button>
                         </div>
                     </form>
                 </div>
@@ -149,4 +171,4 @@ const CadastroTarefa = () => {
     )
 }
 
-export default CadastroTarefa;
+export default EditarTarefa;
