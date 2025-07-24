@@ -151,7 +151,7 @@ const MinhasTarefas = () => {
 
     const handleEditar = (id) => {
         // Navegar para rota de edição, passando o ID
-        navigate(`/editar-tarefa/${id}`);
+        navigate(`/editar-tarefa/${id}`, { state: { from: "minhas-tarefas" } });
         setTarefaSelecionada(null); // Fecha o menu
     };
 
@@ -220,7 +220,7 @@ const MinhasTarefas = () => {
                         <div className='minhas_tarefas_botoes_filtro'>
                             <button type='button' onClick={aplicarFiltros}>Filtrar</button>
                             <button type='button' onClick={limparFiltros}>Limpar Filtros</button>
-                            <button type='button' onClick={() => navigate("/cadastrar-tarefa")}>
+                            <button type='button' onClick={() => navigate("/cadastrar-tarefa", { state: { from: "minhas-tarefas" } })}>
                                 Cadastrar Tarefa
                             </button>
                         </div>
