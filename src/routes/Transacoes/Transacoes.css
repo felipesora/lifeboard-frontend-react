@@ -51,30 +51,21 @@
   font-size: 16px;
 }
 
+.trasacao_filtro > input,
 .trasacao_filtro > select {
   background-color:#FAFAFA;
   border: 1px solid #E0E0E0;
   font-family: var(--fonte-principal);
   font-size: 14px;
   padding: 5px 2px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.trasacao_filtro > input:focus,
 .trasacao_filtro > select:focus {
   outline: none;
-  border-color: #546E7A;
-}
-
-.trasacao_filtro > input {
-  background-color:#FAFAFA;
-  border: 1px solid #E0E0E0;
-  font-family: var(--fonte-principal);
-  font-size: 14px;
-  padding: 5px 2px;
-}
-
-.trasacao_filtro > input:focus {
-  outline: none;
-  border-color: #546E7A;
+  border-color: #e5e5e5;
+  box-shadow: 0 0 0 2px #d1d5db;
 }
 
 .trasacao_botoes_filtro {

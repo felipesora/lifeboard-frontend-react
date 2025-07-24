@@ -67,8 +67,8 @@ hr {
 
 .modal_form_salario > input:focus {
   outline: none;
-  border-color: #546E7A;
-  box-shadow: 0 0 0 2px rgba(84, 110, 122, 0.2);
+  border-color: #e5e5e5;
+  box-shadow: 0 0 0 2px #d1d5db;
 }
 
 .erro_salario {
