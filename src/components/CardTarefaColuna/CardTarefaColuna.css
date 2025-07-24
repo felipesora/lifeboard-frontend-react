@@ -44,6 +44,10 @@
     font-size: 12px;
     font-weight: 400;
     color: #616161;
+    width: 170px;
+    white-space: normal;        /* Permite quebra de linha */
+    overflow-wrap: break-word;  /* Quebra palavras grandes */
+    word-wrap: break-word;      /* Compatibilidade */
 }
 
 .card_tarefa_coluna_conteudo > div {

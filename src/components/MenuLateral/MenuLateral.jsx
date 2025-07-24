@@ -80,7 +80,7 @@ const MenuLateral = () => {
                         </li>
 
                         <li>
-                            <button>
+                            <button onClick={() => navigate("/minhas-tarefas")}>
                                 <img src={IconeTarefas} alt="Icone de uma lista" />
                                 Minhas Tarefas
                             </button>
