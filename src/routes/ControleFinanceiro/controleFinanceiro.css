@@ -158,17 +158,46 @@
 @media (max-width: 1760px) {
 
   .dashboard_cards_container {
-  gap: 30px;            /* espaço entre cards pequenos e transações */
-}
+    gap: 30px;            /* espaço entre cards pequenos e transações */
+  }
 
-.dashboard_cards_pequenos{
-  gap: 50px;
-}
+  .dashboard_cards_pequenos{
+    gap: 50px;
+  }
 
 }
 
 @media (max-width: 1740px) {
 
+  .dashboard_cards_container {
+    gap: 35px;
+    flex-direction: column;
+  }
 
+  .dashboard_grafico {
+    width: 1270px;
+  }
+
+  .dashboard_cards_pequenos{
+    gap: 0px;
+    justify-content: space-between;
+  }
+
+  .card_transacoes{
+    width: 1270px;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+.card_metas {
+  width: 1270px;
+  box-sizing: initial;
+  margin-top: 35px;
+}
+
+.card_metas_lista {
+  gap: 25px;
+  flex-wrap: wrap;
+}
 
 }
