@@ -1,5 +1,5 @@
 import "./EditarTarefa.css"
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import MenuLateral from "../../components/MenuLateral/MenuLateral";
 import { useEffect, useState } from "react";
@@ -9,6 +9,9 @@ const EditarTarefa = () => {
     useAuthRedirect();
     const navigate = useNavigate();
     const { id } = useParams();
+    const location = useLocation();
+
+    const fromPage = location.state?.from || "tarefas-quadro-kanban";
 
     const [tituloTarefa, setTituloTarefa] = useState('');
     const [descricao, setDescricao] = useState('');
@@ -78,7 +81,7 @@ const EditarTarefa = () => {
             setSuccess("Tarefa editada com sucesso!");
 
             setTimeout(() => {
-                navigate("/tarefas-quadro-kanban");
+                navigate(fromPage === "tarefas-quadro-kanban" ? "/tarefas-quadro-kanban" : "/minhas-tarefas");
             }, 1500);
 
         } catch (erro) {
@@ -152,6 +155,27 @@ const EditarTarefa = () => {
                                     onChange={(e) => setDataLimite(e.target.value)}
                                 />
                             </div>
+                            
+                            {fromPage === "minhas-tarefas" && ( 
+                            
+                                <div className='input_prioridade'>
+                                    <label htmlFor="status">Status</label>
+                                    <select
+                                        id="status"
+                                        name="status"
+                                        required
+                                        value={status}
+                                        onChange={(e) => setStatus(e.target.value)}
+                                    >
+                                        <option value="" disabled>Selecione um status</option>
+                                        <option value="A_FAZER">A fazer</option>
+                                        <option value="EM_ANDAMENTO">Em andamento</option>
+                                        <option value="CONCLUIDA">Concluída</option>
+                                        
+                                    </select>
+                                </div>
+                            )}
+                            
 
                         </div>
 
@@ -161,7 +185,7 @@ const EditarTarefa = () => {
                         </div>
 
                         <div className='botoes_form_tarefas'>
-                            <button type='button' onClick={() => navigate("/tarefas-quadro-kanban")}>Cancelar</button>
+                            <button type='button' onClick={() => navigate(fromPage === "tarefas-quadro-kanban" ? "/tarefas-quadro-kanban" : "/minhas-tarefas")}>Cancelar</button>
                             <button type='button' onClick={handleEditarTarefa}>Editar Tarefa</button>
                         </div>
                     </form>

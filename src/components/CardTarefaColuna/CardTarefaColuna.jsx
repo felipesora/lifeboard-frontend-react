@@ -48,7 +48,7 @@ const CardTarefaColuna = (props) => {
     };
 
     const handleEditar = () => {
-        navigate(`/editar-tarefa/${props.tarefa.id_tarefa}`);
+        navigate(`/editar-tarefa/${props.tarefa.id_tarefa}`, { state: { from: "tarefas-quadro-kanban" } });
         setMenuAberto(false);
     };
 

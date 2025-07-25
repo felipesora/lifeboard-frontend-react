@@ -1,4 +1,4 @@
-.dashboard_main_transacoes{
+.dashboard_main_minhas_tarefas{
   flex: 1;
   padding: 40px;
   background-color: #ECEFF1;
@@ -8,16 +8,12 @@
   align-items: flex-start;
 }
 
-.dashboard_main_transacoes > p {
+.dashboard_main_minhas_tarefas > p {
   font-weight: bold;
-  color: #666;
-}
-
-.dashboard_main_transacoes > p > span {
   color: #000000;
 }
 
-.transacoes_container {
+.minhas_tarefas_container {
   background-color: white;
   width: 100%;
   max-width: 1485px;
@@ -28,31 +24,31 @@
   box-sizing: border-box;
 }
 
-.transacoes_form {
+.minhas_tarefas_form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.filtros_transacoes_form{
+.filtros_minhas_tarefas_form{
   display: flex;
   gap: 12px;
   align-items: center;
 }
 
-.trasacao_filtro{
+.minhas_tarefas_filtro{
   display: flex;
   flex-direction: column;
   width: 270px;
   gap: 5px;
 }
 
-.trasacao_filtro > label {
+.minhas_tarefas_filtro > label {
   font-size: 16px;
 }
 
-.trasacao_filtro > input,
-.trasacao_filtro > select {
+.minhas_tarefas_filtro > input,
+.minhas_tarefas_filtro > select {
   background-color:#FAFAFA;
   border: 1px solid #E0E0E0;
   font-family: var(--fonte-principal);
@@ -61,19 +57,19 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.trasacao_filtro > input:focus,
-.trasacao_filtro > select:focus {
+.minhas_tarefas_filtro > input:focus,
+.minhas_tarefas_filtro > select:focus {
   outline: none;
   border-color: #e5e5e5;
   box-shadow: 0 0 0 2px #d1d5db;
 }
 
-.trasacao_botoes_filtro {
+.minhas_tarefas_botoes_filtro {
   display: flex;
   gap: 12px;
 }
 
-.trasacao_botoes_filtro > button {
+.minhas_tarefas_botoes_filtro > button {
   background-color: #37474F;
   padding: 10px 0;
   width: 270px;
@@ -87,12 +83,12 @@
   transition: background-color 0.3s ease, box-shadow 0.3s ease
 }
 
-.trasacao_botoes_filtro > button:hover {
+.minhas_tarefas_botoes_filtro > button:hover {
   background-color: #455A64;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
-.tabela_transacoes {
+.tabela_minhas_tarefas {
   width: 100%;
   border-collapse: collapse;
   margin-top: 40px;
@@ -101,44 +97,44 @@
   overflow: hidden;
 }
 
-.tabela_transacoes thead {
+.tabela_minhas_tarefas thead {
   background-color: #37474F;
   color: white;
 }
 
-.tabela_transacoes th,
-.tabela_transacoes td {
+.tabela_minhas_tarefas th,
+.tabela_minhas_tarefas td {
   padding: 16px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
-.tabela_transacoes td {
+.tabela_minhas_tarefas td {
     font-size: 15px;
 }
 
-.tabela_transacoes tbody tr:hover {
+.tabela_minhas_tarefas tbody tr:hover {
   background-color: #f5f5f5;
 }
 
-.tabela_transacoes td:last-child {
+.tabela_minhas_tarefas td:last-child {
   text-align: center;
 }
 
-.tabela_transacoes td:nth-child(1),
-.tabela_transacoes th:nth-child(1) {
+.tabela_minhas_tarefas td:nth-child(2),
+.tabela_minhas_tarefas th:nth-child(2) {
   max-width: 250px;      /* limite da largura da coluna */
   white-space: normal;   /* permite quebra de linha */
   word-wrap: break-word; /* quebra palavras grandes */
 }
 
-.menu_transacao_btn {
+.menu_minhas_tarefas_btn {
   background: none;
   border: none;
   cursor: pointer;
 }
 
-.menu_transacao_dropdown {
+.menu_minhas_tarefas_dropdown {
   position: absolute;
   right: 0; /* alinha na borda direita */
   top: 100%; /* abre pra baixo */
@@ -148,12 +144,12 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-.menu_transacao_dropdown.open-up {
+.menu_minhas_tarefas_dropdown.open-up {
   bottom: 100%; /* abre pra cima */
   top: auto;
 }
 
-.menu_transacao_dropdown button {
+.menu_minhas_tarefas_dropdown button {
   width: 100%;
   padding: 8px 12px;
   border: none;
@@ -165,6 +161,6 @@
 }
 
 
-.menu_transacao_dropdown button:hover {
+.menu_minhas_tarefas_dropdown button:hover {
   background: #f1f1f1;
 }

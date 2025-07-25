@@ -1,5 +1,5 @@
 import "./CadastroTarefa.css"
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import MenuLateral from "../../components/MenuLateral/MenuLateral";
 import { useState } from "react";
@@ -8,11 +8,16 @@ import { cadastrarTarefa } from "../../services/tarefasService";
 const CadastroTarefa = () => {
     useAuthRedirect();
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const fromPage = location.state?.from || "tarefas-quadro-kanban";
+    const statusInicial = location.state?.status || "A_FAZER";
 
     const [tituloTarefa, setTituloTarefa] = useState('');
     const [descricao, setDescricao] = useState('');
     const [dataLimite, setDataLimite] = useState('');
     const [prioridade, setPrioridade] = useState('');
+    const [status, setStatus] = useState(statusInicial);
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
@@ -45,7 +50,7 @@ const CadastroTarefa = () => {
             titulo: tituloTarefa,
             descricao: descricao,
             prioridade: prioridade,
-            status: "A_FAZER",
+            status: status,
             data_limite: dataLimite,
         }
 
@@ -56,7 +61,7 @@ const CadastroTarefa = () => {
             setSuccess("Tarefa cadastrada com sucesso!");
 
             setTimeout(() => {
-                navigate("/tarefas-quadro-kanban");
+                navigate(fromPage === "tarefas-quadro-kanban" ? "/tarefas-quadro-kanban" : "/minhas-tarefas");
             }, 1500);
 
         } catch (erro) {
@@ -139,7 +144,7 @@ const CadastroTarefa = () => {
                         </div>
 
                         <div className='botoes_form_tarefas'>
-                            <button type='button' onClick={() => navigate("/tarefas-quadro-kanban")}>Cancelar</button>
+                            <button type='button' onClick={() => navigate(fromPage === "tarefas-quadro-kanban" ? "/tarefas-quadro-kanban" : "/minhas-tarefas")}>Cancelar</button>
                             <button type='button' onClick={handleCadastroTarefa}>Cadastrar Tarefa</button>
                         </div>
                     </form>

@@ -16,6 +16,7 @@ import Conta from './routes/Conta/Conta.jsx'
 import Kanban from './routes/Kanban/Kanban.jsx'
 import CadastroTarefa from './routes/CadastroTarefa/CadastroTarefa.jsx'
 import EditarTarefa from './routes/EditarTarefa/EditarTarefa.jsx'
+import MinhasTarefas from './routes/MinhasTarefas/MinhasTarefas.jsx'
 
 
 const routes = createBrowserRouter([
@@ -70,6 +71,10 @@ const routes = createBrowserRouter([
   {
     path: '/editar-tarefa/:id',
     element: <EditarTarefa />
+  },
+  {
+    path: '/minhas-tarefas',
+    element: <MinhasTarefas />
   },
 ]);
 

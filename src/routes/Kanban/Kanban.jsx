@@ -131,7 +131,7 @@ const Kanban = () => {
                     <div className='coluna_tarefa'>
                         <div style={{ backgroundColor: "#90A4AE" }} className='coluna_tarefa_cabecalho'>
                             <p>A Fazer ({calculaQuantidade("A_FAZER")})</p>
-                            <button onClick={() => navigate("/cadastrar-tarefa")}>
+                            <button onClick={() => navigate("/cadastrar-tarefa", { state: { from: "tarefas-quadro-kanban", status: "A_FAZER" } })}>
                                 <img src={IconeAdicionar} alt="Icone de adicionar tarefa" />
                             </button>
 
@@ -164,7 +164,7 @@ const Kanban = () => {
                     <div className='coluna_tarefa'>
                         <div style={{ backgroundColor: "#42A5F5" }} className='coluna_tarefa_cabecalho'>
                             <p>Em Andamento ({calculaQuantidade("EM_ANDAMENTO")})</p>
-                            <button onClick={() => navigate("/cadastrar-tarefa")}>
+                            <button onClick={() => navigate("/cadastrar-tarefa", { state: { from: "tarefas-quadro-kanban", status: "EM_ANDAMENTO" } })}>
                                 <img src={IconeAdicionar} alt="Icone de adicionar tarefa" />
                             </button>
 
@@ -195,7 +195,7 @@ const Kanban = () => {
                     <div className='coluna_tarefa'>
                         <div style={{ backgroundColor: "#4CAF50" }} className='coluna_tarefa_cabecalho'>
                             <p>Concluída ({calculaQuantidade("CONCLUIDA")})</p>
-                            <button onClick={() => navigate("/cadastrar-tarefa")}>
+                            <button onClick={() => navigate("/cadastrar-tarefa", { state: { from: "tarefas-quadro-kanban", status: "CONCLUIDA" } })}>
                                 <img src={IconeAdicionar} alt="Icone de adicionar tarefa" />
                             </button>
 
