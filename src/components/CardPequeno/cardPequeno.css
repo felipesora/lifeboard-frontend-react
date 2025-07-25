@@ -34,6 +34,9 @@
 
 .card_pequeno > h3 {
     font-size: 28px;
+    white-space: normal;        /* Permite quebra de linha */
+    overflow-wrap: break-word;  /* Quebra palavras grandes */
+    word-wrap: break-word;      /* Compatibilidade */
 }
 
 .card_pequeno_menu_container {
