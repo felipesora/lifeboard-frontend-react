@@ -7,6 +7,7 @@ import IconePomodoro from "../../assets/images/icone-pomodoro.png";
 import IconeUsuario from "../../assets/images/icone-user.png";
 import IconeBarra from "../../assets/images/icone-barra.png";
 import IconeSair from "../../assets/images/icone-logout.png";
+import IconeMenu from "../../assets/images/icone-menu.png";
 import { useNavigate } from 'react-router-dom';
 import './MenuLateral.css';
 import ModalLogout from "../ModalLogout/ModalLogout";
@@ -31,7 +32,7 @@ const MenuLateral = () => {
         <>
             {/* Botão hambúrguer (só aparece em telas pequenas) */}
             <button className="menu_hamburger" onClick={alternarMenu}>
-                ☰
+                <img src={IconeMenu} alt="Icone de menu" />
             </button>
 
             {/* Overlay para fechar o menu tocando fora */}

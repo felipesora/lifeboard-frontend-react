@@ -19,6 +19,7 @@ import { obterMetas } from "../../hooks/obterMetas";
 import CardMetaControleFinanceiro from "../../components/CardMetaControleFinanceiro/CardMetaControleFinanceiro";
 import IconeMetaAndamento from "../../assets/images/icone-meta-andamento.png"
 import IconeMetaConcluida from "../../assets/images/icone-meta-concluida.png"
+import Cabecalho from "../../components/Cabecalho/Cabecalho";
 
 const ControleFinanceiro = () => {
     useAuthRedirect();
@@ -166,7 +167,10 @@ const ControleFinanceiro = () => {
         <div className="dashboard_container">
             <MenuLateral />
             <main className="dashboard_main">
-                <p>Controle Financeiro</p>
+                
+                <div className="dashboard_titulo">
+                    <p>Controle Financeiro</p>
+                </div>
 
                 <div>
                     <div className="dashboard_cards_container">
@@ -199,7 +203,7 @@ const ControleFinanceiro = () => {
                             <div className="dashboard_grafico">
                                 <div className="card_grafico_titulo">
                                     <img src={IconeGrafico} alt="Icone de grafico" />
-                                    <p>Gráficos</p>
+                                    <p>Gastos por Mês</p>
                                 </div>
                                 <GastosMensaisGrafico dados={data} />
                             </div>
