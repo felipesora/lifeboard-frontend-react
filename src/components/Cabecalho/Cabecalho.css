@@ -1,5 +1,39 @@
-header {
+.cabecalho {
+    display: none;
     background-color: var(--cor-principal);
-    display: flex;
     justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.cabecalho_logo {
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 7px;
+}
+
+.cabecalho_logo > img {
+    width: 80px;
+    height: auto;
+}
+
+.cabecalho_logo > h1 {
+    font-size: 24px;
+}
+
+.cabecalho_menu_hamburger {
+    border: 1px solid #9198A1;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.cabecalho_menu_hamburger > img {
+    width: 30px;
+    height: auto;
+}
+
+.cabecalho_menu_hamburger:hover {
+    background-color: #455A64;
 }

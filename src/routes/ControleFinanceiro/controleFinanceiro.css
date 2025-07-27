@@ -1,7 +1,13 @@
+/* .dashboard_container {
+  display: initial;
+} */
+
+/* mínimo: tela toda */
+/* estica os filhos na altura do container */
 .dashboard_container {
   display: flex;
-  min-height: 100vh; /* mínimo: tela toda */
-  align-items: stretch; /* estica os filhos na altura do container */
+  min-height: 100vh;
+  align-items: stretch;
 }
 
 .dashboard_main {

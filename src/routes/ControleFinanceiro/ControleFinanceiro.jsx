@@ -165,6 +165,7 @@ const ControleFinanceiro = () => {
 
     return (
         <div className="dashboard_container">
+            <Cabecalho />
             <MenuLateral />
             <main className="dashboard_main">
                 
