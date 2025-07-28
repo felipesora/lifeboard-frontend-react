@@ -7,6 +7,7 @@ import { obterTarefas } from '../../hooks/obterTarefas';
 import IconeMenuVertical from "../../assets/images/icone-menu-vertical.png";
 import ModalTarefaDeletar from '../../components/ModalTarefaDeletar/ModalTarefaDeletar';
 import { deletarTarefa } from "../../services/tarefasService";
+import Cabecalho from '../../components/Cabecalho/Cabecalho';
 
 const MinhasTarefas = () => {
     useAuthRedirect();
@@ -163,6 +164,7 @@ const MinhasTarefas = () => {
 
     return (
         <div className="dashboard_container">
+            <Cabecalho />
             <MenuLateral />
             <main className="dashboard_main_minhas_tarefas">
                 <p>Minhas tarefas</p>

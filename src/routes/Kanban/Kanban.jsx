@@ -13,6 +13,7 @@ import { obterTarefas } from '../../hooks/obterTarefas';
 import { editarDadosTarefa } from "../../services/tarefasService";
 import ModalTarefaDeletar from '../../components/ModalTarefaDeletar/ModalTarefaDeletar';
 import { deletarTarefa } from "../../services/tarefasService";
+import Cabecalho from '../../components/Cabecalho/Cabecalho';
 
 
 const Kanban = () => {
@@ -96,6 +97,7 @@ const Kanban = () => {
 
     return (
         <div className="dashboard_container">
+            <Cabecalho />
             <MenuLateral />
             <main className="dashboard_main_tarefas_kanban">
                 <p>Quadro (Kanban)</p>

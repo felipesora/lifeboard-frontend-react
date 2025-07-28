@@ -79,7 +79,7 @@ const MenuHamburger = ({ toggleMenu }) => {
                     </li>
 
                     <li>
-                        <button>
+                        <button onClick={() => navigate("/pomodoro")}>
                             <img src={IconePomodoro} alt="Icone de relogio" />
                             Pomodoro
                         </button>
