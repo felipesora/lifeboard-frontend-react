@@ -4,6 +4,7 @@ import './CadastroTransacao.css'
 import { cadastrarTransacao } from '../../services/transacaoService';
 import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 import { useNavigate } from 'react-router-dom';
+import Cabecalho from '../../components/Cabecalho/Cabecalho';
 
 const CadastroTransacao = () => {
     useAuthRedirect();
@@ -64,6 +65,7 @@ const CadastroTransacao = () => {
 
     return (
         <div className="dashboard_container">
+            <Cabecalho />
             <MenuLateral />
             <main className="dashboard_main_cadastro_transacoes">
                 <p>Controle Financeiro {'>'} Transações <span> {'>'} Cadastro de Transações</span></p>

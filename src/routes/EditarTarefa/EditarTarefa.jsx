@@ -4,6 +4,7 @@ import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import MenuLateral from "../../components/MenuLateral/MenuLateral";
 import { useEffect, useState } from "react";
 import { editarDadosTarefa, obterDadosTarefa } from "../../services/tarefasService";
+import Cabecalho from "../../components/Cabecalho/Cabecalho";
 
 const EditarTarefa = () => {
     useAuthRedirect();
@@ -94,6 +95,7 @@ const EditarTarefa = () => {
 
     return (
         <div className="dashboard_container">
+            <Cabecalho />
             <MenuLateral />
             <main className="dashboard_main_cadastro_tarefas">
                 <p>Minhas tarefas<span> {'>'} Editar Tarefa</span></p>

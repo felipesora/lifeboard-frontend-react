@@ -17,6 +17,7 @@ import Kanban from './routes/Kanban/Kanban.jsx'
 import CadastroTarefa from './routes/CadastroTarefa/CadastroTarefa.jsx'
 import EditarTarefa from './routes/EditarTarefa/EditarTarefa.jsx'
 import MinhasTarefas from './routes/MinhasTarefas/MinhasTarefas.jsx'
+import Pomodoro from './routes/Pomodoro/Pomodoro.jsx'
 
 
 const routes = createBrowserRouter([
@@ -76,6 +77,10 @@ const routes = createBrowserRouter([
     path: '/minhas-tarefas',
     element: <MinhasTarefas />
   },
+  {
+    path: '/pomodoro',
+    element: <Pomodoro />
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

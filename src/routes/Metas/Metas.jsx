@@ -10,6 +10,7 @@ import { obterMetas } from '../../hooks/obterMetas';
 import { deletarMeta, editarDadosMeta, obterDadosMeta } from '../../services/metaService';
 import ModalMetaDeletar from '../../components/ModalMetaDeletar/ModalMetaDeletar';
 import ModalMetaAdicionar from '../../components/ModalMetaAdiconar/ModalMetaAdiconar';
+import Cabecalho from '../../components/Cabecalho/Cabecalho';
 
 const Metas = () => {
     useAuthRedirect();
@@ -83,6 +84,7 @@ const Metas = () => {
 
     return (
         <div className="dashboard_container">
+            <Cabecalho />
             <MenuLateral />
             <main className="dashboard_main_metas">
                 <p>Controle Financeiro <span> {'>'} Metas</span></p>

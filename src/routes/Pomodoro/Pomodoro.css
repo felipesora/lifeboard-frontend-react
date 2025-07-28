@@ -1,0 +1,170 @@
+.dashboard_main_pomodoro{
+  flex: 1;
+  padding: 40px;
+  background-color: #ECEFF1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dashboard_main_pomodoro > p {
+  font-weight: bold;
+  color: #000000;
+}
+
+.container_pomodoro {
+  background-color: white;
+  width: 100%;
+  max-width: 1485px;
+  padding: 65px 35px 150px 35px;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.container_pomodoro_caixa {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px 0 50px 0;
+  background-color: white;
+  border: 2px solid #E0E0E0;
+  width: 690px;
+}
+
+.icone_relogio_pomodoro {
+  width: 90px;
+  height: auto;
+}
+
+.container_pomodoro_caixa > h1 {
+  font-size: 64px;
+  color: #434343;
+  margin-top: 10px;
+}
+
+.pomodoro_botoes_controle {
+  margin-top: 35px;
+  display: flex;
+  gap: 15px;
+}
+
+.pomodoro_botoes_controle > button {
+  background-color: #37474F;
+  padding: 10px 0;
+  width: 180px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease
+}
+
+.pomodoro_botoes_controle > button:hover {
+  background-color: #455A64;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.pomodoro_botoes_tempo {
+  margin-top: 30px;
+  display: flex;
+  gap: 12px;
+}
+
+.pomodoro_botoes_tempo > button {
+  background-color: #37474F;
+  padding: 5px 0;
+  width: 130px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  font-family: var(--fonte-prinicipal);
+  font-size: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease
+}
+
+.pomodoro_botoes_tempo > button:hover {
+  background-color: #455A64;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.tempo_zerado {
+  animation: piscar 1s infinite;
+}
+
+.container_pomodoro_pergunta {
+  margin-top: 20px;
+}
+
+.container_pomodoro_pergunta details {
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.container_pomodoro_pergunta details[open] {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.container_pomodoro_pergunta details summary {
+  cursor: pointer;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-family: var(--fonte-principal);
+  font-size: 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #CFD8DC;
+  transition: background-color 0.3s ease;
+}
+
+.container_pomodoro_pergunta details summary:hover {
+  background-color: #f1f1f1;
+}
+
+.container_pomodoro_pergunta details summary img {
+  width: 18px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.container_pomodoro_pergunta details[open] summary img {
+  transform: rotate(180deg);
+}
+
+.container_pomodoro_pergunta_resposta {
+  background-color: #FAFAFA;
+  padding: 20px;
+  font-family: var(--fonte-principal);
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+}
+
+.container_pomodoro_pergunta_resposta ul {
+  margin-top: 12px;
+  padding-left: 20px;
+  list-style-type: disc;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+@keyframes piscar {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}

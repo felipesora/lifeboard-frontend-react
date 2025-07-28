@@ -4,6 +4,7 @@ import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import MenuLateral from "../../components/MenuLateral/MenuLateral";
 import { useState } from "react";
 import { cadastrarMeta } from "../../services/metaService";
+import Cabecalho from "../../components/Cabecalho/Cabecalho";
 
 const CadastroMeta = () => {
     useAuthRedirect();
@@ -73,6 +74,7 @@ const CadastroMeta = () => {
 
     return (
         <div className="dashboard_container">
+            <Cabecalho />
             <MenuLateral />
             <main className="dashboard_main_cadastro_metas">
                 <p>Controle Financeiro {'>'} Metas <span> {'>'} Cadastro de Metas</span></p>

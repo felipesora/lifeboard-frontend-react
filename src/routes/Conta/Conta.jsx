@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { obterMetas } from '../../hooks/obterMetas';
 import { deletarUsuario, editarDadosUsuario, obterDadosUsuario } from '../../services/usuarioService';
 import ModalDeletarConta from '../../components/ModalDeletarConta/ModalDeletarConta';
+import Cabecalho from '../../components/Cabecalho/Cabecalho';
 
 const Conta = () => {
     useAuthRedirect();
@@ -109,6 +110,7 @@ const Conta = () => {
 
     return (
         <div className="dashboard_container">
+            <Cabecalho />
             <MenuLateral />
             <main className="dashboard_main_conta">
                 <p>Minha Conta</p>

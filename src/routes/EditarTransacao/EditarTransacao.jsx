@@ -4,6 +4,7 @@ import './EditarTransacao.css'
 import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 import { useParams, useNavigate } from 'react-router-dom';
 import { editarDadosTransacao, obterDadosTransacao } from '../../services/transacaoService';
+import Cabecalho from '../../components/Cabecalho/Cabecalho';
 
 const EditarTransacao = () => {
     useAuthRedirect();
@@ -74,6 +75,7 @@ const EditarTransacao = () => {
 
     return (
         <div className="dashboard_container">
+            <Cabecalho />
             <MenuLateral />
             <main className="dashboard_main_cadastro_transacoes">
                 <p>Controle Financeiro {'>'} Transações <span> {'>'} Editar Transação</span></p>

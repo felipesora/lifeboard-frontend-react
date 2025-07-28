@@ -7,6 +7,7 @@ import { obterTransacoes } from '../../hooks/obterTransacoes';
 import IconeMenuVertical from "../../assets/images/icone-menu-vertical.png"
 import ModalDeletarTransacao from '../../components/ModalDeletarTransacao/ModalDeletarTransacao';
 import { deletarTransacao } from '../../services/transacaoService';
+import Cabecalho from '../../components/Cabecalho/Cabecalho';
 
 const Transacoes = () => {
     useAuthRedirect();
@@ -131,6 +132,7 @@ const Transacoes = () => {
 
     return (
         <div className="dashboard_container">
+            <Cabecalho />
             <MenuLateral />
             <main className="dashboard_main_transacoes">
                 <p>Controle Financeiro <span> {'>'} Transações</span></p>
