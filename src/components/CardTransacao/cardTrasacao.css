@@ -4,6 +4,9 @@
     display: flex;
     flex-direction: column;
     align-items: start;
+    max-width: 98%;      /* limite da largura da coluna */
+    white-space: normal;   /* permite quebra de linha */
+    word-wrap: break-word; /* quebra palavras grandes */
 }
 
 .card_transacao > h1 {

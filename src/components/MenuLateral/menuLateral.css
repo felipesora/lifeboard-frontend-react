@@ -171,25 +171,7 @@
 }
 
 @media (max-width: 1260px) {
-  .menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 1050;
-  }
-
-  .menu_aberto {
-    transform: translateX(0);
-  }
-
-  .menu_hamburger {
-    display: block;
-  }
-
   .menu{
-    width: 300px;
+    display: none;
   }
 }

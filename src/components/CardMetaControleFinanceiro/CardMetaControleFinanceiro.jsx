@@ -10,7 +10,7 @@ const CardMetaControleFinanceiro = (props) => {
     );
 
     return (
-        <div className="card_meta">
+        <div className="card_meta card_meta_controle_financeiro">
 
             <div className="card_meta_cabecalho">
                 <div>

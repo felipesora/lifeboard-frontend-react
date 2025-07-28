@@ -64,3 +64,29 @@
   background: rgba(0, 0, 0, 0.5);
   z-index: 500;
 }
+
+@media (max-width: 1260px) {
+    .cabecalho {
+        display: flex;
+    }
+}
+
+@media (max-width: 810px) {
+    .cabecalho_logo > img {
+        width: 60px;
+    }
+}
+
+@media (max-width: 620px) {
+    .cabecalho_logo > img {
+        width: 50px;
+    }
+}
+
+@media (max-width: 530px) {
+    .menu_hamburguer {
+    right: -250px;
+    width: 250px;
+    }
+}
+
