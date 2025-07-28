@@ -100,7 +100,7 @@
 }
 
 .container_pomodoro_pergunta {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .container_pomodoro_pergunta details {
@@ -108,7 +108,6 @@
   border-radius: 8px;
   overflow: hidden;
   background-color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
 }
 
