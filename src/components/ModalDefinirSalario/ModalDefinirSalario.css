@@ -59,6 +59,7 @@ hr {
   padding: 5px 0 5px 5px;
   background-color: #FAFAFA;
   border: 1px solid #B0BEC5;
+  width: 80%;
   font-size: 16px;
   font-family: var(--fonte-principal);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -81,7 +82,6 @@ hr {
 .modal_botoes_salario {
   display: flex;
   gap: 10px;
-  margin-top: 15px;
 }
 
 .modal_salario_botao_cancelar{
@@ -124,3 +124,87 @@ hr {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
+@media (max-width: 1090px) {
+  .modal_conteudo_salario {
+    width: 690px;
+  }
+}
+
+@media (max-width: 960px) {
+  .modal_conteudo_salario {
+    width: 630px;
+  }
+}
+
+@media (max-width: 780px) {
+  .modal_conteudo_salario {
+    width: 570px;
+  }
+
+  .modal_botoes_salario {
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 740px) {
+  .modal_conteudo_salario {
+    width: 500px;
+  }
+}
+
+@media (max-width: 650px) {
+  .modal_conteudo_salario {
+    width: 470px;
+  }
+}
+
+@media (max-width: 550px) {
+  .modal_conteudo_salario {
+    width: 420px;
+  }
+
+  .modal_salario_botao_cancelar {
+    width: 160px;
+  }
+
+  .modal_salario_botao_adicionar {
+    width: 160px;
+  }
+}
+
+@media (max-width: 500px) {
+  .modal_conteudo_salario {
+    width: 400px;
+  }
+
+  .modal_salario_botao_cancelar {
+    width: 180px;
+  }
+
+  .modal_salario_botao_adicionar {
+    width: 180px;
+  }
+
+  .modal_botoes_salario {
+    flex-direction: column-reverse;
+    gap: 0px;
+  }
+}
+
+@media (max-width: 470px) {
+  .modal_conteudo_salario {
+    width: 380px;
+  }
+}
+
+@media (max-width: 420px) {
+  .modal_conteudo_salario {
+    width: 340px;
+  }
+}
+
+@media (max-width: 390px) {
+  .modal_conteudo_salario {
+    width: 320px;
+  }
+}
