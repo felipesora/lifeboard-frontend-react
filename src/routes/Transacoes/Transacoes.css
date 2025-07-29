@@ -92,6 +92,11 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
+.tabela_scroll_wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .tabela_transacoes {
   width: 100%;
   border-collapse: collapse;
@@ -167,4 +172,84 @@
 
 .menu_transacao_dropdown button:hover {
   background: #f1f1f1;
+}
+
+@media (max-width: 1810px) {
+  .dashboard_main_transacoes {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .filtros_transacoes_form{
+    gap: 7px;
+  }
+
+  .trasacao_botoes_filtro {
+    gap: 7px;
+  }
+
+  .trasacao_botoes_filtro > button {
+    width: 270px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .trasacao_botoes_filtro > button {
+    width: 260px;
+  }
+}
+
+@media (max-width: 1170px) {
+  .trasacao_botoes_filtro {
+    justify-content: center;
+  }
+
+  .trasacao_botoes_filtro > button {
+    width: 240px;
+  }
+}
+
+@media (max-width: 940px) {
+  .dashboard_main_transacoes {
+    padding: 40px 20px;
+  }
+
+  .transacoes_container {
+    padding: 65px 25px 150px 25px;
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard_main_transacoes {
+    padding: 40px 10px;
+  }
+
+  .transacoes_container {
+    padding: 65px 15px 150px 15px;
+  }
+
+  .filtros_transacoes_form{
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .trasacao_filtro{
+    width: 190px;
+  }
+}
+
+@media (max-width: 860px) {
+
+  .transacoes_container {
+    padding: 65px 5px 150px 5px;
+  }
+}
+
+@media (max-width: 825px) {
+
+  .transacoes_container {
+    padding: 45px 5px 100px 5px;
+  }
 }
