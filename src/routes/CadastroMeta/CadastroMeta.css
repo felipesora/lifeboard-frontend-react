@@ -78,7 +78,7 @@
 .botoes_form{
     display: flex;
     gap: 25px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .botoes_form > button {
