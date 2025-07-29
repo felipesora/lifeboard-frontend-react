@@ -70,7 +70,7 @@ const CadastroTransacao = () => {
             <main className="dashboard_main_cadastro_transacoes">
                 <p>Controle Financeiro {'>'} Transações <span> {'>'} Cadastro de Transações</span></p>
 
-                <div className='cadastro_transacoe_container'>
+                <div className='cadastro_transacao_container'>
 
                     <form className='cadastro_transacoes_form'>
                         <div className='inputs_form'>

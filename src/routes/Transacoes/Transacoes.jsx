@@ -210,73 +210,73 @@ const Transacoes = () => {
                         </div>
                     </form>
 
-                    <table className="tabela_transacoes">
-                        <thead>
-                            <tr>
-                                <th>Descrição</th>
-                                <th>Categoria</th>
-                                <th>Data</th>
-                                <th>Tipo</th>
-                                <th>Valor</th>
-                                {/* Coluna de ações */}
-                                <th></th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            {transacoes.length > 0 ? (
-                                transacoes.map((transacao, index) => {
-                                    const isLastRows = index >= transacoes.length - 2;
-
-                                    return (
-                                        <tr key={transacao.id_transacao}>
-                                            <td>{transacao.descricao}</td>
-                                            <td>{formatarCategoria(transacao.categoria)}</td>
-                                            <td>{new Date(transacao.data).toLocaleDateString('pt-BR')}</td>
-                                            <td>
-                                                <span
-                                                    style={{
-                                                        color: transacao.tipo === 'ENTRADA' ? '#2E7D32' : '#A44A48'
-                                                    }}
-                                                >
-                                                    {transacao.tipo === 'ENTRADA' ? 'Entrada' : 'Saída'}
-                                                </span>
-                                            </td>
-                                            <td>
-                                                {transacao.valor.toLocaleString('pt-BR', {
-                                                    style: 'currency',
-                                                    currency: 'BRL',
-                                                })}
-                                            </td>
-                                            <td style={{ position: 'relative' }}>
-                                                <div
-                                                    ref={transacaoSelecionada === transacao.id_transacao ? menuRef : null}
-                                                    style={{ display: 'inline-block' }}
-                                                >
-                                                    <button
-                                                        className="menu_transacao_btn"
-                                                        onClick={() => setTransacaoSelecionada(transacao.id_transacao)}
-                                                    >
-                                                        <img src={IconeMenuVertical} alt="Icone de três pontos" />
-                                                    </button>
-                                                    {transacaoSelecionada === transacao.id_transacao && (
-                                                        <div className={`menu_transacao_dropdown ${isLastRows ? 'open-up' : ''}`}>
-                                                            <button onClick={() => handleEditar(transacao.id_transacao)}>Editar</button>
-                                                            <button onClick={() => handleDeletar(transacao.id_transacao)}>Deletar</button>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    );
-                                })
-                            ) : (
+                    <div className="tabela_scroll_wrapper">
+                        <table className="tabela_transacoes">
+                            <thead>
                                 <tr>
-                                    <td colSpan="6">Nenhuma transação encontrada.</td>
+                                    <th>Descrição</th>
+                                    <th>Categoria</th>
+                                    <th>Data</th>
+                                    <th>Tipo</th>
+                                    <th>Valor</th>
+                                    {/* Coluna de ações */}
+                                    <th></th>
                                 </tr>
-                            )}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {transacoes.length > 0 ? (
+                                    transacoes.map((transacao, index) => {
+                                        const isLastRows = index >= transacoes.length - 2;
+                                        return (
+                                            <tr key={transacao.id_transacao}>
+                                                <td>{transacao.descricao}</td>
+                                                <td>{formatarCategoria(transacao.categoria)}</td>
+                                                <td>{new Date(transacao.data).toLocaleDateString('pt-BR')}</td>
+                                                <td>
+                                                    <span
+                                                        style={{
+                                                            color: transacao.tipo === 'ENTRADA' ? '#2E7D32' : '#A44A48'
+                                                        }}
+                                                    >
+                                                        {transacao.tipo === 'ENTRADA' ? 'Entrada' : 'Saída'}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {transacao.valor.toLocaleString('pt-BR', {
+                                                        style: 'currency',
+                                                        currency: 'BRL',
+                                                    })}
+                                                </td>
+                                                <td style={{ position: 'relative' }}>
+                                                    <div
+                                                        ref={transacaoSelecionada === transacao.id_transacao ? menuRef : null}
+                                                        style={{ display: 'inline-block' }}
+                                                    >
+                                                        <button
+                                                            className="menu_transacao_btn"
+                                                            onClick={() => setTransacaoSelecionada(transacao.id_transacao)}
+                                                        >
+                                                            <img src={IconeMenuVertical} alt="Icone de três pontos" />
+                                                        </button>
+                                                        {transacaoSelecionada === transacao.id_transacao && (
+                                                            <div className={`menu_transacao_dropdown ${isLastRows ? 'open-up' : ''}`}>
+                                                                <button onClick={() => handleEditar(transacao.id_transacao)}>Editar</button>
+                                                                <button onClick={() => handleDeletar(transacao.id_transacao)}>Deletar</button>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })
+                                ) : (
+                                    <tr>
+                                        <td colSpan="6">Nenhuma transação encontrada.</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
 
                 </div>
 
