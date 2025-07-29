@@ -619,6 +619,12 @@
   }
 }
 
+@media (max-width: 760px) {
+  .dashboard_main > div > p {
+  font-size: 15px;
+}
+}
+
 @media (max-width: 720px) {
   .dashboard_grafico {
     width: 650px;
