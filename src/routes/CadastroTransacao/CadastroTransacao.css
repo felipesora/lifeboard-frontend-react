@@ -174,10 +174,21 @@
   .container_mensagem_cadastro_transacoes {
     font-size: 15px;
   }
+
+  .cadastro_transacoes_form > .botoes_form > button {
+    width: 200px;
+    font-size: 15px;
+  }
 }
 
 @media (max-width: 460px) {
   .dashboard_main_cadastro_transacoes > p {
     font-size: 13px;
+  }
+
+  .cadastro_transacoes_form > .botoes_form > button {
+    width: 190px;
+    font-size: 15px;
+    padding: 9px 0;
   }
 }
