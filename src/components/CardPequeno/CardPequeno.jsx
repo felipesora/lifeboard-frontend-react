@@ -1,15 +1,32 @@
 import "./CardPequeno.css"
 import IconeMenuVertical from "../../assets/images/icone-menu-vertical.png"
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 
 const CardPequeno = (props) => {
     const [menuAberto, setMenuAberto] = useState(false);
+    const menuRef = useRef(null);
 
     const toggleMenu = () => {
         setMenuAberto(!menuAberto);
     }
+
+    useEffect(() => {
+            function handleClickOutside(event) {
+                if (menuRef.current && !menuRef.current.contains(event.target)) {
+                    setMenuAberto(false);
+                }
+            }
+    
+            if (menuAberto) {
+                document.addEventListener("mousedown", handleClickOutside);
+            }
+    
+            return () => {
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+    }, [menuAberto]);
 
     const handleDefinirSalario = () => {
         setMenuAberto(false);
@@ -26,7 +43,7 @@ const CardPequeno = (props) => {
                     <p>{props.titulo}</p>
                 </div>
                 {props.mostrarMenu && (
-                    <div className="card_pequeno_menu_container">
+                    <div className="card_pequeno_menu_container" ref={menuRef}>
                         <button
                             className="card_pequeno_icone_menu_vertical"
                             onClick={toggleMenu}

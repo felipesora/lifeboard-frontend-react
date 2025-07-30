@@ -25,6 +25,9 @@
 .card_meta_cabecalho > div > h3 {
     font-size: 20px;
     color: #37474F;
+    max-width: 250px;      /* limite da largura da coluna */
+    white-space: normal;   /* permite quebra de linha */
+    word-wrap: break-word; /* quebra palavras grandes */
 }
 
 .botao_menu_vertical_card_meta {
