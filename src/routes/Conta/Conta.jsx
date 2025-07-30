@@ -3,10 +3,12 @@ import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 import './Conta.css';
 import { useEffect, useState } from 'react';
-import { obterMetas } from '../../hooks/obterMetas';
-import { deletarUsuario, editarDadosUsuario, obterDadosUsuario } from '../../services/usuarioService';
+import { atualizarFotoPefil, deletarUsuario, editarDadosUsuario, obterDadosUsuario, obterFotoPerfil, removerFotoPerfil } from '../../services/usuarioService';
 import ModalDeletarConta from '../../components/ModalDeletarConta/ModalDeletarConta';
 import Cabecalho from '../../components/Cabecalho/Cabecalho';
+import FotoPefilPadrao from "../../assets/images/foto-perfil-padrao.png";
+import IconeEditarFoto from "../../assets/images/icone-editar-foto-perfil.png";
+import IconeRemoverFoto from "../../assets/images/icone-remover-foto-perfil.png";
 
 const Conta = () => {
     useAuthRedirect();
@@ -14,6 +16,7 @@ const Conta = () => {
 
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
+    const [fotoPerfil, setFotoPerfil] = useState(null);
     const [nomeEditar, setNomeEditar] = useState('');
     const [emailEditar, setEmailEditar] = useState('');
     const [senhaEditar, setSenhaEditar] = useState('');
@@ -43,6 +46,55 @@ const Conta = () => {
 
         fetchDadosUsuario();
     }, []);
+
+    useEffect(() => {
+        const fetchFotoPerfil = async () => {
+            try {
+                const blob = await  obterFotoPerfil();
+
+                if (blob instanceof Blob && blob.size > 0) {
+                    setFotoPerfil(URL.createObjectURL(blob));
+                } else {
+                    setFotoPerfil(FotoPefilPadrao);
+                }
+                console.log(fotoPerfil);
+
+            } catch (error) {
+                console.error("Erro ao carregar foto de perfil:", error);
+            }
+        };
+
+        fetchFotoPerfil();
+    }, []);
+
+    const handleAtualzarFoto = async (e) => {
+        const file = e.target.files[0];
+
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+            await atualizarFotoPefil(formData);
+
+            const novaImagem = URL.createObjectURL(file);
+            setFotoPerfil(novaImagem);
+
+        } catch (error) {
+            console.error("Erro ao enviar imagem:", error);
+        }
+    };
+
+    const handleRemoverFoto = async () => {
+        try {
+            await removerFotoPerfil();
+            setFotoPerfil(FotoPefilPadrao);
+
+        } catch (error) {
+            console.error("Erro ao remover foto: ", error);
+        }
+    }
 
     const handleEditarConta = async (e) => {
         e.preventDefault();
@@ -119,6 +171,32 @@ const Conta = () => {
 
                     <div className='dados_conta'>
 
+                        <div className="foto_perfil_container">
+                            {fotoPerfil ? (
+                                <div className="foto_perfil_conteudo">
+                                    <img src={fotoPerfil} alt="Foto de perfil" className="foto_perfil" />
+
+                                    <label htmlFor="inputFotoPerfil" className="botao_editar_foto" title="Atualizar Foto de Perfil">
+                                        <img src={IconeEditarFoto} alt="Ícone de editar" />
+                                    </label>
+
+                                    <input
+                                        type="file"
+                                        id="inputFotoPerfil"
+                                        accept="image/*"
+                                        onChange={handleAtualzarFoto}
+                                        style={{ display: 'none' }}
+                                    />
+
+                                    <button onClick={handleRemoverFoto} className='botao_remover_foto' title="Remover Foto de Perfil">
+                                        <img src={IconeRemoverFoto} alt="ícone de remover foto" />
+                                    </button>
+                                </div>
+                            ) : (
+                                <p>Carregando imagem...</p>
+                            )}
+                        </div>
+
                         <div>
                             <p>Nome: <span>{nome}</span></p>
                         </div>
@@ -131,7 +209,7 @@ const Conta = () => {
                             <p>Senha: <span>********</span></p>
                         </div>
 
-                    </div>
+                    </div>  
 
                     <div className='container_editar_conta'>
                         <h2>Quer editar seus dados?</h2>

@@ -68,7 +68,7 @@ export async function editarDadosUsuario(idUsuario, novoUsuario) {
 }
 
 export async function deletarUsuario(id) {
-        const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
     const response = await fetch(`http://localhost:8080/api/usuarios/${id}`, {
         method: 'DELETE',
@@ -80,6 +80,65 @@ export async function deletarUsuario(id) {
 
     if (!response.ok) {
         throw new Error('Erro ao deletar conta.');
+    }
+
+    return;
+}
+
+export async function obterFotoPerfil() {
+    const token = localStorage.getItem('token');
+    const idUser = localStorage.getItem('userId');
+
+    const response = await fetch(`http://localhost:8080/api/usuarios/${idUser}/foto`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        }
+    });
+    const blob = await response.blob();
+
+    if (!response.ok) {
+        throw new Error('Erro ao obter foto de perfil.');
+    }
+
+    return blob;
+}
+
+export async function atualizarFotoPefil(formData) {
+    const token = localStorage.getItem('token');
+    const idUser = localStorage.getItem('userId');
+
+    const response = await fetch(`http://localhost:8080/api/usuarios/${idUser}/foto`, {
+        method: 'PUT',
+        body: formData,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        }
+    });
+    const blob = await response.blob();
+
+    if (!response.ok) {
+        throw new Error('Erro ao atualizar foto de perfil.');
+    }
+
+    return blob;
+}
+
+export async function removerFotoPerfil() {
+    const token = localStorage.getItem('token');
+    const idUser = localStorage.getItem('userId');
+
+    const response = await fetch(`http://localhost:8080/api/usuarios/${idUser}/foto`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Erro ao remover foto de perfil.');
     }
 
     return;
