@@ -7,10 +7,11 @@ import IconeMetaConcluida from "../../assets/images/icone-meta-concluida.png"
 import { useEffect, useState } from 'react';
 import CardMeta from '../../components/CardMeta/CardMeta';
 import { obterMetas } from '../../hooks/obterMetas';
-import { deletarMeta, editarDadosMeta, obterDadosMeta } from '../../services/metaService';
+import { adicionarSaldo, deletarMeta, editarDadosMeta, obterDadosMeta, retirarSaldo } from '../../services/metaService';
 import ModalMetaDeletar from '../../components/ModalMetaDeletar/ModalMetaDeletar';
 import ModalMetaAdicionar from '../../components/ModalMetaAdiconar/ModalMetaAdiconar';
 import Cabecalho from '../../components/Cabecalho/Cabecalho';
+import ModalMetaRetirar from '../../components/ModalMetaRetirar/ModalMetaRetirar';
 
 const Metas = () => {
     useAuthRedirect();
@@ -24,8 +25,10 @@ const Metas = () => {
     const [idMetaParaDeletar, setIdMetaParaDeletar] = useState(null);
 
     const [modalAdicionar, setModalAdicionar] = useState(false);
+    const [modalRetirar, setModalRetirar] = useState(false);
     const [idMetaParaAdicionar, setIdMetaParaAdicionar] = useState(null);
     const [valorAdicionar, setValorAdicionar] = useState('');
+    const [valorRetirar, setValorRetirar] = useState('');
 
     useEffect(() => {
         const fetchDadosUsuario = async () => {
@@ -59,6 +62,11 @@ const Metas = () => {
     const handleAdicionarSaldo = (id) => {
         setIdMetaParaAdicionar(id);
         setModalAdicionar(true);
+    };
+
+    const handleRetirarSaldo = (id) => {
+        setIdMetaParaAdicionar(id);
+        setModalRetirar(true);
     };
 
     const aplicarFiltros = () => {
@@ -163,6 +171,7 @@ const Metas = () => {
                                             dataLimite={formatarDataISOParaBR(meta.data_limite)}
                                             onDeletar={handleDeletar}
                                             onAdicionarSaldo={handleAdicionarSaldo}
+                                            onRetirarSaldo={handleRetirarSaldo}
                                         />
 
                                     )
@@ -204,15 +213,9 @@ const Metas = () => {
                     setValorAdicionar={setValorAdicionar}
                     onAdicionar={async () => {
                         try {
-                            // Busca os dados atuais da meta
-                            const meta = await obterDadosMeta(idMetaParaAdicionar);
-                            const novoValorAtual = Number(meta.valor_atual) + Number(valorAdicionar);
 
-                            // Atualiza apenas o valor_atual
-                            await editarDadosMeta(idMetaParaAdicionar, {
-                                ...meta,
-                                valor_atual: novoValorAtual
-                            });
+                            // Adiciona valor ao saldo
+                            await adicionarSaldo(idMetaParaAdicionar, valorAdicionar);
 
                             // Atualiza lista
                             const metasAtualizadas = await obterMetas();
@@ -225,6 +228,35 @@ const Metas = () => {
 
                         } catch (erro) {
                             console.error("Erro ao adicionar saldo na meta:", erro);
+                        }
+                    }}
+                />
+
+                <ModalMetaRetirar
+                    aberto={modalRetirar}
+                    onClose={() => {
+                        setModalRetirar(false);
+                        setValorAdicionar('');
+                    }}
+                    valorRetirar={valorRetirar}
+                    setValorRetirar={setValorRetirar}
+                    onRetirar={async () => {
+                        try {
+
+                            // Adiciona valor ao saldo
+                            await retirarSaldo(idMetaParaAdicionar, valorRetirar);
+
+                            // Atualiza lista
+                            const metasAtualizadas = await obterMetas();
+                            setMetas(metasAtualizadas);
+
+                            // Limpa tudo
+                            setModalRetirar(false);
+                            setIdMetaParaAdicionar(null);
+                            setValorRetirar('');
+
+                        } catch (erro) {
+                            console.error("Erro ao retirar saldo na meta:", erro);
                         }
                     }}
                 />

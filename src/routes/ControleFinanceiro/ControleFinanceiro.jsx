@@ -216,9 +216,32 @@ const ControleFinanceiro = () => {
                             </div>
                             {transacoes.length > 0 ? (
                                 transacoes.map((transacao) => {
-                                    const isSaida = transacao.tipo === "SAIDA";
-                                    const corFundo = isSaida ? "#FFEBEE" : "#E8F5E9";
-                                    const corTexto = isSaida ? "#A44A48" : "#2E7D32";
+                                    const tipo = transacao.tipo;
+                                    let corFundo, corTexto, titulo;
+
+                                    switch (tipo) {
+                                        case "SAIDA":
+                                            corFundo = "#FFEBEE";
+                                            corTexto = "#A44A48";
+                                            titulo = "Saída";
+                                            break;
+                                        case "ENTRADA":
+                                            corFundo = "#E8F5E9";
+                                            corTexto = "#2E7D32";
+                                            titulo = "Entrada";
+                                            break;
+                                        case "APLICACAO":
+                                            corFundo = "#E3F2FD";
+                                            corTexto = "#1565C0";
+                                            titulo = "Aplicação";
+                                            break;
+                                        case "RESGATE":
+                                            corFundo = "#FFF8E1";
+                                            corTexto = "#EF6C00";
+                                            titulo = "Resgate";
+                                            break;
+                                    }
+
                                     const valorFormatado = transacao.valor.toLocaleString('pt-BR', {
                                         style: 'currency',
                                         currency: 'BRL'
@@ -231,7 +254,7 @@ const ControleFinanceiro = () => {
                                             key={transacao.id_transacao}
                                             corFundo={corFundo}
                                             corTexto={corTexto}
-                                            titulo={transacao.tipo === "SAIDA" ? "Saída" : "Entrada"}
+                                            titulo={titulo}
                                             valor={valorFormatado}
                                             descricao={transacao.descricao}
                                             data={data}

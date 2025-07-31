@@ -1,15 +1,13 @@
-import './ModalMetaAdiconar.css';
 import IconeFechar from '../../assets/images/icone-fechar.png';
 import { useState } from 'react';
 
 
-const ModalMetaAdicionar = ({ aberto, onClose, onAdicionar, valorAdicionar, setValorAdicionar }) => {
+const ModalMetaRetirar = ({ aberto, onClose, onRetirar, valorRetirar, setValorRetirar }) => {
 
     const [erro, setErro] = useState('');
 
     const handleAdicionar = () => {
-        const valor = parseFloat(valorAdicionar);
-        console.log('valorAdicionar:', valorAdicionar);
+        const valor = parseFloat(valorRetirar);
 
         if (isNaN(valor) || valor <= 0) {
             setErro('O valor deve ser um número positivo.');
@@ -17,7 +15,7 @@ const ModalMetaAdicionar = ({ aberto, onClose, onAdicionar, valorAdicionar, setV
         }
 
         setErro('');
-        onAdicionar();
+        onRetirar();
         onClose();
     };
 
@@ -27,7 +25,7 @@ const ModalMetaAdicionar = ({ aberto, onClose, onAdicionar, valorAdicionar, setV
         <div className="modal_overlay_meta">
             <div className="modal_conteudo_meta">
                 <div className='modal_conteudo_meta_cabecalho'>
-                    <h2>Adicionar Saldo</h2>
+                    <h2>Retirar Saldo</h2>
                     <button onClick={onClose}>
                         <img src={IconeFechar} alt="Icone de x" />
                     </button>
@@ -37,21 +35,21 @@ const ModalMetaAdicionar = ({ aberto, onClose, onAdicionar, valorAdicionar, setV
 
                 <div className='modal_conteudo_meta_conteudo'>
 
-                    <p>Digite o valor que deseja adicionar à meta.</p>
+                    <p>Digite o valor que deseja retirar da meta.</p>
                     <input
                         type="number"
                         step="any"
                         name="valor"
                         placeholder="Digite o valor"
-                        value={valorAdicionar}
-                        onChange={(e) => setValorAdicionar(e.target.value)}
+                        value={valorRetirar}
+                        onChange={(e) => setValorRetirar(e.target.value)}
                     />
 
                     {erro && <p className="erro_meta">{erro}</p>}
 
                     <div className="modal_meta_botoes">
                         <button className='modal_meta_botao_cancelar' type="button" onClick={onClose}>Cancelar</button>
-                        <button className='modal_meta_botao_adicionar' type="button" onClick={handleAdicionar}>Adicionar Valor</button>
+                        <button className='modal_meta_botao_adicionar' type="button" onClick={handleAdicionar}>Retirar Valor</button>
                     </div>
 
                 </div>
@@ -61,4 +59,4 @@ const ModalMetaAdicionar = ({ aberto, onClose, onAdicionar, valorAdicionar, setV
     );
 }
 
-export default ModalMetaAdicionar;
+export default ModalMetaRetirar;

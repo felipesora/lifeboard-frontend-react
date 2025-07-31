@@ -14,7 +14,6 @@ const EditarMeta = () => {
     const [nomeMeta, setNomeMeta] = useState('');
     const [dataLimiteMeta, setDataLimiteMeta] = useState('');
     const [valorMeta, setValorMeta] = useState('');
-    const [valorAtual, setValorAtual] = useState('');
     const [statusMeta, setStatusMeta] = useState('');
     const [idFinanceiro, setIdFinanceiro] = useState('');
     const [error, setError] = useState("");
@@ -27,7 +26,6 @@ const EditarMeta = () => {
                 setNomeMeta(dados.nome);
                 setDataLimiteMeta(dados.data_limite);
                 setValorMeta(dados.valor_meta);
-                setValorAtual(dados.valor_atual);
                 setStatusMeta(dados.status)
                 setIdFinanceiro(dados.id_financeiro);
             } catch (erro) {
@@ -40,22 +38,16 @@ const EditarMeta = () => {
     }, [id]);
 
     const handleEditarMeta = async () => {
-        if (!nomeMeta.trim() || !dataLimiteMeta || !valorMeta || valorAtual === '') {
+        if (!nomeMeta.trim() || !dataLimiteMeta || !valorMeta) {
             setError("Preencha todos os campos.");
             setSuccess("");
             return;
         }
 
         const valorMetaConvertido = parseFloat(valorMeta);
-        const valorAtualConvertido = parseFloat(valorAtual);
 
         if (isNaN(valorMetaConvertido) || valorMetaConvertido <= 0) {
             setError('O valor da meta deve ser um número positivo.');
-            return;
-        }
-
-        if (isNaN(valorAtualConvertido) || valorAtualConvertido <= 0) {
-            setError('O valor atual deve ser um número positivo.');
             return;
         }
 
@@ -75,7 +67,6 @@ const EditarMeta = () => {
             await editarDadosMeta(id, {
                 nome: nomeMeta,
                 valor_meta: valorMeta,
-                valor_atual: valorAtual,
                 data_limite: dataLimiteMeta,
                 status: statusMeta,
                 id_financeiro: idFinanceiro
@@ -141,20 +132,6 @@ const EditarMeta = () => {
                                     required
                                     value={valorMeta}
                                     onChange={(e) => setValorMeta(e.target.value)}
-                                />
-                            </div>
-
-                            <div className='input_valor_atual_meta'>
-                                <label htmlFor="valorAtual">Valor Atual</label>
-                                <input
-                                    id="valorAtual"
-                                    type="number"
-                                    step="any"
-                                    name="valorAtual"
-                                    placeholder='Ex: 1.000,00'
-                                    required
-                                    value={valorAtual}
-                                    onChange={(e) => setValorAtual(e.target.value)}
                                 />
                             </div>
 

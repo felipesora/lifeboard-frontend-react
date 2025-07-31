@@ -78,6 +78,10 @@ const Transacoes = () => {
                 return 'Moradia';
             case 'OUTROS':
                 return 'Outros';
+            case 'SALARIO':
+                return 'Salário';
+            case 'INVESTIMENTO':
+                return 'Investimento';
             default:
                 return categoria;
         }
@@ -155,6 +159,8 @@ const Transacoes = () => {
                                     <option value="" disabled>Selecione um tipo</option>
                                     <option value="ENTRADA">Entrada</option>
                                     <option value="SAIDA">Saída</option>
+                                    <option value="APLICACAO">Aplicação</option>
+                                    <option value="RESGATE">Resgate</option>
                                 </select>
                             </div>
 
@@ -195,6 +201,7 @@ const Transacoes = () => {
                                     <option value="LAZER">Lazer</option>
                                     <option value="SALARIO">Salário</option>
                                     <option value="SAUDE">Saúde</option>
+                                    <option value="INVESTIMENTO">Investimento</option>
                                     <option value="OUTROS">Outros</option>
                                 </select>
                             </div>
@@ -235,10 +242,19 @@ const Transacoes = () => {
                                                 <td>
                                                     <span
                                                         style={{
-                                                            color: transacao.tipo === 'ENTRADA' ? '#2E7D32' : '#A44A48'
+                                                            color: 
+                                                                transacao.tipo === 'ENTRADA' ? '#2E7D32' : 
+                                                                transacao.tipo === 'SAIDA' ? '#A44A48' : 
+                                                                transacao.tipo === 'APLICACAO' ? '#1565C0' :
+                                                                transacao.tipo === 'RESGATE' ? '#EF6C00' :
+                                                                'black'
                                                         }}
                                                     >
-                                                        {transacao.tipo === 'ENTRADA' ? 'Entrada' : 'Saída'}
+                                                        {transacao.tipo === 'ENTRADA' ? 'Entrada' :
+                                                        transacao.tipo === 'SAIDA' ? 'Saída' :
+                                                        transacao.tipo === 'APLICACAO' ? 'Aplicação' :
+                                                        transacao.tipo === 'RESGATE' ? 'Resgate' :
+                                                        transacao.tipo}
                                                     </span>
                                                 </td>
                                                 <td>
