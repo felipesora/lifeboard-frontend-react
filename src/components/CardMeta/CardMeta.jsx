@@ -59,6 +59,13 @@ const CardMeta = (props) => {
                                 Adicionar Saldo
                             </button>
 
+                            <button onClick={() => {
+                                props.onRetirarSaldo(props.idMeta);
+                                setMenuAberto(false);
+                            }}>
+                                Retirar Saldo
+                            </button>
+
                             <button onClick={handleEditar}>Editar</button>
 
                             <button onClick={() => {
