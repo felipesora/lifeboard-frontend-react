@@ -3,7 +3,7 @@ import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 import './MinhasTarefas.css';
 import { useEffect, useState, useRef } from 'react';
-import { obterTarefas } from '../../hooks/obterTarefas';
+import { obterTarefas } from '../../utils/obterTarefas';
 import IconeMenuVertical from "../../assets/images/icone-menu-vertical.png";
 import ModalTarefaDeletar from '../../components/ModalTarefaDeletar/ModalTarefaDeletar';
 import { deletarTarefa } from "../../services/tarefasService";

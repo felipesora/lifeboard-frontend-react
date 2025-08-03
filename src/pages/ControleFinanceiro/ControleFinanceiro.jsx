@@ -13,9 +13,9 @@ import { useEffect, useState } from "react";
 import { obterDadosUsuario, editarFinanceiroUsuario } from "../../services/usuarioService";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import ModalDefinirSalario from "../../components/ModalDefinirSalario/ModalDefinirSalario";
-import { obterTransacoes } from "../../hooks/obterTransacoes";
+import { obterTransacoes } from "../../utils/obterTransacoes";
 import { useNavigate } from "react-router-dom";
-import { obterMetas } from "../../hooks/obterMetas";
+import { obterMetas } from "../../utils/obterMetas";
 import CardMetaControleFinanceiro from "../../components/CardMetaControleFinanceiro/CardMetaControleFinanceiro";
 import IconeMetaAndamento from "../../assets/images/icone-meta-andamento.png"
 import IconeMetaConcluida from "../../assets/images/icone-meta-concluida.png"

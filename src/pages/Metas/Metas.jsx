@@ -6,8 +6,8 @@ import IconeMetaAndamento from "../../assets/images/icone-meta-andamento.png"
 import IconeMetaConcluida from "../../assets/images/icone-meta-concluida.png"
 import { useEffect, useState } from 'react';
 import CardMeta from '../../components/CardMeta/CardMeta';
-import { obterMetas } from '../../hooks/obterMetas';
-import { adicionarSaldo, deletarMeta, editarDadosMeta, obterDadosMeta, retirarSaldo } from '../../services/metaService';
+import { obterMetas } from '../../utils/obterMetas';
+import { adicionarSaldo, deletarMeta, retirarSaldo } from '../../services/metaService';
 import ModalMetaDeletar from '../../components/ModalMetaDeletar/ModalMetaDeletar';
 import ModalMetaAdicionar from '../../components/ModalMetaAdiconar/ModalMetaAdiconar';
 import Cabecalho from '../../components/Cabecalho/Cabecalho';

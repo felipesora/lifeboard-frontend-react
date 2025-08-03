@@ -9,7 +9,7 @@ import IconeConcluido from '../../assets/images/icone-tarefa-concluida.png';
 import IconeAdicionar from '../../assets/images/icone-tarefa-adicionar.png';
 import CardTarefaColuna from '../../components/CardTarefaColuna/CardTarefaColuna';
 import { useEffect, useState } from 'react';
-import { obterTarefas } from '../../hooks/obterTarefas';
+import { obterTarefas } from '../../utils/obterTarefas';
 import { editarDadosTarefa } from "../../services/tarefasService";
 import ModalTarefaDeletar from '../../components/ModalTarefaDeletar/ModalTarefaDeletar';
 import { deletarTarefa } from "../../services/tarefasService";

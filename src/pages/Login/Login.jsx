@@ -1,4 +1,4 @@
-import "./Login.css";
+import './Login.css'
 import Logo from "../../assets/images/logo-lifeboard-azul.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
