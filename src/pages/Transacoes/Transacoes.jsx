@@ -8,6 +8,7 @@ import IconeMenuVertical from "../../assets/images/icone-menu-vertical.png"
 import ModalDeletarTransacao from '../../components/ModalDeletarTransacao/ModalDeletarTransacao';
 import { deletarTransacao } from '../../services/transacaoService';
 import Cabecalho from '../../components/Cabecalho/Cabecalho';
+import { exportarParaExcel } from '../../utils/exportarParaExcel';
 
 const Transacoes = () => {
     useAuthRedirect();
@@ -132,6 +133,26 @@ const Transacoes = () => {
 
     const abrirModal = () => {
         setModalSalarioAberto(true);
+    };
+
+    const exportarTransacoes = () => {
+        const dados = transacoes.map((t) => ({
+            Descrição: t.descricao,
+            Categoria: formatarCategoria(t.categoria),
+            Data: new Date(t.data).toLocaleDateString('pt-BR'),
+            Tipo:
+                t.tipo === 'ENTRADA' ? 'Entrada' :
+                t.tipo === 'SAIDA' ? 'Saída' :
+                t.tipo === 'APLICACAO' ? 'Aplicação' :
+                t.tipo === 'RESGATE' ? 'Resgate' :
+                t.tipo,
+            Valor: t.valor.toLocaleString('pt-BR', {
+                style: 'currency',  
+                currency: 'BRL',
+            }),
+        }));
+
+        exportarParaExcel(dados, 'transacoes', 'Transações');
     };
 
     return (
@@ -292,6 +313,12 @@ const Transacoes = () => {
                                 )}
                             </tbody>
                         </table>
+                    </div>
+
+                    <div className='btn_excel'>
+                        <button type='button' onClick={exportarTransacoes}>
+                            Exportar para Excel
+                        </button>
                     </div>
 
                 </div>

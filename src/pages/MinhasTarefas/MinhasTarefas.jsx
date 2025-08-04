@@ -8,6 +8,7 @@ import IconeMenuVertical from "../../assets/images/icone-menu-vertical.png";
 import ModalTarefaDeletar from '../../components/ModalTarefaDeletar/ModalTarefaDeletar';
 import { deletarTarefa } from "../../services/tarefasService";
 import Cabecalho from '../../components/Cabecalho/Cabecalho';
+import { exportarParaExcel } from '../../utils/exportarParaExcel';
 
 const MinhasTarefas = () => {
     useAuthRedirect();
@@ -162,6 +163,18 @@ const MinhasTarefas = () => {
         setTarefaSelecionada(null);
     };
 
+    const exportarTarefas = () => {
+        const dados = tarefas.map((t) => ({
+            Título: t.titulo,
+            Descrição: t.descricao,
+            Prioridade: formatarPrioridade(t.prioridade),
+            Status: formatarStatus(t.status),
+            DataLimite: formatarDataISOParaBR(t.data_limite),
+        }));
+
+        exportarParaExcel(dados, 'tarefas', 'Tarefas');
+    };
+
     return (
         <div className="dashboard_container">
             <Cabecalho />
@@ -289,6 +302,12 @@ const MinhasTarefas = () => {
                             )}
                         </tbody>
                     </table>
+
+                    <div className='btn_excel'>
+                        <button type='button' onClick={exportarTarefas}>
+                            Exportar para Excel
+                        </button>
+                    </div>
 
                 </div>
 
