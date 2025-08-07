@@ -15,7 +15,6 @@ import ModalTarefaDeletar from '../../components/ModalTarefaDeletar/ModalTarefaD
 import { deletarTarefa } from "../../services/tarefasService";
 import Cabecalho from '../../components/Cabecalho/Cabecalho';
 
-
 const Kanban = () => {
     useAuthRedirect();
     const navigate = useNavigate();

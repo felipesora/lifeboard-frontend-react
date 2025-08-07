@@ -89,3 +89,86 @@
 .coluna_tarefa_conteudo::-webkit-scrollbar-thumb:hover {
   background: #677379;        /* Cor ao passar o mouse */
 }
+
+@media (max-width: 1470px) {
+  .dashboard_main_tarefas_kanban {
+    padding: 40px 30px;
+  }
+
+}
+
+@media (max-width: 1450px) {
+  .cards_tarefas_kanban {
+    gap: 20px;
+  }
+
+  .colunas_tarefas_kanban {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1420px) {
+  .cards_tarefas_kanban {
+    gap: 15px;
+  }
+
+  .colunas_tarefas_kanban {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 1410px) {
+  .cards_tarefas_kanban {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .colunas_tarefas_kanban {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 940px) {
+  .dashboard_main_tarefas_kanban {
+    padding: 40px 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard_main_tarefas_kanban {
+    padding: 40px 10px;
+  }
+}
+
+@media (max-width: 760px) {
+  .dashboard_main_tarefas_kanban > p {
+    font-size: 15px;
+  }
+
+  .cards_tarefas_kanban {
+    gap: 20px;
+  }
+
+  .colunas_tarefas_kanban {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 745px) {
+  .colunas_tarefas_kanban {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard_main_tarefas_kanban{
+    padding: 40px 0;
+  }
+
+  .dashboard_main_tarefas_kanban > p {
+    margin-left: 10px;
+  }
+}
