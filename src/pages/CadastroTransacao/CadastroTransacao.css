@@ -100,6 +100,12 @@
   margin-top: 20px;
 }
 
+/*
+
+RESPONSIVIDADE
+
+*/
+
 @media (max-width: 1810px) {
   .dashboard_main_cadastro_transacoes {
     padding: 40px 30px;

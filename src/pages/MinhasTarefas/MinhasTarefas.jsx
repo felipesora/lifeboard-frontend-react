@@ -241,67 +241,67 @@ const MinhasTarefas = () => {
                         </div>
                     </form>
 
-                    <table className="tabela_minhas_tarefas">
-                        <thead>
-                            <tr>
-                                <th>Título</th>
-                                <th>Descrição</th>
-                                <th>Prioridade</th>
-                                <th>Status</th>
-                                <th>Data Limite</th>
-                                {/* Coluna de ações */}
-                                <th></th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            {tarefas.length > 0 ? (
-                                tarefas.map((tarefa, index) => {
-                                    const isLastRows = index >= tarefas.length - 2;
-
-                                    return (
-                                        <tr key={tarefa.id_tarefa}>
-                                            <td>{tarefa.titulo}</td>
-                                            <td>{tarefa.descricao}</td>
-                                            <td style={{
-                                                color:
-                                                    tarefa.prioridade === 'ALTA' ? '#C62828' :
-                                                        tarefa.prioridade === 'MEDIA' ? '#F9A825' :
-                                                            tarefa.prioridade === 'BAIXA' ? '#2E7D32' : 'inherit'
-                                            }}>
-                                                {formatarPrioridade(tarefa.prioridade)}
-                                            </td>
-                                            <td>{formatarStatus(tarefa.status)}</td>
-                                            <td>{formatarDataISOParaBR(tarefa.data_limite)}</td>
-                                            <td style={{ position: 'relative' }}>
-                                                <div
-                                                    ref={tarefaSelecionada === tarefa.id_tarefa ? menuRef : null}
-                                                    style={{ display: 'inline-block' }}
-                                                >
-                                                    <button
-                                                        className="menu_minhas_tarefas_btn"
-                                                        onClick={() => setTarefaSelecionada(tarefa.id_tarefa)}
-                                                    >
-                                                        <img src={IconeMenuVertical} alt="Icone de três pontos" />
-                                                    </button>
-                                                    {tarefaSelecionada === tarefa.id_tarefa && (
-                                                        <div className={`menu_minhas_tarefas_dropdown ${isLastRows ? 'open-up' : ''}`}>
-                                                            <button onClick={() => handleEditar(tarefa.id_tarefa)}>Editar</button>
-                                                            <button onClick={() => handleDeletar(tarefa.id_tarefa)}>Deletar</button>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    );
-                                })
-                            ) : (
+                    <div className="tabela_scroll_wrapper">
+                        <table className="tabela_minhas_tarefas">
+                            <thead>
                                 <tr>
-                                    <td colSpan="6">Nenhuma tarefa encontrada.</td>
+                                    <th>Título</th>
+                                    <th>Descrição</th>
+                                    <th>Prioridade</th>
+                                    <th>Status</th>
+                                    <th>Data Limite</th>
+                                    {/* Coluna de ações */}
+                                    <th></th>
                                 </tr>
-                            )}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {tarefas.length > 0 ? (
+                                    tarefas.map((tarefa, index) => {
+                                        const isLastRows = index >= tarefas.length - 2;
+                                        return (
+                                            <tr key={tarefa.id_tarefa}>
+                                                <td>{tarefa.titulo}</td>
+                                                <td>{tarefa.descricao}</td>
+                                                <td style={{
+                                                    color:
+                                                        tarefa.prioridade === 'ALTA' ? '#C62828' :
+                                                            tarefa.prioridade === 'MEDIA' ? '#F9A825' :
+                                                                tarefa.prioridade === 'BAIXA' ? '#2E7D32' : 'inherit'
+                                                }}>
+                                                    {formatarPrioridade(tarefa.prioridade)}
+                                                </td>
+                                                <td>{formatarStatus(tarefa.status)}</td>
+                                                <td>{formatarDataISOParaBR(tarefa.data_limite)}</td>
+                                                <td style={{ position: 'relative' }}>
+                                                    <div
+                                                        ref={tarefaSelecionada === tarefa.id_tarefa ? menuRef : null}
+                                                        style={{ display: 'inline-block' }}
+                                                    >
+                                                        <button
+                                                            className="menu_minhas_tarefas_btn"
+                                                            onClick={() => setTarefaSelecionada(tarefa.id_tarefa)}
+                                                        >
+                                                            <img src={IconeMenuVertical} alt="Icone de três pontos" />
+                                                        </button>
+                                                        {tarefaSelecionada === tarefa.id_tarefa && (
+                                                            <div className={`menu_minhas_tarefas_dropdown ${isLastRows ? 'open-up' : ''}`}>
+                                                                <button onClick={() => handleEditar(tarefa.id_tarefa)}>Editar</button>
+                                                                <button onClick={() => handleDeletar(tarefa.id_tarefa)}>Deletar</button>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })
+                                ) : (
+                                    <tr>
+                                        <td colSpan="6">Nenhuma tarefa encontrada.</td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
 
                     <div className='btn_excel'>
                         <button type='button' onClick={exportarTarefas}>
