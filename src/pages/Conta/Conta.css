@@ -13,7 +13,7 @@
   color: #000000;
 }
 
-.conta_container {
+.dashboard_main_conta > .conta_container {
   background-color: white;
   width: 100%;
   max-width: 1485px;
@@ -103,7 +103,7 @@
 }
 
 .botao_excluir_conta {
-  margin-top: 55px;
+  margin-top: 50px;
 }
 
 .botao_excluir_conta > button{
@@ -118,7 +118,6 @@
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  margin: 15px 0 0 0;
 }
 
 .botao_excluir_conta > button:hover{
@@ -159,4 +158,100 @@
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #ccc;
+}
+
+/*
+
+RESPONSIVIDADE
+
+*/
+
+@media (max-width: 1810px) {
+  .dashboard_main_conta {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 940px) {
+  .dashboard_main_conta {
+    padding: 40px 20px;
+  }
+
+  .dashboard_main_conta > .conta_container {
+    padding: 65px 25px 100px 25px;
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard_main_conta {
+    padding: 40px 10px;
+  }
+}
+
+@media (max-width: 870px) {
+  .dashboard_main_conta > .conta_container {
+    padding: 65px 40px 100px 15px;
+  }
+
+  .container_editar_conta {
+    width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .dashboard_main_conta > p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 675px) {
+  .dashboard_main_conta > .conta_container {
+    padding: 65px 15px 100px 15px;
+  }
+}
+
+@media (max-width: 630px) {
+  .inputs_editar_conta > input {
+    width: 90%;
+  }
+}
+ 
+@media (max-width: 600px) {
+  .dashboard_main_conta{
+    padding: 40px 0;
+  }
+
+  .dashboard_main_conta > p {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  .container_editar_conta {
+    padding: 20px 0 40px 10px;
+  }
+}
+
+@media (max-width: 500px) {
+  .botao_editar_conta > button {
+    font-size: 15px;
+    width: 190px;
+  }
+
+  .botao_excluir_conta > button{
+    font-size: 15px;
+    width: 190px;
+  }
+
+  .container_editar_conta > h2 {
+    font-size: 18px;
+  }
+
+  .inputs_editar_conta > label{
+    font-size: 15px;
+  }
+
+  .inputs_editar_conta > input {
+    font-size: 15px;
+  }
 }
