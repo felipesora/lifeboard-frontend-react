@@ -228,6 +228,7 @@ const Metas = () => {
 
                         } catch (erro) {
                             console.error("Erro ao adicionar saldo na meta:", erro);
+                            throw erro;
                         }
                     }}
                 />
@@ -257,6 +258,7 @@ const Metas = () => {
 
                         } catch (erro) {
                             console.error("Erro ao retirar saldo na meta:", erro);
+                            throw erro;
                         }
                     }}
                 />

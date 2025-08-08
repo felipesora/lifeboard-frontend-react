@@ -62,7 +62,11 @@ export async function adicionarSaldo(id, valor) {
     });
 
     if (!response.ok) {
-        throw new Error('Erro ao adicionar saldo à meta.');
+        const data = await response.json().catch(() => ({})); // evita erro se não vier JSON
+        throw {
+            status: response.status,
+            data
+        };
     }
 
     return;
@@ -83,7 +87,11 @@ export async function retirarSaldo(id, valor) {
     });
 
     if (!response.ok) {
-        throw new Error('Erro ao retirar saldo à meta.');
+        const data = await response.json().catch(() => ({}));
+        throw {
+            status: response.status,
+            data
+        };
     }
 
     return;

@@ -6,17 +6,28 @@ const ModalMetaRetirar = ({ aberto, onClose, onRetirar, valorRetirar, setValorRe
 
     const [erro, setErro] = useState('');
 
-    const handleAdicionar = () => {
+    const handleAdicionar = async () => {
         const valor = parseFloat(valorRetirar);
 
         if (isNaN(valor) || valor <= 0) {
-            setErro('O valor deve ser um número positivo.');
+            setErro('O valor a ser retirado deve ser maior que zero.');
             return;
         }
 
-        setErro('');
-        onRetirar();
-        onClose();
+        try {
+            setErro('');
+            await onRetirar();
+            onClose();
+
+        } catch (error) {
+            console.error('Erro completo:', error);
+
+            if (error.status === 400) {
+                setErro(error.data?.message || 'Erro ao retirar saldo.');
+            } else {
+                setErro('Erro inesperado. Tente novamente.');
+            }
+        }
     };
 
     if (!aberto) return null;

@@ -7,18 +7,30 @@ const ModalMetaAdicionar = ({ aberto, onClose, onAdicionar, valorAdicionar, setV
 
     const [erro, setErro] = useState('');
 
-    const handleAdicionar = () => {
+    const handleAdicionar = async () => {
         const valor = parseFloat(valorAdicionar);
         console.log('valorAdicionar:', valorAdicionar);
 
         if (isNaN(valor) || valor <= 0) {
-            setErro('O valor deve ser um número positivo.');
+            setErro('O valor a ser adicionado deve ser maior que zero.');
             return;
         }
 
-        setErro('');
-        onAdicionar();
-        onClose();
+        try {
+            setErro('');
+            await onAdicionar();  // <-- aqui aguarda a Promise resolver ou rejeitar
+            onClose();
+
+        } catch (error) {
+            console.error('Erro completo:', error);
+
+            if (error.status === 400) {
+                setErro(error.data?.message || 'Erro ao adicionar saldo.');
+            } else {
+                setErro('Erro inesperado. Tente novamente.');
+            }
+        }
+
     };
 
     if (!aberto) return null;
