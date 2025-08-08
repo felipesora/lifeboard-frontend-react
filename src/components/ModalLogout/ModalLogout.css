@@ -82,3 +82,93 @@ hr {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
+/*
+
+RESPONSIVIDADE
+
+*/
+
+@media (max-width: 1090px) {
+  .modal_conteudo_sair_conta {
+    width: 690px;
+  }
+}
+
+@media (max-width: 960px) {
+  .modal_conteudo_sair_conta {
+    width: 630px;
+  }
+}
+
+@media (max-width: 780px) {
+  .modal_conteudo_sair_conta {
+    width: 570px;
+  }
+
+  .modal_conteudo_sair_conta_cabecalho > h2 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 740px) {
+  .modal_conteudo_sair_conta {
+    width: 500px;
+  }
+}
+
+@media (max-width: 650px) {
+  .modal_conteudo_sair_conta {
+    width: 470px;
+  }
+}
+
+@media (max-width: 550px) {
+  .modal_conteudo_sair_conta {
+    width: 420px;
+  }
+
+  .modal_sair_conta_botao {
+    width: 160px;
+  }
+
+  .modal_sair_conta_texto{
+    max-width: 360px;
+  }
+}
+
+@media (max-width: 500px) {
+  .modal_conteudo_sair_conta {
+    width: 400px;
+  }
+
+  .modal_conteudo_sair_conta_conteudo{
+    padding: 10px 0px 40px 10px;
+  }
+
+  .modal_sair_conta_botao {
+    width: 180px;
+  }
+
+  .modal_sair_conta_botoes {
+    flex-direction: column-reverse;
+    gap: 0px;
+  }
+}
+
+@media (max-width: 470px) {
+  .modal_conteudo_sair_conta {
+    width: 380px;
+  }
+}
+
+@media (max-width: 420px) {
+  .modal_conteudo_sair_conta {
+    width: 340px;
+  }
+}
+
+@media (max-width: 390px) {
+  .modal_conteudo_sair_conta {
+    width: 320px;
+  }
+}

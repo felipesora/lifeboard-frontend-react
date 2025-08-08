@@ -103,6 +103,12 @@ hr {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
 }
 
+/*
+
+RESPONSIVIDADE
+
+*/
+
 @media (max-width: 1090px) {
   .modal_conteudo_deletar_transacao {
     width: 690px;
