@@ -1,8 +1,8 @@
-import './ModalTarefaDeletar.css';
+import './ModalDeletarTarefa.css';
 import IconeFechar from '../../assets/images/icone-fechar.png';
 
 
-const ModalTarefaDeletar = ({ aberto, onClose, onDelete }) => {
+const ModalDeletarTarefa = ({ aberto, onClose, onDelete }) => {
 
     if (!aberto) return null;
 
@@ -33,4 +33,4 @@ const ModalTarefaDeletar = ({ aberto, onClose, onDelete }) => {
     );
 }
 
-export default ModalTarefaDeletar;
+export default ModalDeletarTarefa;

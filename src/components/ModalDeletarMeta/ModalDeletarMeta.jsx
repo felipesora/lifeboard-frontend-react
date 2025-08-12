@@ -1,8 +1,8 @@
-import './ModalMetaDeletar.css';
+import './ModalDeletarMeta.css';
 import IconeFechar from '../../assets/images/icone-fechar.png';
 
 
-const ModalMetaDeletar = ({ aberto, onClose, onDelete }) => {
+const ModalDeletarMeta = ({ aberto, onClose, onDelete }) => {
 
     if (!aberto) return null;
 
@@ -33,4 +33,4 @@ const ModalMetaDeletar = ({ aberto, onClose, onDelete }) => {
     );
 }
 
-export default ModalMetaDeletar;
+export default ModalDeletarMeta;

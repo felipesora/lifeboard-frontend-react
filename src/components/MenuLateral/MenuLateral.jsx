@@ -22,12 +22,6 @@ const MenuLateral = () => {
         setAberto(!aberto);
     };
 
-    const handleLogout = async () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('userId');
-        navigate('/');
-    }
-
     return (
         <>
             {/* Botão hambúrguer (só aparece em telas pequenas) */}

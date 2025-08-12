@@ -51,7 +51,7 @@ const ControleFinanceiro = () => {
                     transacao.tipo === "SAIDA"
                 );
 
-                // Gastos do mês
+                // Gastos do mês atual
                 const totalSaidasMes = saidas
                     .filter(transacao => {
                         const dataTransacao = new Date(transacao.data);
@@ -79,19 +79,15 @@ const ControleFinanceiro = () => {
 
                 // Transações
                 const transacoes = await obterTransacoes();
-                console.log("Transações:", transacoes);
 
                 const ultimasTransacoes = transacoes
                     .sort((a, b) => new Date(b.data) - new Date(a.data))
                     .slice(0, 4);
 
-                console.log("Últimas 4 transações:", ultimasTransacoes);
-
                 setTransacoes(ultimasTransacoes);
 
                 // Metas
                 const metas = await obterMetas();
-                console.log("Metas: ", metas);
 
                 const melhoresMetas = metas
                     .sort((a, b) => {
@@ -106,8 +102,6 @@ const ControleFinanceiro = () => {
                         return 0;
                     })
                     .slice(0, 3);
-
-                console.log("Melhores 3 metas:", melhoresMetas);
 
                 setMetas(melhoresMetas);
 

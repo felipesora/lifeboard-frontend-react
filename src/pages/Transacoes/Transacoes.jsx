@@ -29,7 +29,6 @@ const Transacoes = () => {
         const fetchDadosUsuario = async () => {
             try {
 
-                // Transações
                 const transacoes = await obterTransacoes();
                 const transacoesOrdenadas = transacoes.sort((a, b) => {
                     const dataA = new Date(a.data);
@@ -91,18 +90,13 @@ const Transacoes = () => {
     const aplicarFiltros = () => {
         const dataFim = dataFimFiltro ? new Date(dataFimFiltro + "T23:59:59") : null;
 
-        console.log('Filtro dataFim:', dataFim);
-
         const filtrosAtivos = todasTransacoes.filter((transacao) => {
             const dataTransacao = new Date(transacao.data);
-            console.log('Data transacao:', dataTransacao);
 
             const tipoOk = tipoTransacaoFiltro ? transacao.tipo === tipoTransacaoFiltro : true;
             const categoriaOk = categoriaFiltro ? transacao.categoria === categoriaFiltro : true;
             const dataInicioOk = dataInicioFiltro ? dataTransacao >= new Date(dataInicioFiltro) : true;
             const dataFimOk = dataFim ? dataTransacao <= dataFim : true;
-
-            console.log('Data fim ok:', dataFimOk);
 
             return tipoOk && categoriaOk && dataInicioOk && dataFimOk;
         });
@@ -122,17 +116,13 @@ const Transacoes = () => {
     const handleEditar = (id) => {
         // Navegar para rota de edição, passando o ID
         navigate(`/editar-transacao/${id}`);
-        setTransacaoSelecionada(null); // Fecha o menu
-    };
-
-    const handleDeletar = async (id) => {
-        setIdTransacaoParaDeletar(id);   // define qual transação deletar
-        setModalDelete(true);            // abre o modal
         setTransacaoSelecionada(null);
     };
 
-    const abrirModal = () => {
-        setModalSalarioAberto(true);
+    const handleDeletar = async (id) => {
+        setIdTransacaoParaDeletar(id);
+        setModalDelete(true);
+        setTransacaoSelecionada(null);
     };
 
     const exportarTransacoes = () => {

@@ -142,6 +142,8 @@
   border: 1px solid #ddd;
   z-index: 999;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  width: 150px;
+  overflow: hidden; /* arredondar também nas bordas internas */
 }
 
 .menu_minhas_tarefas_dropdown.open-up {
@@ -153,6 +155,7 @@
   width: 100%;
   padding: 8px 12px;
   border: none;
+  border-bottom: 1px solid #eee;
   background: none;
   text-align: left;
   font-family: var(--fonte-principal);
@@ -160,9 +163,12 @@
   cursor: pointer;
 }
 
+.menu_minhas_tarefas_dropdown button:last-child {
+  border-bottom: none;
+}
 
 .menu_minhas_tarefas_dropdown button:hover {
-  background: #f1f1f1;
+  background: #f5f7fa;
 }
 
 /*

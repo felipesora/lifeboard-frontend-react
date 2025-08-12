@@ -8,10 +8,10 @@ import { useEffect, useState } from 'react';
 import CardMeta from '../../components/CardMeta/CardMeta';
 import { obterMetas } from '../../utils/obterMetas';
 import { adicionarSaldo, deletarMeta, retirarSaldo } from '../../services/metaService';
-import ModalMetaDeletar from '../../components/ModalMetaDeletar/ModalMetaDeletar';
-import ModalMetaAdicionar from '../../components/ModalMetaAdiconar/ModalMetaAdiconar';
 import Cabecalho from '../../components/Cabecalho/Cabecalho';
-import ModalMetaRetirar from '../../components/ModalMetaRetirar/ModalMetaRetirar';
+import ModalAdiconarSaldoMeta from '../../components/ModalAdiconarSaldoMeta/ModalAdiconarSaldoMeta';
+import ModalDeletarMeta from '../../components/ModalDeletarMeta/ModalDeletarMeta';
+import ModalRetirarSaldoMeta from '../../components/ModalRetirarSaldoMeta/ModalRetirarSaldoMeta';
 
 const Metas = () => {
     useAuthRedirect();
@@ -185,7 +185,7 @@ const Metas = () => {
 
                 </div>
 
-                <ModalMetaDeletar
+                <ModalDeletarMeta
                     aberto={modalDelete}
                     onClose={() => setModalDelete(false)}
                     onDelete={async () => {
@@ -203,7 +203,7 @@ const Metas = () => {
                     }}
                 />
 
-                <ModalMetaAdicionar
+                <ModalAdiconarSaldoMeta
                     aberto={modalAdicionar}
                     onClose={() => {
                         setModalAdicionar(false);
@@ -233,7 +233,7 @@ const Metas = () => {
                     }}
                 />
 
-                <ModalMetaRetirar
+                <ModalRetirarSaldoMeta
                     aberto={modalRetirar}
                     onClose={() => {
                         setModalRetirar(false);

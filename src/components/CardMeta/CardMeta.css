@@ -48,12 +48,14 @@
   display: flex;
   flex-direction: column;
   width: 150px;
+  overflow: hidden; /* arredondar também nas bordas internas */
 }
 
 .menu_meta_dropdown button {
   width: 100%;
   padding: 8px 12px;
   border: none;
+  border-bottom: 1px solid #eee;
   background: none;
   text-align: left;
   font-family: var(--fonte-principal);
@@ -61,8 +63,12 @@
   cursor: pointer;
 }
 
+.menu_meta_dropdown button:last-child {
+  border-bottom: none;
+}
+
 .menu_meta_dropdown button:hover {
-  background: #f0f0f0;
+  background: #f5f7fa;
 }
 
 .card_meta > p {

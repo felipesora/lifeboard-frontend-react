@@ -5,14 +5,13 @@ import { useState } from 'react';
 import { cadastro } from '../../services/authService';
 
 const Cadastro = () => {
+    const navigate = useNavigate();
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [confirmarSenha, setConfirmarSenha] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
-
-    const navigate = useNavigate();
 
     const handleCadastro = async (e) => {
         e.preventDefault();

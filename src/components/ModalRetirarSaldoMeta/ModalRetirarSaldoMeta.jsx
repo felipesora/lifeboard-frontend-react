@@ -2,7 +2,7 @@ import IconeFechar from '../../assets/images/icone-fechar.png';
 import { useState } from 'react';
 
 
-const ModalMetaRetirar = ({ aberto, onClose, onRetirar, valorRetirar, setValorRetirar }) => {
+const ModalRetirarSaldoMeta = ({ aberto, onClose, onRetirar, valorRetirar, setValorRetirar }) => {
 
     const [erro, setErro] = useState('');
 
@@ -70,4 +70,4 @@ const ModalMetaRetirar = ({ aberto, onClose, onRetirar, valorRetirar, setValorRe
     );
 }
 
-export default ModalMetaRetirar;
+export default ModalRetirarSaldoMeta;

@@ -18,13 +18,6 @@ const MenuHamburger = ({ toggleMenu }) => {
     const navigate = useNavigate();
     const [modalLogoutAberto, setModalLogoutAberto] = useState(false);
 
-    const handleLogout = async () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('userId');
-        navigate('/');
-    }
-
-
     return (
         <aside className="menu_hamburger_container">
 

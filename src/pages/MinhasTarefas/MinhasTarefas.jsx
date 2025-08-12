@@ -5,10 +5,10 @@ import './MinhasTarefas.css';
 import { useEffect, useState, useRef } from 'react';
 import { obterTarefas } from '../../utils/obterTarefas';
 import IconeMenuVertical from "../../assets/images/icone-menu-vertical.png";
-import ModalTarefaDeletar from '../../components/ModalTarefaDeletar/ModalTarefaDeletar';
 import { deletarTarefa } from "../../services/tarefasService";
 import Cabecalho from '../../components/Cabecalho/Cabecalho';
 import { exportarParaExcel } from '../../utils/exportarParaExcel';
+import ModalDeletarTarefa from '../../components/ModalDeletarTarefa/ModalDeletarTarefa';
 
 const MinhasTarefas = () => {
     useAuthRedirect();
@@ -47,20 +47,16 @@ const MinhasTarefas = () => {
     useEffect(() => {
         const fetchDadosUsuario = async () => {
             try {
-
-                // Tarefas
                 const tarefas = await obterTarefas();
                 const tarefasOrdenadas = ordenarTarefas(tarefas);
 
-                setTodasTarefas(tarefasOrdenadas);  // guardar a lista original
-                setTarefas(tarefasOrdenadas); // mostrar inicialmente todas
+                setTodasTarefas(tarefasOrdenadas);
+                setTarefas(tarefasOrdenadas);
 
             } catch (erro) {
-
                 console.error("Erro ao obter dados do usuário:", erro);
             }
         };
-
         fetchDadosUsuario();
     }, []);
 
@@ -152,14 +148,13 @@ const MinhasTarefas = () => {
 
 
     const handleEditar = (id) => {
-        // Navegar para rota de edição, passando o ID
         navigate(`/editar-tarefa/${id}`, { state: { from: "minhas-tarefas" } });
-        setTarefaSelecionada(null); // Fecha o menu
+        setTarefaSelecionada(null);
     };
 
     const handleDeletar = async (id) => {
-        setIdTarefaParaDeletar(id);   // define qual transação deletar
-        setModalDelete(true);            // abre o modal
+        setIdTarefaParaDeletar(id);
+        setModalDelete(true);
         setTarefaSelecionada(null);
     };
 
@@ -311,7 +306,7 @@ const MinhasTarefas = () => {
 
                 </div>
 
-                <ModalTarefaDeletar
+                <ModalDeletarTarefa
                     aberto={modalDelete}
                     onClose={() => setModalDelete(false)}
                     onDelete={async () => {

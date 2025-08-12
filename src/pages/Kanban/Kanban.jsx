@@ -2,18 +2,18 @@ import { useNavigate } from 'react-router-dom';
 import MenuLateral from '../../components/MenuLateral/MenuLateral';
 import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 import './Kanban.css';
-import CardTarefa from '../../components/CardTarefa/CardTarefa';
 import IconeFazer from '../../assets/images/icone-tarefa-fazer.png';
 import IconeAndamento from '../../assets/images/icone-tarefa-andamento.png';
 import IconeConcluido from '../../assets/images/icone-tarefa-concluida.png';
 import IconeAdicionar from '../../assets/images/icone-tarefa-adicionar.png';
-import CardTarefaColuna from '../../components/CardTarefaColuna/CardTarefaColuna';
 import { useEffect, useState } from 'react';
 import { obterTarefas } from '../../utils/obterTarefas';
 import { editarDadosTarefa } from "../../services/tarefasService";
-import ModalTarefaDeletar from '../../components/ModalTarefaDeletar/ModalTarefaDeletar';
 import { deletarTarefa } from "../../services/tarefasService";
 import Cabecalho from '../../components/Cabecalho/Cabecalho';
+import ModalDeletarTarefa from '../../components/ModalDeletarTarefa/ModalDeletarTarefa';
+import CardInfoTarefas from '../../components/CardInfoTarefas/CardInfoTarefas';
+import CardTarefa from '../../components/CardTarefa/CardTarefa';
 
 const Kanban = () => {
     useAuthRedirect();
@@ -26,14 +26,10 @@ const Kanban = () => {
     useEffect(() => {
         const fetchDadosUsuario = async () => {
             try {
-
-                // Tarefas
                 const tarefas = await obterTarefas();
                 setTarefas(tarefas);
 
-
             } catch (erro) {
-
                 console.error("Erro ao obter dados do usuário:", erro);
             }
         };
@@ -102,7 +98,7 @@ const Kanban = () => {
                 <p>Quadro (Kanban)</p>
 
                 <div className='cards_tarefas_kanban'>
-                    <CardTarefa
+                    <CardInfoTarefas
                         icone={IconeFazer}
                         titulo="A Fazer"
                         descricao="Tarefas a fazer:"
@@ -110,7 +106,7 @@ const Kanban = () => {
                         cor="#000000"
                     />
 
-                    <CardTarefa
+                    <CardInfoTarefas
                         icone={IconeAndamento}
                         titulo="Em Andamento"
                         descricao="Tarefas em andamento:"
@@ -118,7 +114,7 @@ const Kanban = () => {
                         cor="#42A5F5"
                     />
 
-                    <CardTarefa
+                    <CardInfoTarefas
                         icone={IconeConcluido}
                         titulo="Concluídas"
                         descricao="Tarefas concluídas:"
@@ -144,7 +140,7 @@ const Kanban = () => {
                                 .filter(t => t.status === "A_FAZER")
                                 .sort((a, b) => prioridadeParaNumero(a.prioridade) - prioridadeParaNumero(b.prioridade))
                                 .map((tarefa) => (
-                                    <CardTarefaColuna
+                                    <CardTarefa
                                         key={tarefa.id_tarefa}
                                         tarefa={tarefa}
                                         moverTarefa={moverTarefa}
@@ -176,7 +172,7 @@ const Kanban = () => {
                                 .filter(t => t.status === "EM_ANDAMENTO")
                                 .sort((a, b) => prioridadeParaNumero(a.prioridade) - prioridadeParaNumero(b.prioridade))
                                 .map((tarefa) => (
-                                    <CardTarefaColuna
+                                    <CardTarefa
                                         key={tarefa.id_tarefa}
                                         tarefa={tarefa}
                                         moverTarefa={moverTarefa}
@@ -207,7 +203,7 @@ const Kanban = () => {
                                 .filter(t => t.status === "CONCLUIDA")
                                 .sort((a, b) => prioridadeParaNumero(a.prioridade) - prioridadeParaNumero(b.prioridade))
                                 .map((tarefa) => (
-                                    <CardTarefaColuna
+                                    <CardTarefa
                                         key={tarefa.id_tarefa}
                                         tarefa={tarefa}
                                         moverTarefa={moverTarefa}
@@ -226,7 +222,7 @@ const Kanban = () => {
                 </div>
             </main>
 
-            <ModalTarefaDeletar 
+            <ModalDeletarTarefa 
                 aberto={modalDelete}
                 onClose={() => setModalDelete(false)}
                 onDelete={async () => {

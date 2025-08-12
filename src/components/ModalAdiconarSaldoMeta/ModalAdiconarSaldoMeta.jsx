@@ -1,9 +1,9 @@
-import './ModalMetaAdiconar.css';
+import './ModalAdiconarSaldoMeta.css';
 import IconeFechar from '../../assets/images/icone-fechar.png';
 import { useState } from 'react';
 
 
-const ModalMetaAdicionar = ({ aberto, onClose, onAdicionar, valorAdicionar, setValorAdicionar }) => {
+const ModalAdiconarSaldoMeta = ({ aberto, onClose, onAdicionar, valorAdicionar, setValorAdicionar }) => {
 
     const [erro, setErro] = useState('');
 
@@ -73,4 +73,4 @@ const ModalMetaAdicionar = ({ aberto, onClose, onAdicionar, valorAdicionar, setV
     );
 }
 
-export default ModalMetaAdicionar;
+export default ModalAdiconarSaldoMeta;
