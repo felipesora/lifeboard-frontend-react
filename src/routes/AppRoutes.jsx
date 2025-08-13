@@ -14,6 +14,7 @@ import CadastroTarefa from "../pages/CadastroTarefa/CadastroTarefa";
 import EditarTarefa from "../pages/EditarTarefa/EditarTarefa";
 import MinhasTarefas from "../pages/MinhasTarefas/MinhasTarefas";
 import Pomodoro from "../pages/Pomodoro/Pomodoro";
+import NotFound from "../pages/NotFound/NotFound";
 
 export const routes = createBrowserRouter([
   {
@@ -75,5 +76,9 @@ export const routes = createBrowserRouter([
   {
     path: '/pomodoro',
     element: <Pomodoro />
+  },
+  {
+    path: '*',
+    element: <NotFound />
   }
 ]);
