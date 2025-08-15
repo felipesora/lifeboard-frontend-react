@@ -120,3 +120,53 @@
 .pagina_inicial_secao_apresentacao_botao_funcionalidades:hover {
     background-color: #455A64;
 }
+
+/* Funcionalidade */
+
+.pagina_inicial_secao_funcionalidades {
+    background-color: #F0F4F5;
+    padding: 65px 35px 100px 35px;
+}
+
+.pagina_inicial_secao_funcionalidades_textos h2 {
+    color: #37474F;
+    font-size: 32px;
+}
+
+.pagina_inicial_secao_funcionalidades_textos h3 {
+    color: #455A64;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.pagina_inicial_secao_funcionalidades_cards {
+    margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 70px;
+}
+
+.pagina_inicial_secao_funcionalidades_botao {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.pagina_inicial_secao_funcionalidades_botao button {
+    cursor: pointer;
+    background-color: #37474F;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 0;
+    width: 400px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pagina_inicial_secao_funcionalidades_botao button:hover {
+    background-color: #263238;
+    transform: translateY(-2px);
+}
