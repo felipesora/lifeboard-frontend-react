@@ -44,6 +44,12 @@ const EditarMeta = () => {
             return;
         }
 
+        if (nomeMeta.length < 3 || nomeMeta.length > 150) {
+            setError("O nome deve ter entre 3 e 100 caracteres.");
+            setSuccess("");
+            return;
+        }
+
         const valorMetaConvertido = parseFloat(valorMeta);
 
         if (isNaN(valorMetaConvertido) || valorMetaConvertido <= 0) {

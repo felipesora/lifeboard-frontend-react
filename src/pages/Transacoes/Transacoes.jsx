@@ -335,6 +335,7 @@ const Transacoes = () => {
                             setIdTransacaoParaDeletar(null);
                         } catch (erro) {
                             console.error("Erro ao deletar:", erro);
+                            alert("Erro ao deletar a transação. Por favor, tente novamente.");
                         }
                     }}
                 />
