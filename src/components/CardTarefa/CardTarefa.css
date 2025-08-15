@@ -38,13 +38,17 @@
     font-size: 16px;
     font-weight: bold;
     color: #37474F;
+    width: 200px;
+    white-space: normal;        /* Permite quebra de linha */
+    overflow-wrap: break-word;  /* Quebra palavras grandes */
+    word-wrap: break-word;      /* Compatibilidade */
 }
 
 .card_tarefa_coluna_conteudo > p {
     font-size: 12px;
     font-weight: 400;
     color: #616161;
-    width: 170px;
+    width: 200px;
     white-space: normal;        /* Permite quebra de linha */
     overflow-wrap: break-word;  /* Quebra palavras grandes */
     word-wrap: break-word;      /* Compatibilidade */

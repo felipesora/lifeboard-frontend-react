@@ -23,7 +23,16 @@
     font-weight: normal;
     font-size: 16px;
     width: 350px;
-    white-space: normal;        /* Permite quebra de linha */
-    overflow-wrap: break-word;  /* Quebra palavras grandes */
-    word-wrap: break-word;      /* Compatibilidade */
+    white-space: nowrap;        /* Mantém o texto em uma linha */
+    overflow: hidden;           /* Esconde o texto que passar do limite */
+    text-overflow: ellipsis;    /* Adiciona "..." */
+}
+
+@media (max-width: 1740px) {
+    .card_transacoes .card_transacao > p {
+    width: 700px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+}
 }

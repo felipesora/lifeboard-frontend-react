@@ -18,12 +18,14 @@ const CadastroMeta = () => {
 
     const handleCadastroMeta = async () => {
 
-        if (
-            !nomeMeta.trim() ||
-            !dataLimiteMeta ||
-            !valorMeta
-        ) {
+        if (!nomeMeta.trim() || !dataLimiteMeta || !valorMeta) {
             setError("Preencha todos os campos.");
+            setSuccess("");
+            return;
+        }
+
+        if (nomeMeta.length < 3 || nomeMeta.length > 150) {
+            setError("O nome deve ter entre 3 e 100 caracteres.");
             setSuccess("");
             return;
         }

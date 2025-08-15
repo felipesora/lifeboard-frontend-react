@@ -19,13 +19,14 @@ const CadastroTransacao = () => {
 
     const handleCadastroTransacao = async () => {
 
-        if (
-            !descricaoTransacao.trim() ||
-            !categoriaTransacao ||
-            !tipoTransacao ||
-            !valorTransacao
-        ) {
+        if (!descricaoTransacao.trim() || !categoriaTransacao || !tipoTransacao || !valorTransacao) {
             setError("Preencha todos os campos.");
+            setSuccess("");
+            return;
+        }
+
+        if (descricaoTransacao.length < 3 || descricaoTransacao.length > 150) {
+            setError("A descrição deve ter entre 3 e 150 caracteres.");
             setSuccess("");
             return;
         }

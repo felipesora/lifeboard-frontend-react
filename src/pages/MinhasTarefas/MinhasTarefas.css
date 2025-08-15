@@ -147,7 +147,7 @@
 }
 
 .menu_minhas_tarefas_dropdown.open-up {
-  bottom: 100%; /* abre pra cima */
+  bottom: 50%; /* abre pra cima */
   top: auto;
 }
 

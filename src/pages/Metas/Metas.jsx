@@ -258,6 +258,7 @@ const Metas = () => {
 
                         } catch (erro) {
                             console.error("Erro ao retirar saldo na meta:", erro);
+                            alert("Erro ao deletar a meta financeira. Por favor, tente novamente.");
                             throw erro;
                         }
                     }}

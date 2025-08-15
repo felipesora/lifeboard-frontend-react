@@ -236,6 +236,7 @@ const Kanban = () => {
                         setIdTarefaDeletar(null);
                     } catch (erro) {
                         console.error("Erro ao deletar tarefa:", erro);
+                        alert("Erro ao deletar a tarefa. Por favor, tente novamente.");
                     }
                 }}
             />

@@ -44,6 +44,12 @@ const EditarTransacao = () => {
             return;
         }
 
+        if (descricaoTransacao.length < 3 || descricaoTransacao.length > 150) {
+            setError("A descrição deve ter entre 3 e 150 caracteres.");
+            setSuccess("");
+            return;
+        }
+
         const valorConvertido = parseFloat(valorTransacao);
 
         if (isNaN(valorConvertido) || valorConvertido <= 0) {

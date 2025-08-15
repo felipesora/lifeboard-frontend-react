@@ -24,13 +24,20 @@ const CadastroTarefa = () => {
 
     const handleCadastroTarefa = async () => {
 
-        if (
-            !tituloTarefa.trim() ||
-            !descricao ||
-            !dataLimite ||
-            !prioridade
-        ) {
+        if (!tituloTarefa.trim() || !descricao || !dataLimite || !prioridade) {
             setError("Preencha todos os campos.");
+            setSuccess("");
+            return;
+        }
+
+        if (tituloTarefa.length < 3 || tituloTarefa.length > 150) {
+            setError("O título deve ter entre 3 e 100 caracteres.");
+            setSuccess("");
+            return;
+        }
+
+        if (descricao.length < 3 || descricao.length > 150) {
+            setError("A descrição deve ter entre 3 e 100 caracteres.");
             setSuccess("");
             return;
         }
