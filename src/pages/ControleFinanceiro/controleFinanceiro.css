@@ -20,10 +20,10 @@
 }
 
 .dashboard_cards_container {
-  display: flex;        /* lado a lado */
-  align-items: flex-start; /* garante altura independente */
-  gap: 50px;            /* espaço entre cards pequenos e transações */
-  margin-top: 20px;     /* se quiser espaçamento do título */
+  display: flex;
+  align-items: stretch;
+  gap: 50px;
+  margin-top: 20px;
 }
 
 .dashboard_cards_pequenos{

@@ -162,7 +162,7 @@ const ControleFinanceiro = () => {
             <Cabecalho />
             <MenuLateral />
             <main className="dashboard_main">
-                
+
                 <div className="dashboard_titulo">
                     <p>Controle Financeiro</p>
                 </div>
@@ -259,9 +259,11 @@ const ControleFinanceiro = () => {
                                 <p className="sem-transacoes">Nenhuma transação encontrada.</p>
                             )}
 
-                            <div className="card_transacoes_link">
-                                <button onClick={() => navigate("/transacoes")}>Ver mais...</button>
-                            </div>
+                            {transacoes.length > 0 && (
+                                <div className="card_transacoes_link">
+                                    <button onClick={() => navigate("/transacoes")}>Ver mais...</button>
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="card_metas">
@@ -293,9 +295,11 @@ const ControleFinanceiro = () => {
                                 <p className="sem-transacoes">Nenhuma meta encontrada.</p>
                             )}
                         </div>
-                        <div className="card_metas_link">
-                            <button onClick={() => navigate("/metas")}>Ver mais...</button>
-                        </div>
+                        {metas.length > 0 && (
+                            <div className="card_metas_link">
+                                <button onClick={() => navigate("/metas")}>Ver mais...</button>
+                            </div>
+                        )}
                     </div>
                 </div>
 
