@@ -7,8 +7,15 @@ import ImagemMetas from '../../assets/images/imagem-metas.png';
 import ImagemKanban from '../../assets/images/imagem-kanban.png';
 import ImagemTarefas from '../../assets/images/imagem-tarefas.png';
 import ImagemPomodoro from '../../assets/images/imagem-pomodoro.png';
+import ImagemDemonstracaoControleFinanceiro from '../../assets/images/tela-controle-financeiro.png';
+import ImagemDemonstracaoTransacoes from '../../assets/images/tela-transacoes.png';
+import ImagemDemonstracaoMetas from '../../assets/images/tela-metas.png';
+import ImagemDemonstracaoKanban from '../../assets/images/tela-kanban.png';
+import ImagemDemonstracaoTarefas from '../../assets/images/tela-tarefas.png';
+import ImagemDemonstracaoPomodoro from '../../assets/images/tela-pomodoro.png';
 import { useNavigate } from 'react-router-dom';
 import CardFuncionalidade from '../../components/CardFuncionalidade/CardFuncionalidade';
+import CardDemonstracaoPagina from '../../components/CardDemonstracaoPagina/CardDemonstracaoPagina';
 
 const PaginaInicial = () => {
     const navigate = useNavigate();
@@ -103,6 +110,57 @@ const PaginaInicial = () => {
                         </button>
                     </div>
                 </section>
+
+                <section className='pagina_inicial_secao_demontracao'>
+
+                    <div className='pagina_inicial_secao_descricao_textos'>
+                        <h2>Demonstração do LifeBoard</h2>
+                        <h3>Explore as telas e funcionalidades do nosso painel de controle.</h3>
+                    </div>
+
+                    <div className='pagina_inicial_secao_demontracao_cards'>
+
+                        <CardDemonstracaoPagina 
+                            imagem={ImagemDemonstracaoControleFinanceiro}
+                            descricao="Tela de Controle Financeiro"
+                            texto="Página de Controle Financeiro"
+                        />
+
+                        <CardDemonstracaoPagina 
+                            imagem={ImagemDemonstracaoTransacoes}
+                            descricao="Tela de Transações"
+                            texto="Página de Transações"
+                        />
+
+                        <CardDemonstracaoPagina 
+                            imagem={ImagemDemonstracaoMetas}
+                            descricao="Tela de Metas Financeiras"
+                            texto="Página de Metas Financeiras"
+                        />
+
+                        <CardDemonstracaoPagina 
+                            imagem={ImagemDemonstracaoKanban}
+                            descricao="Tela de Quadro Kanban"
+                            texto="Página de Quadro Kanban"
+                        />
+
+                        <CardDemonstracaoPagina 
+                            imagem={ImagemDemonstracaoTarefas}
+                            descricao="Tela de Tarefas"
+                            texto="Página de Tarefas"
+                        />
+
+                        <CardDemonstracaoPagina 
+                            imagem={ImagemDemonstracaoPomodoro}
+                            descricao="Tela de Pomodoro"
+                            texto="Página de Pomodoro"
+                        />
+
+                    </div>
+
+                </section>
+
+
             </main>
         </div>
     )

@@ -170,3 +170,24 @@
     background-color: #263238;
     transform: translateY(-2px);
 }
+
+/* Demonstrações */
+
+.pagina_inicial_secao_demontracao {
+    padding: 65px 35px 100px 35px;
+}
+
+.pagina_inicial_secao_descricao_textos h2 {
+    color: #37474F;
+    font-size: 32px;
+}
+
+.pagina_inicial_secao_descricao_textos h3 {
+    color: #455A64;
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.pagina_inicial_secao_demontracao_cards {
+    margin-top: 60px;
+}
