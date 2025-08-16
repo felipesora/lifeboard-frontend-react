@@ -175,6 +175,7 @@
 
 .pagina_inicial_secao_demontracao {
     padding: 65px 35px 100px 35px;
+    background-color: #FFFFFF;
 }
 
 .pagina_inicial_secao_descricao_textos h2 {
@@ -190,4 +191,44 @@
 
 .pagina_inicial_secao_demontracao_cards {
     margin-top: 60px;
+}
+
+.pagina_inicial_secao_demontracao_carrossel {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px 0;
+    padding-bottom: 40px; /* aumenta o espaço entre card e bolinhas */
+    box-sizing: border-box;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center; /* centraliza horizontalmente */
+    align-items: center; /* centraliza verticalmente, se quiser */
+}
+
+/* Botão do Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 90px;       /* largura do botão clicável */
+  height: 30px;      /* altura do botão clicável */
+  background: none;  /* remove fundo */
+}
+
+/* Pseudo-elemento que mostra a seta */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 40px;   /* controla o tamanho da seta */
+  color: #37474F;    /* cor da seta */
+}
+
+.swiper-pagination-bullet {
+    background: #ccc;
+    opacity: 1;
+    margin-top: 5px;
+}
+
+.swiper-pagination-bullet-active {
+    background: #37474F;
 }

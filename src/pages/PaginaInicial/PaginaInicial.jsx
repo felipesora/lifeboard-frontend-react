@@ -1,3 +1,9 @@
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
 import './PaginaInicial.css';
 import LogoAzul from '../../assets/images/logo-lifeboard-azul.png'
 import ImagemDashboard from '../../assets/images/imagem-dashboard.png';
@@ -48,10 +54,10 @@ const PaginaInicial = () => {
                             </button>
                         </div>
                     </div>
-                    
+
                     <img src={ImagemDashboard} alt="Imagem de um dashboard" />
                 </section>
-                
+
                 <section className='pagina_inicial_secao_funcionalidades'>
                     <div className='pagina_inicial_secao_funcionalidades_textos'>
                         <h2>Funcionalidades do LifeBoard</h2>
@@ -60,42 +66,42 @@ const PaginaInicial = () => {
 
                     <div className='pagina_inicial_secao_funcionalidades_cards'>
 
-                        <CardFuncionalidade 
+                        <CardFuncionalidade
                             imagem={ImagemControleFinanceiro}
                             altImagem="Imagem de controle financeiro"
                             titulo="Controle Financeiro"
                             texto="Veja seu saldo, gastos do mês e acompanhe suas metas financeiras."
                         />
 
-                        <CardFuncionalidade 
+                        <CardFuncionalidade
                             imagem={ImagemTransacoes}
                             altImagem="Imagem de transações"
                             titulo="Gerencie suas Transações"
                             texto="Cadastre entradas, saídas e investimentos facilmente."
                         />
 
-                        <CardFuncionalidade 
+                        <CardFuncionalidade
                             imagem={ImagemMetas}
                             altImagem="Imagem de metas"
                             titulo="Acompanhe suas Metas"
                             texto="Adicione ou retire saldo e veja o progresso das suas metas."
                         />
 
-                        <CardFuncionalidade 
+                        <CardFuncionalidade
                             imagem={ImagemKanban}
                             altImagem="Imagem de kanban"
                             titulo="Quadro Kanban"
                             texto="Organize tarefas arrastando cards entre colunas intuitivamente."
                         />
 
-                        <CardFuncionalidade 
+                        <CardFuncionalidade
                             imagem={ImagemTarefas}
                             altImagem="Imagem de tarefas"
                             titulo="Tabela de Tarefas"
                             texto="Visualize todas as tarefas em uma lista organizada."
                         />
 
-                        <CardFuncionalidade 
+                        <CardFuncionalidade
                             imagem={ImagemPomodoro}
                             altImagem="Imagem de pomodoro"
                             titulo="Pomodoro"
@@ -120,41 +126,101 @@ const PaginaInicial = () => {
 
                     <div className='pagina_inicial_secao_demontracao_cards'>
 
-                        <CardDemonstracaoPagina 
+                        <Swiper
+                            modules={[Navigation, Pagination]}
+                            spaceBetween={30}
+                            slidesPerView={1}
+                            navigation={true}
+                            pagination={{ clickable: true }}
+                            loop={true}
+                            className="pagina_inicial_secao_demontracao_carrossel"
+                        >
+
+                            <SwiperSlide>
+                                <CardDemonstracaoPagina
+                                    imagem={ImagemDemonstracaoControleFinanceiro}
+                                    descricao="Tela de Controle Financeiro"
+                                    texto="Página de Controle Financeiro"
+                                />
+                            </SwiperSlide>
+
+                            <SwiperSlide>
+                                <CardDemonstracaoPagina
+                                    imagem={ImagemDemonstracaoTransacoes}
+                                    descricao="Tela de Transações"
+                                    texto="Página de Transações"
+                                />
+                            </SwiperSlide>
+
+                            <SwiperSlide>
+                                <CardDemonstracaoPagina
+                                    imagem={ImagemDemonstracaoMetas}
+                                    descricao="Tela de Metas Financeiras"
+                                    texto="Página de Metas Financeiras"
+                                />
+                            </SwiperSlide>
+
+                            <SwiperSlide>
+                                <CardDemonstracaoPagina
+                                    imagem={ImagemDemonstracaoKanban}
+                                    descricao="Tela de Quadro Kanban"
+                                    texto="Página de Quadro Kanban"
+                                />
+                            </SwiperSlide>
+
+                            <SwiperSlide>
+                                <CardDemonstracaoPagina
+                                    imagem={ImagemDemonstracaoTarefas}
+                                    descricao="Tela de Tarefas"
+                                    texto="Página de Tarefas"
+                                />
+                            </SwiperSlide>
+
+                            <SwiperSlide>
+                                <CardDemonstracaoPagina
+                                    imagem={ImagemDemonstracaoPomodoro}
+                                    descricao="Tela de Pomodoro"
+                                    texto="Página de Pomodoro"
+                                />
+                            </SwiperSlide>
+
+                        </Swiper>
+
+                        {/* <CardDemonstracaoPagina
                             imagem={ImagemDemonstracaoControleFinanceiro}
                             descricao="Tela de Controle Financeiro"
                             texto="Página de Controle Financeiro"
                         />
 
-                        <CardDemonstracaoPagina 
+                        <CardDemonstracaoPagina
                             imagem={ImagemDemonstracaoTransacoes}
                             descricao="Tela de Transações"
                             texto="Página de Transações"
                         />
 
-                        <CardDemonstracaoPagina 
+                        <CardDemonstracaoPagina
                             imagem={ImagemDemonstracaoMetas}
                             descricao="Tela de Metas Financeiras"
                             texto="Página de Metas Financeiras"
                         />
 
-                        <CardDemonstracaoPagina 
+                        <CardDemonstracaoPagina
                             imagem={ImagemDemonstracaoKanban}
                             descricao="Tela de Quadro Kanban"
                             texto="Página de Quadro Kanban"
                         />
 
-                        <CardDemonstracaoPagina 
+                        <CardDemonstracaoPagina
                             imagem={ImagemDemonstracaoTarefas}
                             descricao="Tela de Tarefas"
                             texto="Página de Tarefas"
                         />
 
-                        <CardDemonstracaoPagina 
+                        <CardDemonstracaoPagina
                             imagem={ImagemDemonstracaoPomodoro}
                             descricao="Tela de Pomodoro"
                             texto="Página de Pomodoro"
-                        />
+                        /> */}
 
                     </div>
 
