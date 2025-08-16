@@ -15,10 +15,15 @@ import EditarTarefa from "../pages/EditarTarefa/EditarTarefa";
 import MinhasTarefas from "../pages/MinhasTarefas/MinhasTarefas";
 import Pomodoro from "../pages/Pomodoro/Pomodoro";
 import NotFound from "../pages/NotFound/NotFound";
+import PaginaInicial from "../pages/PaginaInicial/PaginaInicial";
 
 export const routes = createBrowserRouter([
   {
     path: '/',
+    element: <PaginaInicial />
+  },
+  {
+    path: '/login',
     element: <Login />,
   },
   {

@@ -292,7 +292,10 @@ const ControleFinanceiro = () => {
                                 })
 
                             ) : (
-                                <p className="sem-transacoes">Nenhuma meta encontrada.</p>
+                                <div className="div_sem_metas">
+                                    <p className="sem-transacoes">Nenhuma meta encontrada.</p>
+                                </div>
+                                
                             )}
                         </div>
                         {metas.length > 0 && (
