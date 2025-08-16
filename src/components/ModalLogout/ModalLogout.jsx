@@ -11,7 +11,7 @@ const ModalLogout = ({ aberto, onClose }) => {
     const handleLogout = async () => {
         localStorage.removeItem('token');
         localStorage.removeItem('userId');
-        navigate('/');
+        navigate('/login');
     }
 
     return (

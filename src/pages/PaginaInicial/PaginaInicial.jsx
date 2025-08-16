@@ -30,14 +30,21 @@ import LogoEmail from '../../assets/images/icone-email.png';
 const PaginaInicial = () => {
     const navigate = useNavigate();
 
+    const scrollToSection = (sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <div className='container_pagina_inicial'>
 
-            <header className='pagina_inicial_cabecalho'>
+            <header className='pagina_inicial_cabecalho' id="cabealho">
                 <img src={LogoAzul} alt="Logo da lifeboard" />
 
                 <div className='pagina_inicial_cabecalho_botoes_entrar_cadastrar'>
-                    <button className='pagina_inicial_cabecalho_btn_entrar' onClick={() => navigate("/")}>Fazer Login</button>
+                    <button className='pagina_inicial_cabecalho_btn_entrar' onClick={() => navigate("/login")}>Fazer Login</button>
                     <button className='pagina_inicial_cabecalho_btn_cadastrar' onClick={() => navigate("/cadastro")}>Cadastrar-se</button>
                 </div>
             </header>
@@ -49,11 +56,11 @@ const PaginaInicial = () => {
                         <h2>Organize suas finanças, tarefas e metas em um único painel interativo.</h2>
                         <div className='pagina_inicial_secao_apresentacao_botoes'>
 
-                            <button className='pagina_inicial_secao_apresentacao_botao_comece_agora'>
+                            <button className='pagina_inicial_secao_apresentacao_botao_comece_agora' onClick={() => navigate("/cadastro")}>
                                 Comece agora
                             </button>
 
-                            <button className='pagina_inicial_secao_apresentacao_botao_funcionalidades'>
+                            <button className='pagina_inicial_secao_apresentacao_botao_funcionalidades' onClick={() => scrollToSection('funcionalidades')}>
                                 Ver funcionalidades
                             </button>
                         </div>
@@ -62,7 +69,7 @@ const PaginaInicial = () => {
                     <img src={ImagemDashboard} alt="Imagem de um dashboard" />
                 </section>
 
-                <section className='pagina_inicial_secao_funcionalidades'>
+                <section className='pagina_inicial_secao_funcionalidades' id="funcionalidades">
                     <div className='pagina_inicial_secao_funcionalidades_textos'>
                         <h2>Funcionalidades do LifeBoard</h2>
                         <h3>Explore todas as ferramentas para organizar finanças, tarefas e metas de forma prática.</h3>
@@ -115,7 +122,7 @@ const PaginaInicial = () => {
                     </div>
 
                     <div className='pagina_inicial_secao_funcionalidades_botao'>
-                        <button>
+                        <button onClick={() => navigate("/cadastro")}>
                             Experimente Gratuitamente
                         </button>
                     </div>
@@ -196,8 +203,11 @@ const PaginaInicial = () => {
 
                 <footer className='pagina_inicial_rodape'>
                     <div className="pagina_inicial_rodape_logo">
-                        <img src={LogoBranca} alt="Logo" />
-                        <p>LifeBoard</p>
+                        <button onClick={() => scrollToSection('cabealho')}>
+                            <img src={LogoBranca} alt="Logo" />
+                            <p>LifeBoard</p>
+                        </button>
+                        
                     </div>
 
                     <hr />
@@ -207,19 +217,19 @@ const PaginaInicial = () => {
 
                         <div className="pagina_inicial_rodape_texto_links">
                             <div>
-                                <a href="">
+                                <a href="https://github.com/felipesora" target="_blank">
                                     <img src={LogoGithub} alt="Icone Github" />
                                 </a>
                             </div>
 
                             <div>
-                                <a href="">
+                                <a href="https://www.linkedin.com/in/felipesora/" target="_blank">
                                     <img src={LogoLinkedin} alt="Icone Linkedin" />
                                 </a>
                             </div>
 
                             <div>
-                                <a href="">
+                                <a href="mailto:felipeusora@gmail.com" target="_blank">
                                     <img src={LogoEmail} alt="Icone Email" />
                                 </a>
                             </div>

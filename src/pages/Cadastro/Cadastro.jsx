@@ -35,7 +35,7 @@ const Cadastro = () => {
 
 
             setTimeout(() => {
-                navigate("/");
+                navigate("/login");
             }, 2000);
 
         } catch (erro) {
@@ -117,7 +117,7 @@ const Cadastro = () => {
                 </div>
 
                 <div className="container_link_login">
-                    <p className="link_login">Já possui uma conta? <button onClick={() => navigate("/")}>Entrar</button></p>
+                    <p className="link_login">Já possui uma conta? <button onClick={() => navigate("/login")}>Entrar</button></p>
                 </div>
             </section>
         </div>

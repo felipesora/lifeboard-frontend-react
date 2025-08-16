@@ -19,11 +19,11 @@ import PaginaInicial from "../pages/PaginaInicial/PaginaInicial";
 
 export const routes = createBrowserRouter([
   {
-    path: '/pagina-inicial',
+    path: '/',
     element: <PaginaInicial />
   },
   {
-    path: '/',
+    path: '/login',
     element: <Login />,
   },
   {

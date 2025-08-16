@@ -241,10 +241,18 @@
 
 .pagina_inicial_rodape_logo {
     display: flex;
-    align-items: center;
     justify-content: center;
     gap: 7px;
     padding: 30px 0;
+}
+
+.pagina_inicial_rodape_logo button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
 }
 
 .pagina_inicial_rodape_logo img {
