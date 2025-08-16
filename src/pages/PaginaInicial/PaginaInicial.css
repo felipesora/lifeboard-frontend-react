@@ -232,3 +232,63 @@
 .swiper-pagination-bullet-active {
     background: #37474F;
 }
+
+/* Rodapé */
+
+.pagina_inicial_rodape {
+    background-color: #37474F;
+}
+
+.pagina_inicial_rodape_logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 30px 0;
+}
+
+.pagina_inicial_rodape_logo img {
+    width: 60px;
+    height: auto;
+}
+
+.pagina_inicial_rodape_logo p {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.pagina_inicial_rodape hr {
+  height: 1px;
+  background-color: #455A64;
+}
+
+.pagina_inicial_rodape_texto {
+    padding: 40px 35px 20px 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pagina_inicial_rodape_texto p {
+    color: white;
+    font-size: 15px;
+}
+
+.pagina_inicial_rodape_texto_links {
+    display: flex;
+    gap: 15px;
+}
+
+.pagina_inicial_rodape_texto_links div {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #455A64;
+    border-radius: 50%;
+    padding: 5px;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.pagina_inicial_rodape_texto_links div:hover {
+  background-color: #455A64;
+}

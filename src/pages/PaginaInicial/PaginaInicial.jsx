@@ -5,7 +5,8 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import './PaginaInicial.css';
-import LogoAzul from '../../assets/images/logo-lifeboard-azul.png'
+import LogoAzul from '../../assets/images/logo-lifeboard-azul.png';
+import LogoBranca from '../../assets/images/logo-lifeboard-branca.png';
 import ImagemDashboard from '../../assets/images/imagem-dashboard.png';
 import ImagemControleFinanceiro from '../../assets/images/imagem-controle-financeiro.png';
 import ImagemTransacoes from '../../assets/images/imagem-transacoes.png';
@@ -22,6 +23,9 @@ import ImagemDemonstracaoPomodoro from '../../assets/images/tela-pomodoro.png';
 import { useNavigate } from 'react-router-dom';
 import CardFuncionalidade from '../../components/CardFuncionalidade/CardFuncionalidade';
 import CardDemonstracaoPagina from '../../components/CardDemonstracaoPagina/CardDemonstracaoPagina';
+import LogoGithub from '../../assets/images/icone-github.png';
+import LogoLinkedin from '../../assets/images/icone-linkedIn.png';
+import LogoEmail from '../../assets/images/icone-email.png';
 
 const PaginaInicial = () => {
     const navigate = useNavigate();
@@ -186,46 +190,42 @@ const PaginaInicial = () => {
 
                         </Swiper>
 
-                        {/* <CardDemonstracaoPagina
-                            imagem={ImagemDemonstracaoControleFinanceiro}
-                            descricao="Tela de Controle Financeiro"
-                            texto="Página de Controle Financeiro"
-                        />
-
-                        <CardDemonstracaoPagina
-                            imagem={ImagemDemonstracaoTransacoes}
-                            descricao="Tela de Transações"
-                            texto="Página de Transações"
-                        />
-
-                        <CardDemonstracaoPagina
-                            imagem={ImagemDemonstracaoMetas}
-                            descricao="Tela de Metas Financeiras"
-                            texto="Página de Metas Financeiras"
-                        />
-
-                        <CardDemonstracaoPagina
-                            imagem={ImagemDemonstracaoKanban}
-                            descricao="Tela de Quadro Kanban"
-                            texto="Página de Quadro Kanban"
-                        />
-
-                        <CardDemonstracaoPagina
-                            imagem={ImagemDemonstracaoTarefas}
-                            descricao="Tela de Tarefas"
-                            texto="Página de Tarefas"
-                        />
-
-                        <CardDemonstracaoPagina
-                            imagem={ImagemDemonstracaoPomodoro}
-                            descricao="Tela de Pomodoro"
-                            texto="Página de Pomodoro"
-                        /> */}
-
                     </div>
 
                 </section>
 
+                <footer className='pagina_inicial_rodape'>
+                    <div className="pagina_inicial_rodape_logo">
+                        <img src={LogoBranca} alt="Logo" />
+                        <p>LifeBoard</p>
+                    </div>
+
+                    <hr />
+
+                    <div className="pagina_inicial_rodape_texto">
+                        <p>© 2025 LifeBoard. Todos os direitos reservados.</p>
+
+                        <div className="pagina_inicial_rodape_texto_links">
+                            <div>
+                                <a href="">
+                                    <img src={LogoGithub} alt="Icone Github" />
+                                </a>
+                            </div>
+
+                            <div>
+                                <a href="">
+                                    <img src={LogoLinkedin} alt="Icone Linkedin" />
+                                </a>
+                            </div>
+
+                            <div>
+                                <a href="">
+                                    <img src={LogoEmail} alt="Icone Email" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
 
             </main>
         </div>
