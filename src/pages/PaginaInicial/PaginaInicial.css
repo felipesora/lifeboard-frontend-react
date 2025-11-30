@@ -300,3 +300,112 @@
 .pagina_inicial_rodape_texto_links div:hover {
   background-color: #455A64;
 }
+
+@media(max-width: 1860px) {
+    .pagina_inicial_secao_apresentacao img {
+        width: 100%;
+        max-width: 800px;
+        height: auto;
+    }
+}
+
+@media(max-width: 1760px) {
+    .pagina_inicial_secao_apresentacao img {
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+    }
+}
+
+@media(max-width: 1660px) {
+    .pagina_inicial_secao_apresentacao img {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+    }
+}
+
+@media(max-width: 1560px) {
+    .pagina_inicial_secao_apresentacao img {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+    }
+}
+
+@media(max-width: 1460px) {
+    .pagina_inicial_secao_apresentacao img {
+        display: none;
+    }
+}
+
+@media(max-width: 890px) {
+    .pagina_inicial_secao_apresentacao {
+        padding: 65px 35px 100px 15px;
+    }
+    
+    .pagina_inicial_secao_apresentacao > div > h1 {
+        font-size: 35px;
+        width: 740px;
+    }
+
+    .pagina_inicial_secao_apresentacao > div > h2 {
+        font-size: 28px;
+        width: 740px;
+    }
+}
+
+@media(max-width: 770px) {
+    .pagina_inicial_secao_apresentacao {
+        padding: 65px 35px 100px 10px;
+    }
+    
+    .pagina_inicial_secao_apresentacao > div > h1 {
+        font-size: 35px;
+        width: 95%;
+    }
+
+    .pagina_inicial_secao_apresentacao > div > h2 {
+        font-size: 28px;
+        width: 95%;
+    }
+}
+
+@media(max-width: 630px) {
+    .pagina_inicial_secao_apresentacao {
+        padding: 65px 35px 100px 25px;
+    }
+
+    .pagina_inicial_secao_apresentacao_botoes {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .pagina_inicial_secao_apresentacao_botao_comece_agora {
+        width: 300px;
+    }
+
+    .pagina_inicial_secao_apresentacao_botao_funcionalidades {
+        width: 300px;
+    }
+}
+
+@media(max-width: 500px) {
+    .pagina_inicial_cabecalho > img {
+        display: none;
+    }
+
+    .pagina_inicial_cabecalho {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        padding: 20px;
+    }
+}
+
+@media(max-width: 390px) {
+    .pagina_inicial_secao_apresentacao {
+        padding: 65px 35px 100px 15px;
+    }
+}
