@@ -32,7 +32,7 @@
 }
 
 .card_funcionalidade div {
-    width: 490px;
+    width: 100%;
 }
 
 .card_funcionalidade div h4 {
@@ -44,4 +44,18 @@
     font-size: 16px;
     color: #607D8B;
     margin-top: 5px;
+}
+
+@media(max-width: 675px) {
+    .card_funcionalidade {
+        width: 550px;
+        padding: 35px 20px 30px 20px;
+    }
+}
+
+@media(max-width: 550px) {
+    .card_funcionalidade {
+        max-width: 450px;
+        width: 100%;
+    }
 }

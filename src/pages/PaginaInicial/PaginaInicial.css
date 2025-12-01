@@ -303,33 +303,30 @@
 
 @media(max-width: 1860px) {
     .pagina_inicial_secao_apresentacao img {
-        width: 100%;
         max-width: 800px;
-        height: auto;
+    }
+
+    .pagina_inicial_secao_funcionalidades_cards {
+        justify-content: center;
+        gap: 30px;
     }
 }
 
 @media(max-width: 1760px) {
     .pagina_inicial_secao_apresentacao img {
-        width: 100%;
         max-width: 700px;
-        height: auto;
     }
 }
 
 @media(max-width: 1660px) {
     .pagina_inicial_secao_apresentacao img {
-        width: 100%;
         max-width: 600px;
-        height: auto;
     }
 }
 
 @media(max-width: 1560px) {
     .pagina_inicial_secao_apresentacao img {
-        width: 100%;
         max-width: 500px;
-        height: auto;
     }
 }
 
@@ -341,7 +338,7 @@
 
 @media(max-width: 890px) {
     .pagina_inicial_secao_apresentacao {
-        padding: 65px 35px 100px 15px;
+        padding: 65px 15px 100px 15px;
     }
     
     .pagina_inicial_secao_apresentacao > div > h1 {
@@ -353,11 +350,23 @@
         font-size: 28px;
         width: 740px;
     }
+
+    .pagina_inicial_secao_funcionalidades {
+        padding: 65px 15px 100px 15px;
+    }
+
+    .pagina_inicial_secao_funcionalidades_textos h2 {
+        font-size: 28px;
+    }
+
+    .pagina_inicial_secao_funcionalidades_textos h3 {
+        font-size: 20px;
+    }
 }
 
 @media(max-width: 770px) {
     .pagina_inicial_secao_apresentacao {
-        padding: 65px 35px 100px 10px;
+        padding: 65px 10px 100px 10px;
     }
     
     .pagina_inicial_secao_apresentacao > div > h1 {
@@ -373,7 +382,7 @@
 
 @media(max-width: 630px) {
     .pagina_inicial_secao_apresentacao {
-        padding: 65px 35px 100px 25px;
+        padding: 65px 25px 100px 25px;
     }
 
     .pagina_inicial_secao_apresentacao_botoes {
@@ -399,13 +408,13 @@
     .pagina_inicial_cabecalho {
         display: flex;
         align-items: center;
-        justify-content: end;
+        justify-content: center;
         padding: 20px;
     }
 }
 
 @media(max-width: 390px) {
     .pagina_inicial_secao_apresentacao {
-        padding: 65px 35px 100px 15px;
+        padding: 65px 15px 100px 15px;
     }
 }
