@@ -1,19 +1,19 @@
-import "./Cadastro.css"
 import Logo from "../../assets/images/logo-lifeboard-azul.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
-// import { cadastro } from '../../services/authService';
+import { cadastro } from "./services/cadastroService";
+import { ContainerCadastro, LinkPaginaLogin, MensagemCadastro, SecaoCadastro } from "./styles";
 
 const Cadastro = () => {
     const navigate = useNavigate();
-    const [nome, setNome] = useState("");
-    const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
-    const [confirmarSenha, setConfirmarSenha] = useState("");
-    const [error, setError] = useState("");
-    const [success, setSuccess] = useState("");
+    const [nome, setNome] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [senha, setSenha] = useState<string>("");
+    const [confirmarSenha, setConfirmarSenha] = useState<string>("");
+    const [error, setError] = useState<string>("");
+    const [success, setSuccess] = useState<string>("");
 
-    const handleCadastro = async (e) => {
+    const handleCadastro = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         if (senha.length < 6) {
@@ -29,7 +29,7 @@ const Cadastro = () => {
         }
 
         try {
-            // await cadastro(nome, email, senha);
+            await cadastro({ nome, email, senha });
             setError("");
             setSuccess("Cadastro realizado com sucesso!");
 
@@ -41,20 +41,25 @@ const Cadastro = () => {
         } catch (erro) {
             console.log(erro);
 
-            if (erro.message.includes('ORA-00001') || erro.message.includes('restrição exclusiva')) {
-                setError("Este email já está cadastrado. Tente outro.");
+            if (erro instanceof Error) {
+                if (erro.message.includes("ORA-00001") ||erro.message.includes("restrição exclusiva")) {
+                    setError("Este email já está cadastrado. Tente outro.");
+                } else {
+                    setError("Erro ao realizar o cadastro. Tente novamente.");
+                }
             } else {
-                setError("Erro ao realizar o cadastro. Tente novamente.");
+                setError("Erro desconhecido. Tente novamente.");
             }
+
             setSuccess("");
         }
     }
 
     return (
-        <div className="container_cadastro">
+        <ContainerCadastro>
             <img src={Logo} alt="Logo do LifeBoard" />
-            <section className="container_cadastro_form">
-                <div className="container_cadastro_form_textos">
+            <SecaoCadastro>
+                <div className="cadastro_conteudo">
                     <h1>Bem-vindo ao LifeBoard</h1>
                     <p>Cadastre-se para acessar o painel de gestão</p>
                 </div>
@@ -111,16 +116,16 @@ const Cadastro = () => {
 
                 </form>
 
-                <div className="container_mensagem_cadastro">
-                    {success && <p className="mensagem_cadastro_sucesso">{success}</p>}
-                    {error && <p className="mensagem_cadastro_erro">{error}</p>}
-                </div>
+                <MensagemCadastro>
+                    {success && <p className="sucesso">{success}</p>}
+                    {error && <p className="erro">{error}</p>}
+                </MensagemCadastro>
 
-                <div className="container_link_login">
-                    <p className="link_login">Já possui uma conta? <button onClick={() => navigate("/login")}>Entrar</button></p>
-                </div>
-            </section>
-        </div>
+                <LinkPaginaLogin>
+                    <p className="link">Já possui uma conta? <button onClick={() => navigate("/login")}>Entrar</button></p>
+                </LinkPaginaLogin>
+            </SecaoCadastro>
+        </ContainerCadastro>
     )
 }
 
