@@ -281,6 +281,7 @@
 .pagina_inicial_rodape_texto p {
     color: white;
     font-size: 15px;
+    text-align: center;
 }
 
 .pagina_inicial_rodape_texto_links {
@@ -299,6 +300,12 @@
 
 .pagina_inicial_rodape_texto_links div:hover {
   background-color: #455A64;
+}
+
+.pagina_inicial_rodape_texto_links img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 @media(max-width: 1860px) {
@@ -336,6 +343,23 @@
     }
 }
 
+@media(max-width: 1370px) {
+    .pagina_inicial_rodape_logo img {
+        width: 40px;
+    }
+    
+    .pagina_inicial_rodape_logo p {
+        font-size: 20px;
+    }
+}
+
+@media(max-width: 900px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
+}
+
 @media(max-width: 890px) {
     .pagina_inicial_secao_apresentacao {
         padding: 65px 15px 100px 15px;
@@ -362,6 +386,18 @@
     .pagina_inicial_secao_funcionalidades_textos h3 {
         font-size: 20px;
     }
+
+    .pagina_inicial_secao_demontracao {
+        padding: 65px 15px 100px 15px;
+    }
+
+    .pagina_inicial_secao_descricao_textos h2 {
+        font-size: 28px;
+    }
+
+    .pagina_inicial_secao_descricao_textos h3 {
+        font-size: 20px;
+    }
 }
 
 @media(max-width: 770px) {
@@ -377,6 +413,22 @@
     .pagina_inicial_secao_apresentacao > div > h2 {
         font-size: 28px;
         width: 95%;
+    }
+}
+
+@media(max-width: 675px) {
+    .pagina_inicial_rodape_texto {
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
+
+    .pagina_inicial_rodape_texto_links div {
+        width: 50px;
+        height: 50px;
+    }
+
+    .pagina_inicial_rodape_texto p {
+        font-size: 14px;
     }
 }
 

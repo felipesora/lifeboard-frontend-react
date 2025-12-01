@@ -40,7 +40,7 @@ const PaginaInicial = () => {
     return (
         <div className='container_pagina_inicial'>
 
-            <header className='pagina_inicial_cabecalho' id="cabealho">
+            <header className='pagina_inicial_cabecalho' id="cabecalho">
                 <img src={LogoAzul} alt="Logo da lifeboard" />
 
                 <div className='pagina_inicial_cabecalho_botoes_entrar_cadastrar'>
@@ -203,7 +203,7 @@ const PaginaInicial = () => {
 
                 <footer className='pagina_inicial_rodape'>
                     <div className="pagina_inicial_rodape_logo">
-                        <button onClick={() => scrollToSection('cabealho')}>
+                        <button onClick={() => scrollToSection('cabecalho')}>
                             <img src={LogoBranca} alt="Logo" />
                             <p>LifeBoard</p>
                         </button>
