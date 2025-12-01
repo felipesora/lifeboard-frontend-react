@@ -2,7 +2,7 @@ import "./Cadastro.css"
 import Logo from "../../assets/images/logo-lifeboard-azul.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
-import { cadastro } from '../../services/authService';
+// import { cadastro } from '../../services/authService';
 
 const Cadastro = () => {
     const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Cadastro = () => {
         }
 
         try {
-            await cadastro(nome, email, senha);
+            // await cadastro(nome, email, senha);
             setError("");
             setSuccess("Cadastro realizado com sucesso!");
 

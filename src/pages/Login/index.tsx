@@ -1,8 +1,9 @@
-import './Login.css'
 import Logo from "../../assets/images/logo-lifeboard-azul.png";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { isTokenValid, login } from '../../services/authService';
+import { login } from './services/loginService';
+import { isTokenValid } from '../../services/authService';
+import { ContainerLogin, LinkPaginaCadastro, MensagemLogin, SecaoLogin } from './styles';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -13,11 +14,11 @@ const Login = () => {
         }
     }, [navigate]);
 
-    const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
-    const [error, setError] = useState("");
+    const [email, setEmail] = useState<string>("");
+    const [senha, setSenha] = useState<string>("");
+    const [error, setError] = useState<string>("");
 
-    const handleLogin = async (e) => {
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         try {
@@ -25,6 +26,7 @@ const Login = () => {
 
             setError('');
             navigate('/controle-financeiro');
+
         } catch (erro) {
             console.log(erro);
             setError('Email ou senha inválidos.');
@@ -32,10 +34,11 @@ const Login = () => {
     }
 
     return (
-        <div className="container_login">
+        <ContainerLogin>
             <img src={Logo} alt="Logo do LifeBoard" />
-            <section className="container_login_form">
-                <div className="container_login_form_textos">
+
+            <SecaoLogin>
+                <div className="login_conteudo">
                     <h1>Bem-Vindo de volta</h1>
                     <p>Entre com sua conta</p>
                 </div>
@@ -69,15 +72,16 @@ const Login = () => {
 
                 </form>
 
-                <div className="container_mensagem_login">
-                    {error && <p className="mensagem_login_erro">{error}</p>}
-                </div>
+                <MensagemLogin>
+                    {error && <p className="erro">{error}</p>}
+                </MensagemLogin>
 
-                <div className="container_link_cadastro">
-                    <p className="link_cadastro">Ainda não possui uma conta? <button onClick={() => navigate("/cadastro")}>Cadastre-se</button></p>
-                </div>
-            </section>
-        </div>
+                <LinkPaginaCadastro>
+                    <p className="link">Ainda não possui uma conta? <button onClick={() => navigate("/cadastro")}>Cadastre-se</button></p>
+                </LinkPaginaCadastro>
+
+            </SecaoLogin>
+        </ContainerLogin>
     )
 }
 
