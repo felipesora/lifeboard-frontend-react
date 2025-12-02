@@ -1,5 +1,5 @@
 import "./ControleFinanceiro.css";
-import CardPequeno from "../../components/CardPequeno/CardPequeno";
+import CardPequeno from "./components/CardPequeno";
 import MenuLateral from "../../components/MenuLateral";
 import IconeSaldo from "../../assets/images/icone-saldo.png";
 import IconeSalario from "../../assets/images/icone-salario.png";
@@ -7,8 +7,8 @@ import IconeGastos from "../../assets/images/icone-cartao-credito.png";
 import IconeTransacoes from "../../assets/images/icone-lista-preto.png";
 import IconeGrafico from "../../assets/images/icone-grafico.png";
 import IconeMetas from "../../assets/images/icone-metas-preto.png";
-import CardTrasacao from "../../components/CardTransacao/CardTransacao";
-import GastosMensaisGrafico from "../../components/GastosMensaisGrafico/GastosMensaisGrafico";
+import CardTrasacao from "./components/CardTransacao";
+import GastosMensaisGrafico from "./components/GastosMensaisGrafico";
 import { useEffect, useState } from "react";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import ModalDefinirSalario from "../../components/ModalDefinirSalario/ModalDefinirSalario";
@@ -23,7 +23,7 @@ import { obterDadosUsuario } from "../../services/usuarioService";
 import { obterTransacoes } from "../../utils/obterTransacoes";
 import { obterMetas } from "../../utils/obterMetas";
 import { editarFinanceiroUsuario } from "./services/financeiroService";
-import { DashBoardContainer, DashBoardMain } from "./styles";
+import { ContainerCardGrafico, ContainerCardsPequenos, ContainerCardsPequenosEGrafico, ContainerCardsPequenosETransacoes, ContainerCardTransacoes, DashBoardContainer, DashBoardMain } from "./styles";
 
 const ControleFinanceiro = () => {
     useAuthRedirect();
@@ -167,9 +167,9 @@ const ControleFinanceiro = () => {
                 </div>
 
                 <div>
-                    <div className="dashboard_cards_container">
-                        <div className="dashboard_cards_pequenos_graficos">
-                            <div className="dashboard_cards_pequenos">
+                    <ContainerCardsPequenosETransacoes>
+                        <ContainerCardsPequenosEGrafico>
+                            <ContainerCardsPequenos>
                                 <CardPequeno
                                     icone={IconeSaldo}
                                     descricao="Icone sacola de dinheiro"
@@ -193,16 +193,16 @@ const ControleFinanceiro = () => {
                                     valor={gastosMes.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                                     cor="#A44A48"
                                 />
-                            </div>
-                            <div className="dashboard_grafico">
-                                <div className="card_grafico_titulo">
+                            </ContainerCardsPequenos>
+                            <ContainerCardGrafico>
+                                <div className="titulo_grafico">
                                     <img src={IconeGrafico} alt="Icone de grafico" />
                                     <p>Gastos por Mês</p>
                                 </div>
                                 <GastosMensaisGrafico dados={data} />
-                            </div>
-                        </div>
-                        <div className="card_transacoes">
+                            </ContainerCardGrafico>
+                        </ContainerCardsPequenosEGrafico>
+                        <ContainerCardTransacoes>
                             <div>
                                 <img src={IconeTransacoes} alt="Icone de lista" />
                                 <p>Últimas Transações</p>
@@ -263,8 +263,8 @@ const ControleFinanceiro = () => {
                                     <button onClick={() => navigate("/transacoes")}>Ver mais...</button>
                                 </div>
                             )}
-                        </div>
-                    </div>
+                        </ContainerCardTransacoes>
+                    </ContainerCardsPequenosETransacoes>
                     <div className="card_metas">
                         <div className="card_metas_titulo">
                             <img src={IconeMetas} alt="Icone de cofrinho" />

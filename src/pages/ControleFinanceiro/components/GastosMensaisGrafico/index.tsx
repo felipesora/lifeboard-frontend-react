@@ -1,7 +1,15 @@
-import React, { PureComponent } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-const GastosMensaisGrafico = ({ dados }) => {
+interface DadoMensal {
+  name: string;
+  valor: number;
+}
+
+interface GastosMensaisGraficoProps {
+  dados: DadoMensal[];
+}
+
+const GastosMensaisGrafico = ({ dados }: GastosMensaisGraficoProps) => {
   return (
     <ResponsiveContainer width="95%" height={300}>
       <AreaChart
