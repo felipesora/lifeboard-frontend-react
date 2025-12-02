@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../pages/Login";
 import Cadastro from "../pages/Cadastro";
-import ControleFinanceiro from "../pages/ControleFinanceiro/ControleFinanceiro";
+import ControleFinanceiro from "../pages/ControleFinanceiro";
 import Transacoes from "../pages/Transacoes/Transacoes";
 import CadastroTransacao from "../pages/CadastroTransacao/CadastroTransacao";
 import EditarTransacao from "../pages/EditarTransacao/EditarTransacao";

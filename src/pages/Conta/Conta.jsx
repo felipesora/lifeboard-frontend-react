@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import MenuLateral from '../../components/MenuLateral/MenuLateral';
+import MenuLateral from '../../components/MenuLateral';
 import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 import './Conta.css';
 import { useEffect, useState } from 'react';
 import { atualizarFotoPefil, deletarUsuario, editarDadosUsuario, obterDadosUsuario, obterFotoPerfil, removerFotoPerfil } from '../../services/usuarioService';
 import ModalDeletarConta from '../../components/ModalDeletarConta/ModalDeletarConta';
-import Cabecalho from '../../components/Cabecalho/Cabecalho';
+import Cabecalho from "../../components/Cabecalho";
 import FotoPefilPadrao from "../../assets/images/foto-perfil-padrao.png";
 import IconeEditarFoto from "../../assets/images/icone-editar-foto-perfil.png";
 import IconeRemoverFoto from "../../assets/images/icone-remover-foto-perfil.png";

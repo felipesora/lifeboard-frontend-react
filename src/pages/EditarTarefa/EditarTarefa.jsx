@@ -1,10 +1,10 @@
 import "./EditarTarefa.css"
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
-import MenuLateral from "../../components/MenuLateral/MenuLateral";
+import MenuLateral from "../../components/MenuLateral";
 import { useEffect, useState } from "react";
 import { editarDadosTarefa, obterDadosTarefa } from "../../services/tarefasService";
-import Cabecalho from "../../components/Cabecalho/Cabecalho";
+import Cabecalho from "../../components/Cabecalho";
 
 const EditarTarefa = () => {
     useAuthRedirect();

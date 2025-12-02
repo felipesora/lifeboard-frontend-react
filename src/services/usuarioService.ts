@@ -1,4 +1,6 @@
-export async function obterDadosUsuario(id) {
+import type { UsuarioResponse } from "../types/usuario";
+
+export async function obterDadosUsuario(id: number): Promise<UsuarioResponse> {
     const token = localStorage.getItem('token');
 
     const response = await fetch(`http://localhost:8080/api/usuarios/${id}`, {
@@ -16,29 +18,6 @@ export async function obterDadosUsuario(id) {
 
     if (!response.ok) {
         throw new Error('Erro ao obter os dados do usuário.');
-    }
-
-    return await response.json();
-}
-
-export async function editarFinanceiroUsuario(idFinanceiro, financeiro) {
-    const token = localStorage.getItem('token');
-
-    const response = await fetch(`http://localhost:8080/api/financeiros/${idFinanceiro}`, {
-        method: 'PUT',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            saldo_atual: financeiro.saldo_atual,
-            salario_mensal: financeiro.salario_mensal,
-            id_usuario: financeiro.id_usuario,
-        })
-    });
-
-    if (!response.ok) {
-        throw new Error('Erro ao editar os dados do financeiro.');
     }
 
     return await response.json();

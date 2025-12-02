@@ -1,14 +1,14 @@
 import "./Pomodoro.css";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import { useEffect, useRef, useState } from "react";
-import MenuLateral from "../../components/MenuLateral/MenuLateral";
+import MenuLateral from "../../components/MenuLateral";
 import IconePomodoro from "../../assets/images/icone-relogio-pomodoro.png";
 import IconePlay from "../../assets/images/icone-play.png";
 import IconePausa from "../../assets/images/icone-pausa.png";
 import IconeResetar from "../../assets/images/icone-resetar.png";
 import IconeSeta from "../../assets/images/icone-seta-baixo.png";
 import SomAlarme from "../../assets/sounds/alerme1.wav";
-import Cabecalho from "../../components/Cabecalho/Cabecalho";
+import Cabecalho from "../../components/Cabecalho";
 
 const Pomodoro = () => {
     useAuthRedirect();

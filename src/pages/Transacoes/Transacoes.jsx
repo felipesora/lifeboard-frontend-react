@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import MenuLateral from '../../components/MenuLateral/MenuLateral';
+import MenuLateral from '../../components/MenuLateral';
 import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 import './Transacoes.css';
 import { useEffect, useState, useRef } from 'react';
@@ -7,7 +7,7 @@ import { obterTransacoes } from '../../utils/obterTransacoes';
 import IconeMenuVertical from "../../assets/images/icone-menu-vertical.png"
 import ModalDeletarTransacao from '../../components/ModalDeletarTransacao/ModalDeletarTransacao';
 import { deletarTransacao } from '../../services/transacaoService';
-import Cabecalho from '../../components/Cabecalho/Cabecalho';
+import Cabecalho from "../../components/Cabecalho";
 import { exportarParaExcel } from '../../utils/exportarParaExcel';
 
 const Transacoes = () => {

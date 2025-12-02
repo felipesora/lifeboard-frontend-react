@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import MenuLateral from '../../components/MenuLateral/MenuLateral';
+import MenuLateral from '../../components/MenuLateral';
 import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 import './Metas.css';
 import IconeMetaAndamento from "../../assets/images/icone-meta-andamento.png"
@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import CardMeta from '../../components/CardMeta/CardMeta';
 import { obterMetas } from '../../utils/obterMetas';
 import { adicionarSaldo, deletarMeta, retirarSaldo } from '../../services/metaService';
-import Cabecalho from '../../components/Cabecalho/Cabecalho';
+import Cabecalho from "../../components/Cabecalho";
 import ModalAdiconarSaldoMeta from '../../components/ModalAdiconarSaldoMeta/ModalAdiconarSaldoMeta';
 import ModalDeletarMeta from '../../components/ModalDeletarMeta/ModalDeletarMeta';
 import ModalRetirarSaldoMeta from '../../components/ModalRetirarSaldoMeta/ModalRetirarSaldoMeta';

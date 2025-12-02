@@ -7,39 +7,24 @@ import IconePomodoro from "../../assets/images/icone-pomodoro.png";
 import IconeUsuario from "../../assets/images/icone-user.png";
 import IconeBarra from "../../assets/images/icone-barra.png";
 import IconeSair from "../../assets/images/icone-logout.png";
-import IconeMenu from "../../assets/images/icone-menu.png";
 import { useNavigate } from 'react-router-dom';
-import './MenuLateral.css';
-import ModalLogout from "../ModalLogout/ModalLogout";
+import ModalLogout from "../ModalLogout";
 import { useState } from "react";
+import { ContainerMenuLateral, MenuNav, RodapeMenu } from "./styles";
 
 const MenuLateral = () => {
     const navigate = useNavigate();
-    const [modalLogoutAberto, setModalLogoutAberto] = useState(false);
-    const [aberto, setAberto] = useState(false);
-
-    const alternarMenu = () => {
-        setAberto(!aberto);
-    };
+    const [modalLogoutAberto, setModalLogoutAberto] = useState<boolean>(false);
 
     return (
         <>
-            {/* Botão hambúrguer (só aparece em telas pequenas) */}
-            <button className="menu_hamburger" onClick={alternarMenu}>
-                <img src={IconeMenu} alt="Icone de menu" />
-            </button>
-
-            {/* Overlay para fechar o menu tocando fora */}
-            {aberto && <div className="menu_overlay" onClick={alternarMenu}></div>}
-
-
-            <aside className={`menu ${aberto ? 'menu_aberto' : ''}`}>
-                <div className='menu_logo'>
+            <ContainerMenuLateral>
+                <div className='logo'>
                     <h2>LifeBoard</h2>
                 </div>
 
-                <nav className='menu_nav'>
-                    <p className="menu_section">Financeiro</p>
+                <MenuNav>
+                    <p>Financeiro</p>
                     <ul>
                         <li>
                             <button onClick={() => navigate("/controle-financeiro")}>
@@ -64,7 +49,7 @@ const MenuLateral = () => {
                         </li>
                     </ul>
 
-                    <p className="menu_section menu_section_2">Tarefas</p>
+                    <p className="menu_section_2">Tarefas</p>
                     <ul>
                         <li>
                             <button onClick={() => navigate("/tarefas-quadro-kanban")}>
@@ -90,19 +75,19 @@ const MenuLateral = () => {
 
                         </li>
                     </ul>
-                </nav>
+                </MenuNav>
 
-                <div className='menu_footer'>
+                <RodapeMenu>
                     <button onClick={() => navigate("/minha-conta")}><img src={IconeUsuario} alt="Icone de usuário" title="Minha Conta" /></button>
                     <img src={IconeBarra} alt="Icone de barra vertical" />
                     <button onClick={() => setModalLogoutAberto(true)}><img src={IconeSair} alt="Icone de sair" title="Sair da Conta" /></button>
-                </div>
+                </RodapeMenu>
 
                 <ModalLogout
                     aberto={modalLogoutAberto}
                     onClose={() => setModalLogoutAberto(false)}
                 />
-            </aside>
+            </ContainerMenuLateral>
         </>
     )
 }

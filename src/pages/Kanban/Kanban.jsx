@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import MenuLateral from '../../components/MenuLateral/MenuLateral';
+import MenuLateral from '../../components/MenuLateral';
 import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 import './Kanban.css';
 import IconeFazer from '../../assets/images/icone-tarefa-fazer.png';
@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 import { obterTarefas } from '../../utils/obterTarefas';
 import { editarDadosTarefa } from "../../services/tarefasService";
 import { deletarTarefa } from "../../services/tarefasService";
-import Cabecalho from '../../components/Cabecalho/Cabecalho';
+import Cabecalho from "../../components/Cabecalho";
 import ModalDeletarTarefa from '../../components/ModalDeletarTarefa/ModalDeletarTarefa';
 import CardInfoTarefas from '../../components/CardInfoTarefas/CardInfoTarefas';
 import CardTarefa from '../../components/CardTarefa/CardTarefa';

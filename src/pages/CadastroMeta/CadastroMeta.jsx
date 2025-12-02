@@ -1,10 +1,10 @@
 import "./CadastroMeta.css"
 import { useNavigate } from "react-router-dom";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
-import MenuLateral from "../../components/MenuLateral/MenuLateral";
+import MenuLateral from "../../components/MenuLateral";
 import { useState } from "react";
 import { cadastrarMeta } from "../../services/metaService";
-import Cabecalho from "../../components/Cabecalho/Cabecalho";
+import Cabecalho from "../../components/Cabecalho";
 
 const CadastroMeta = () => {
     useAuthRedirect();

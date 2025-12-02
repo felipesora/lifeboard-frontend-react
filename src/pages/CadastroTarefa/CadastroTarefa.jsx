@@ -1,10 +1,10 @@
 import "./CadastroTarefa.css"
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
-import MenuLateral from "../../components/MenuLateral/MenuLateral";
+import MenuLateral from "../../components/MenuLateral";
 import { useState } from "react";
 import { cadastrarTarefa } from "../../services/tarefasService";
-import Cabecalho from "../../components/Cabecalho/Cabecalho";
+import Cabecalho from "../../components/Cabecalho";
 
 const CadastroTarefa = () => {
     useAuthRedirect();

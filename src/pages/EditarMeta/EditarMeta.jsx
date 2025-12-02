@@ -1,10 +1,10 @@
 import "./EditarMeta.css"
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
-import MenuLateral from "../../components/MenuLateral/MenuLateral";
+import MenuLateral from "../../components/MenuLateral";
 import { useEffect, useState } from "react";
 import { editarDadosMeta, obterDadosMeta } from "../../services/metaService";
-import Cabecalho from "../../components/Cabecalho/Cabecalho";
+import Cabecalho from "../../components/Cabecalho";
 
 const EditarMeta = () => {
     useAuthRedirect();

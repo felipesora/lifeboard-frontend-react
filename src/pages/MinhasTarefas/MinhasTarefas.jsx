@@ -1,14 +1,14 @@
 import { useNavigate } from 'react-router-dom';
-import MenuLateral from '../../components/MenuLateral/MenuLateral';
+import MenuLateral from '../../components/MenuLateral';
 import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 import './MinhasTarefas.css';
 import { useEffect, useState, useRef } from 'react';
 import { obterTarefas } from '../../utils/obterTarefas';
 import IconeMenuVertical from "../../assets/images/icone-menu-vertical.png";
 import { deletarTarefa } from "../../services/tarefasService";
-import Cabecalho from '../../components/Cabecalho/Cabecalho';
 import { exportarParaExcel } from '../../utils/exportarParaExcel';
 import ModalDeletarTarefa from '../../components/ModalDeletarTarefa/ModalDeletarTarefa';
+import Cabecalho from "../../components/Cabecalho";
 
 const MinhasTarefas = () => {
     useAuthRedirect();

@@ -1,43 +1,49 @@
+import "./ControleFinanceiro.css";
 import CardPequeno from "../../components/CardPequeno/CardPequeno";
-import MenuLateral from "../../components/MenuLateral/MenuLateral";
+import MenuLateral from "../../components/MenuLateral";
 import IconeSaldo from "../../assets/images/icone-saldo.png";
 import IconeSalario from "../../assets/images/icone-salario.png";
 import IconeGastos from "../../assets/images/icone-cartao-credito.png";
 import IconeTransacoes from "../../assets/images/icone-lista-preto.png";
 import IconeGrafico from "../../assets/images/icone-grafico.png";
 import IconeMetas from "../../assets/images/icone-metas-preto.png";
-import "./ControleFinanceiro.css";
 import CardTrasacao from "../../components/CardTransacao/CardTransacao";
 import GastosMensaisGrafico from "../../components/GastosMensaisGrafico/GastosMensaisGrafico";
 import { useEffect, useState } from "react";
-import { obterDadosUsuario, editarFinanceiroUsuario } from "../../services/usuarioService";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 import ModalDefinirSalario from "../../components/ModalDefinirSalario/ModalDefinirSalario";
-import { obterTransacoes } from "../../utils/obterTransacoes";
 import { useNavigate } from "react-router-dom";
-import { obterMetas } from "../../utils/obterMetas";
 import CardMetaControleFinanceiro from "../../components/CardMetaControleFinanceiro/CardMetaControleFinanceiro";
 import IconeMetaAndamento from "../../assets/images/icone-meta-andamento.png"
 import IconeMetaConcluida from "../../assets/images/icone-meta-concluida.png"
-import Cabecalho from "../../components/Cabecalho/Cabecalho";
+import Cabecalho from "../../components/Cabecalho";
+import type { TransacaoResponse } from "../../types/transacao";
+import type { MetaResponse } from "../../types/meta";
+import { obterDadosUsuario } from "../../services/usuarioService";
+import { obterTransacoes } from "../../utils/obterTransacoes";
+import { obterMetas } from "../../utils/obterMetas";
+import { editarFinanceiroUsuario } from "./services/financeiroService";
+import { DashBoardContainer, DashBoardMain } from "./styles";
 
 const ControleFinanceiro = () => {
     useAuthRedirect();
     const navigate = useNavigate();
 
-    const [saldo, setSaldo] = useState(0);
-    const [salario, setSalario] = useState(0);
-    const [gastosMes, setGastosMes] = useState(0);
+    const [saldo, setSaldo] = useState<number>(0);
+    const [salario, setSalario] = useState<number>(0);
+    const [gastosMes, setGastosMes] = useState<number>(0);
     const [gastosAno, setGastosAno] = useState(Array(12).fill(0));
-    const [modalSalarioAberto, setModalSalarioAberto] = useState(false);
-    const [transacoes, setTransacoes] = useState([]);
-    const [metas, setMetas] = useState([]);
+    const [modalSalarioAberto, setModalSalarioAberto] = useState<boolean>(false);
+    const [transacoes, setTransacoes] = useState<TransacaoResponse[]>([]);
+    const [metas, setMetas] = useState<MetaResponse[]>([]);
 
     useEffect(() => {
-        const fetchDadosUsuario = async () => {
+        const fetchDadosUsuario = async (): Promise<void> => {
             try {
                 const userId = localStorage.getItem("userId");
-                const usuario = await obterDadosUsuario(userId);
+                if (!userId) return;
+
+                const usuario = await obterDadosUsuario(Number(userId));
 
                 // Saldo e salario
                 setSaldo(usuario.financeiro.saldo_atual ?? 0);
@@ -47,29 +53,28 @@ const ControleFinanceiro = () => {
                 const currentMonth = now.getMonth();
                 const currentYear = now.getFullYear();
 
-                const saidas = usuario.financeiro.transacoes.filter(transacao =>
-                    transacao.tipo === "SAIDA"
+                const saidas = usuario.financeiro.transacoes.filter(
+                    (transacao) => transacao.tipo === "SAIDA"
                 );
 
                 // Gastos do mês atual
                 const totalSaidasMes = saidas
-                    .filter(transacao => {
-                        const dataTransacao = new Date(transacao.data);
-                        return (
-                            dataTransacao.getMonth() === currentMonth &&
-                            dataTransacao.getFullYear() === currentYear
-                        );
-                    })
-                    .reduce((total, transacao) => total + transacao.valor, 0);
+                .filter((t) => {
+                    const dt = new Date(t.data);
+                    return (
+                        dt.getMonth() === currentMonth &&
+                        dt.getFullYear() === currentYear
+                    );
+                })
+                .reduce((total, t) => total + t.valor, 0);
 
 
                 // Gastos por mês no ano
-                const gastosPorMes = Array(12).fill(0);
-                saidas.forEach(transacao => {
-                    const dataTransacao = new Date(transacao.data);
-                    if (dataTransacao.getFullYear() === currentYear) {
-                        const mes = dataTransacao.getMonth();
-                        gastosPorMes[mes] += transacao.valor;
+                const gastosPorMes: number[] = Array(12).fill(0);
+                saidas.forEach((t) => {
+                    const dt = new Date(t.data);
+                    if (dt.getFullYear() === currentYear) {
+                        gastosPorMes[dt.getMonth()] += t.valor;
                     }
                 });
 
@@ -80,8 +85,8 @@ const ControleFinanceiro = () => {
                 // Transações
                 const transacoes = await obterTransacoes();
 
-                const ultimasTransacoes = transacoes
-                    .sort((a, b) => new Date(b.data) - new Date(a.data))
+                const ultimasTransacoes = [...transacoes]
+                    .sort((a, b) => Number(new Date(b.data)) - Number(new Date(a.data)))
                     .slice(0, 4);
 
                 setTransacoes(ultimasTransacoes);
@@ -89,12 +94,9 @@ const ControleFinanceiro = () => {
                 // Metas
                 const metas = await obterMetas();
 
-                const melhoresMetas = metas
+                const melhoresMetas = [...metas]
                     .sort((a, b) => {
-                        // Primeiro ordena por status:
-                        // Coloque "CONCLUIDA" antes de "EM_ANDAMENTO"
                         if (a.status === b.status) {
-                            // Se status iguais, ordena pelo valor_meta (ex: crescente)
                             return a.valor_meta - b.valor_meta;
                         }
                         if (a.status === "CONCLUIDA") return -1;
@@ -105,10 +107,7 @@ const ControleFinanceiro = () => {
 
                 setMetas(melhoresMetas);
 
-
-
             } catch (erro) {
-
                 console.error("Erro ao obter dados do usuário:", erro);
             }
         };
@@ -131,10 +130,10 @@ const ControleFinanceiro = () => {
         { name: 'Dez', valor: gastosAno[11] },
     ];
 
-    const handleSalvarSalario = async (novoSalario) => {
+    const handleSalvarSalario = async (novoSalario: number) => {
 
         const userId = localStorage.getItem("userId");
-        const usuario = await obterDadosUsuario(userId);
+        const usuario = await obterDadosUsuario(Number(userId));
 
         const financeiroId = usuario.financeiro.id_financeiro;
 
@@ -151,19 +150,19 @@ const ControleFinanceiro = () => {
         setModalSalarioAberto(true);
     };
 
-    function formatarDataISOParaBR(dataISO) {
+    function formatarDataISOParaBR(dataISO: string) {
         if (!dataISO) return "";
         const [ano, mes, dia] = dataISO.split("-");
         return `${dia}/${mes}/${ano}`;
     }
 
     return (
-        <div className="dashboard_container">
+        <DashBoardContainer>
             <Cabecalho />
             <MenuLateral />
-            <main className="dashboard_main">
+            <DashBoardMain>
 
-                <div className="dashboard_titulo">
+                <div className="titulo">
                     <p>Controle Financeiro</p>
                 </div>
 
@@ -311,8 +310,8 @@ const ControleFinanceiro = () => {
                     onClose={() => setModalSalarioAberto(false)}
                     onSalvar={handleSalvarSalario}
                 />
-            </main>
-        </div>
+            </DashBoardMain>
+        </DashBoardContainer>
     )
 }
 

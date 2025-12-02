@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import MenuLateral from '../../components/MenuLateral/MenuLateral';
+import MenuLateral from '../../components/MenuLateral';
 import './CadastroTransacao.css'
 import { cadastrarTransacao } from '../../services/transacaoService';
 import { useAuthRedirect } from '../../hooks/useAuthRedirect';
 import { useNavigate } from 'react-router-dom';
-import Cabecalho from '../../components/Cabecalho/Cabecalho';
+import Cabecalho from "../../components/Cabecalho";
 
 const CadastroTransacao = () => {
     useAuthRedirect();

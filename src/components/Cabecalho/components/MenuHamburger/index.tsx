@@ -1,34 +1,37 @@
-import IconeControleFinanceiro from "../../assets/images/icone-financeiro.png";
-import IconeTransacoes from "../../assets/images/icone-transacoes.png";
-import IconeMetas from "../../assets/images/icone-metas-branco.png";
-import IconeKanban from "../../assets/images/icone-kanban.png";
-import IconeTarefas from "../../assets/images/icone-lista-branco.png";
-import IconePomodoro from "../../assets/images/icone-pomodoro.png";
-import IconeUsuario from "../../assets/images/icone-user.png";
-import IconeBarra from "../../assets/images/icone-barra.png";
-import IconeSair from "../../assets/images/icone-logout.png";
-import IconeFechar from "../../assets/images/icone-fechar-branco.png";
-import ModalLogout from "../ModalLogout/ModalLogout";
+import IconeControleFinanceiro from "../../../../assets/images/icone-financeiro.png";
+import IconeTransacoes from "../../../../assets/images/icone-transacoes.png";
+import IconeMetas from "../../../../assets/images/icone-metas-branco.png";
+import IconeKanban from "../../../../assets/images/icone-kanban.png";
+import IconeTarefas from "../../../../assets/images/icone-lista-branco.png";
+import IconePomodoro from "../../../../assets/images/icone-pomodoro.png";
+import IconeUsuario from "../../../../assets/images/icone-user.png";
+import IconeBarra from "../../../../assets/images/icone-barra.png";
+import IconeSair from "../../../../assets/images/icone-logout.png";
+import IconeFechar from "../../../../assets/images/icone-fechar-branco.png";
+import ModalLogout from "../../../ModalLogout/index.js";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "./MenuHamburger.css";
+import { ContainerMenuHamburger } from "./styles";
 
+interface MenuHamburgerProps {
+    toggleMenu: () => void;
+}
 
-const MenuHamburger = ({ toggleMenu }) => {
+const MenuHamburger = ({ toggleMenu }: MenuHamburgerProps) => {
     const navigate = useNavigate();
-    const [modalLogoutAberto, setModalLogoutAberto] = useState(false);
+    const [modalLogoutAberto, setModalLogoutAberto] = useState<boolean>(false);
 
     return (
-        <aside className="menu_hamburger_container">
+        <ContainerMenuHamburger>
 
-            <div className="menu_hamburger_btn_fechar">
+            <div className="btn_fechar">
                 <button onClick={toggleMenu}>
                     <img src={IconeFechar} alt="Icone de X" />
                 </button>
             </div>
 
             <nav className='menu_hamburger_nav'>
-                <p className="menu_hamburger_section">Financeiro</p>
+                <p>Financeiro</p>
                 <ul>
                     <li>
                         <button onClick={() => navigate("/controle-financeiro")}>
@@ -53,7 +56,7 @@ const MenuHamburger = ({ toggleMenu }) => {
                     </li>
                 </ul>
 
-                <p className="menu_hamburger_section menu_hamburger_section_2">Tarefas</p>
+                <p className="menu_hamburger_secao_2">Tarefas</p>
                 <ul>
                     <li>
                         <button onClick={() => navigate("/tarefas-quadro-kanban")}>
@@ -91,7 +94,7 @@ const MenuHamburger = ({ toggleMenu }) => {
                 aberto={modalLogoutAberto}
                 onClose={() => setModalLogoutAberto(false)}
             />
-        </aside>
+        </ContainerMenuHamburger>
     );
 }
 
