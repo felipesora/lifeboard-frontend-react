@@ -1,3 +1,4 @@
+import type { TransacaoCreateDTO, TransacaoRequest } from "../types/transacao";
 import { obterDadosUsuario } from "./usuarioService";
 
 
@@ -17,11 +18,11 @@ export async function obterDadosTransacao(id) {
     return await response.json();
 }
 
-export async function cadastrarTransacao(transacao) {
+export async function cadastrarTransacao(transacao: TransacaoCreateDTO): Promise<void> {
     const token = localStorage.getItem('token');
     const idUser = localStorage.getItem('userId');
 
-    const usuario = await obterDadosUsuario(idUser);
+    const usuario = await obterDadosUsuario(Number(idUser));
 
     const idFinanceiro = usuario.financeiro.id_financeiro;
 
