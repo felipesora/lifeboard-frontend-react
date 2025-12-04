@@ -413,3 +413,213 @@ export const ContainerCardTransacoes = styled.div`
         padding: 15px 0px 65px 2px;
     }
 `;
+
+export const CardMetasContainer = styled.div`
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  width: auto;
+  align-self: flex-start;
+  padding: 15px 0px 65px 15px;
+  box-sizing: border-box;
+  margin-top: 40px;
+
+  @media (max-width: 1740px) {
+    width: 1270px;
+    box-sizing: initial;
+    margin-top: 35px;
+  }
+
+  @media (max-width: 1620px) {
+    width: 1200px;
+  }
+
+  @media (max-width: 1560px) {
+    width: 1140px;
+  }
+
+  @media (max-width: 1500px) {
+    width: 1100px;
+  }
+
+  @media (max-width: 1460px) {
+    width: 1070px;
+  }
+
+  @media (max-width: 1430px) {
+    width: 1050px;
+  }
+
+  @media (max-width: 1410px) {
+    width: 1020px;
+  }
+
+  @media (max-width: 1380px) {
+    width: 1000px;
+  }
+
+  @media (max-width: 1360px) {
+    width: 970px;
+  }
+
+  @media (max-width: 1330px) {
+    width: 960px;
+  }
+
+  @media (max-width: 1300px) {
+    width: 940px;
+  }
+
+  @media (max-width: 1280px) {
+    width: 920px;
+  }
+
+  @media (max-width: 1260px) {
+    width: 1130px;
+  }
+
+  @media (max-width: 1230px) {
+    width: 1100px;
+  }
+
+  @media (max-width: 1200px) {
+    width: 1080px;
+  }
+
+  @media (max-width: 1180px) {
+    width: 1050px;
+  }
+
+  @media (max-width: 1120px) {
+    width: 1000px;
+  }
+
+  @media (max-width: 1070px) {
+    width: 950px;
+  }
+
+  @media (max-width: 1020px) {
+    width: 920px;
+  }
+
+  @media (max-width: 990px) {
+    width: 890px;
+  }
+
+  @media (max-width: 950px) {
+    width: 850px;
+  }
+
+  @media (max-width: 910px) {
+    width: 820px;
+  }
+
+  @media (max-width: 880px) {
+    width: 790px;
+  }
+
+  @media (max-width: 850px) {
+    width: 750px;
+  }
+
+  @media (max-width: 800px) {
+    width: 730px;
+  }
+
+  @media (max-width: 775px) {
+    width: 700px;
+  }
+
+  @media (max-width: 720px) {
+    width: 650px;
+  }
+
+  @media (max-width: 700px) {
+    width: 630px;
+  }
+
+  @media (max-width: 675px) {
+    width: 100%;
+    margin-top: 30px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 450px) {
+    padding: 15px 0px 65px 0px;
+  }
+
+  @media (max-width: 430px) {
+    padding: 15px 0px 65px 5px;
+  }
+
+  @media (max-width: 390px) {
+    padding: 15px 0px 65px 2px;
+  }
+`;
+
+export const CardMetasTitulo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  
+  p {
+    font-size: 18px;
+  }
+  
+  @media (max-width: 450px) {
+    margin-left: 15px;
+  }
+  
+  @media (max-width: 430px) {
+    margin-left: 0px;
+  }
+`;
+
+export const DivSemMetas = styled.div`
+  display: flex;
+  justify-content: start;
+  width: 100%;
+`;
+
+export const CardMetasLista = styled.div`
+  margin-top: 20px;
+  display: flex;
+  gap: 50px;
+  flex-wrap: wrap;
+
+  @media (max-width: 1740px) {
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+`;
+
+export const CardMetasLink = styled.div`
+  margin-top: 15px;
+  
+  button {
+    background-color: transparent;
+    border: none;
+    font-family: var(--fonte-principal);
+    font-size: 16px;
+    cursor: pointer;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  @media (max-width: 450px) {
+    margin-left: 15px;
+  }
+  
+  @media (max-width: 430px) {
+    margin-left: 0px;
+  }
+`;
+
+export const SemMetasText = styled.p`
+  color: #666;
+  font-style: italic;
+  margin: 10px 0;
+`;

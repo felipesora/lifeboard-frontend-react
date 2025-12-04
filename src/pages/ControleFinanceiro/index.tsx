@@ -1,4 +1,3 @@
-import "./ControleFinanceiro.css";
 import CardPequeno from "./components/CardPequeno";
 import MenuLateral from "../../components/MenuLateral";
 import IconeSaldo from "../../assets/images/icone-saldo.png";
@@ -11,9 +10,9 @@ import CardTrasacao from "./components/CardTransacao";
 import GastosMensaisGrafico from "./components/GastosMensaisGrafico";
 import { useEffect, useState } from "react";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
-import ModalDefinirSalario from "../../components/ModalDefinirSalario/ModalDefinirSalario";
+import ModalDefinirSalario from "./components/ModalDefinirSalario";
 import { useNavigate } from "react-router-dom";
-import CardMetaControleFinanceiro from "../../components/CardMetaControleFinanceiro/CardMetaControleFinanceiro";
+import CardMetaControleFinanceiro from "./components/CardMetaControleFinanceiro";
 import IconeMetaAndamento from "../../assets/images/icone-meta-andamento.png"
 import IconeMetaConcluida from "../../assets/images/icone-meta-concluida.png"
 import Cabecalho from "../../components/Cabecalho";
@@ -23,7 +22,7 @@ import { obterDadosUsuario } from "../../services/usuarioService";
 import { obterTransacoes } from "../../utils/obterTransacoes";
 import { obterMetas } from "../../utils/obterMetas";
 import { editarFinanceiroUsuario } from "./services/financeiroService";
-import { ContainerCardGrafico, ContainerCardsPequenos, ContainerCardsPequenosEGrafico, ContainerCardsPequenosETransacoes, ContainerCardTransacoes, DashBoardContainer, DashBoardMain } from "./styles";
+import { CardMetasContainer, CardMetasLink, CardMetasLista, CardMetasTitulo, ContainerCardGrafico, ContainerCardsPequenos, ContainerCardsPequenosEGrafico, ContainerCardsPequenosETransacoes, ContainerCardTransacoes, DashBoardContainer, DashBoardMain, DivSemMetas, SemMetasText } from "./styles";
 
 const ControleFinanceiro = () => {
     useAuthRedirect();
@@ -265,12 +264,13 @@ const ControleFinanceiro = () => {
                             )}
                         </ContainerCardTransacoes>
                     </ContainerCardsPequenosETransacoes>
-                    <div className="card_metas">
-                        <div className="card_metas_titulo">
+                    <CardMetasContainer>
+                        <CardMetasTitulo>
                             <img src={IconeMetas} alt="Icone de cofrinho" />
                             <p>Minhas metas</p>
-                        </div>
-                        <div className="card_metas_lista">
+                        </CardMetasTitulo>
+
+                        <CardMetasLista>
                             {metas.length > 0 ? (
                                 metas.map((meta) => {
 
@@ -291,18 +291,18 @@ const ControleFinanceiro = () => {
                                 })
 
                             ) : (
-                                <div className="div_sem_metas">
-                                    <p className="sem-transacoes">Nenhuma meta encontrada.</p>
-                                </div>
+                                <DivSemMetas>
+                                    <SemMetasText>Nenhuma meta encontrada.</SemMetasText>
+                                </DivSemMetas>
                                 
                             )}
-                        </div>
+                        </CardMetasLista>
                         {metas.length > 0 && (
-                            <div className="card_metas_link">
+                            <CardMetasLink>
                                 <button onClick={() => navigate("/metas")}>Ver mais...</button>
-                            </div>
+                            </CardMetasLink>
                         )}
-                    </div>
+                    </CardMetasContainer>
                 </div>
 
                 <ModalDefinirSalario
