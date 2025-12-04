@@ -73,7 +73,7 @@ export async function editarDadosTransacao(idTransacao, novaTransacao) {
     return await response.json();
 }
 
-export async function deletarTransacao(idTransacao) {
+export async function deletarTransacao(idTransacao: number): Promise<void> {
         const token = localStorage.getItem('token');
 
     const response = await fetch(`http://localhost:8080/api/transacoes/${idTransacao}`, {
