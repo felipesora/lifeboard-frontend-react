@@ -4,7 +4,7 @@ import Cadastro from "../pages/Cadastro";
 import ControleFinanceiro from "../pages/ControleFinanceiro";
 import Transacoes from "../pages/Transacoes";
 import CadastroTransacao from "../pages/CadastroTransacao";
-import EditarTransacao from "../pages/EditarTransacao/EditarTransacao";
+import EditarTransacao from "../pages/EditarTransacao";
 import Metas from "../pages/Metas/Metas";
 import CadastroMeta from "../pages/CadastroMeta/CadastroMeta";
 import EditarMeta from "../pages/EditarMeta/EditarMeta";

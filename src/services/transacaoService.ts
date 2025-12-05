@@ -1,8 +1,8 @@
-import type { TransacaoCreateDTO, TransacaoRequest } from "../types/transacao";
+import type { TransacaoCreateDTO, TransacaoRequest, TransacaoResponse } from "../types/transacao";
 import { obterDadosUsuario } from "./usuarioService";
 
 
-export async function obterDadosTransacao(id) {
+export async function obterDadosTransacao(id: number): Promise<TransacaoResponse> {
     const token = localStorage.getItem('token');
 
     const response = await fetch(`http://localhost:8080/api/transacoes/${id}`, {
@@ -49,7 +49,7 @@ export async function cadastrarTransacao(transacao: TransacaoCreateDTO): Promise
     return await response.json();
 }
 
-export async function editarDadosTransacao(idTransacao, novaTransacao) {
+export async function editarDadosTransacao(idTransacao: number, novaTransacao: TransacaoRequest): Promise<void> {
     const token = localStorage.getItem('token');
 
     const response = await fetch(`http://localhost:8080/api/transacoes/${idTransacao}`, {
